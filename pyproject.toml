@@ -1,0 +1,27 @@
+[build-system]
+
+requires = ["setuptools>=61.0"] 
+build-backend = "setuptools.build_meta" 
+
+[project]
+name = "pyCLINE"
+version = "0.0.1"
+authors = [
+    { name="Bartosz Prokop", email="bartosz.prokop@kuleuven.be" },
+    { name="Nikita Frolov", email="nikita.frolov@kuleuven.be" },
+    { name="Lendert Gelens", email="lendert.gelens@kuleuven.be" },
+]
+description = "This package is the python implementation of the CLINE method 
+introduced by Prokop, Frolov, Gelens (2025)."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
