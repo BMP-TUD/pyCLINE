@@ -86,7 +86,7 @@ class GeneExpression:
     """
     The gene expression model is a model of the regulation of gene expression taken from Novak & Tyson, Nature Rev Mol Cell Biol (2008).
     """    
-    def __init__(self, p):
+    def __init__(self, p=[1, 0.05,  1, 0.05,   1, 0.05,  1,  1, 0.1,  2]):
         self.p = p
 
     def model(self, U):
@@ -119,7 +119,7 @@ class GlycolyticOscillations:
     The glycolytic oscillator is a model of glycolytic oscillations introduced in Prokop et al., iScience (2024) and in 
     this form taken from Prokop et al., Chaos (2024).
     """
-    def __init__(self, p):
+    def __init__(self, p=[-0.3, -2.2, 0.25, -0.5, 0.5, 1.8, 0.7, -0.3]):
         self.p = p
 
     def model(self, U):
@@ -180,7 +180,9 @@ class Goodwin:
 # -------------------  Oregonator oscillator -------------------
 
 class Oregonator:
-    
+    """
+    The Oregonator model is a model of the Belousov-Zhabotinsky reaction, taken from Tyson, Journal of Chemical Physics (1975).
+    """
     def __init__(self, p = [0.005,3,0.60,1e-2]):
         self.p = p
     
@@ -237,7 +239,9 @@ class Oregonator:
             plot_data(df, max_time=max_time)
 
 class Lorenz:
-
+    """
+    The Lorenz model is a simple model of atmospheric convection, taken from Lorenz, Journal of the Atmospheric Sciences (1963).
+    """
     def __init__(self, p = [-0.5,65]):
         self.p = p
     
@@ -268,7 +272,9 @@ class Lorenz:
             plot_data(df, max_time=max_time)
 
 class Roessler:
-
+    """
+    The Roessler model is a simple model of a chaotic oscillator, taken from Roessler, Zeitschrift für Naturforschung A (1976).
+    """
     def __init__(self, p = [0.2,0.2,1]):
         self.p = p
     
@@ -301,10 +307,11 @@ class Roessler:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
             plot_data(df, max_time=max_time)
+
 # -------------------  Delay oscillator -------------------
 class DelayOscillator:
     """
-    Simple model of a Delay Oscillator with a single delay. 
+    Simple model of a Delay Oscillator with a single delay, inspired by Lewis, Current Biology (2003)
     """    
     def __init__(self, p):
         self.p = p
