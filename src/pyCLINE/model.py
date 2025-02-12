@@ -313,7 +313,7 @@ class DelayOscillator:
     """
     Simple model of a Delay Oscillator with a single delay, inspired by Lewis, Current Biology (2003)
     """    
-    def __init__(self, p):
+    def __init__(self, p=[4,10,2]):
         self.p = p
     
     def model(self):
@@ -323,6 +323,9 @@ class DelayOscillator:
     def xnull(self, y):
         return self.p[0]/(1+y**self.p[2])
 
+    def ynull(self, x):
+        return (self.p[0]/x-1)**(1/self.p[2])
+    
     def simulate(self,  dt, t_max, y_0=0):
         self.model()
         DDE = jitcdde.jitcdde(self.DDE)
