@@ -4,28 +4,24 @@ import pandas as pd
 from scipy.signal import find_peaks
 
 
-def normalize_variables(df,     # dataframe containing variables
-                        vars,   # list of the variables to normalize
-                        time,   # name of the time column
-                        norm_method='minmax',
-                        value_max=1,
-                        value_min=0):  # name of the time column
-    
-    
-    """The function conducts min-max normalization in the range '[-1:1]
+def normalize_variables(df, vars, time, norm_method='minmax', value_max=1.0, value_min=0.0):
+    """
+    The function conducts min-max normalization in the range '[0:1]
     of the varibles from the list 'vars' in the dataframe 'df'
 
     return dataframe containing normalized variables 'df_norm'
     and the dataframe containing normalization coefficients per variable 'df_coef'
 
     Args:
-        df (_type_): _description_
-        value_max (int, optional): _description_. Defaults to 1.
-        value_min (int, optional): _description_. Defaults to 0.
+        df (pandas DataFrame): dataframe containing variables
+        vars (list): list of the variables to normalize
+        time (str): name of the time column
+        value_max (float, optional): Maximal value for min-max normalizaiton. Defaults to 1.0.
+        value_min (int, optional): Minimal value for min-max noramlization. Defaults to 0.0.
 
     Returns:
-        _type_: _description_
-
+        df_norm (pandas DataFrame): dataframe containing normalized variables
+        df_coef (pandas DataFrame): dataframe containing minimal and maximal values per variable
     """
     # creating a new dataframe for normalized data and copying the time column
     df_norm = pd.DataFrame()
@@ -46,15 +42,19 @@ def normalize_variables(df,     # dataframe containing variables
     return df_norm, df_coef
 
 def plot_optimal_thresholding(thresholds, nsamples, varsamples, optimal_threshold, idx, histogram):
-    """_summary_
+    """
+    When a system exhibits a non-uniform distribution of data points in the phase space,
+    the optimal thresholding can be used to sample the data uniformly.
+    This function plots the normalized sample size, normalized sampling standard deviation,
+    and the ratio of the sample size to the sampling standard deviation as a function of the threshold.
 
     Args:
-        thresholds (_type_): _description_
-        nsamples (_type_): _description_
-        varsamples (_type_): _description_
-        optimal_threshold (_type_): _description_
-        idx (_type_): _description_
-        histogram (_type_): _description_
+        thresholds (numpy array): array of threshold values
+        nsamples (numpy array): array of normalized sample sizes
+        varsamples (numpy array): array of normalized sampling standard deviations
+        optimal_threshold (int): optimal threshold value
+        idx (int): index of the optimal threshold value
+        histogram (numpy histogram object): 2D histogram of the phase space
     """  
     fig, axes = plt.subplots(1,2, figsize=(11,5))
     axes[0].plot(thresholds, nsamples, label='norm. sample size')
@@ -77,17 +77,22 @@ def plot_optimal_thresholding(thresholds, nsamples, varsamples, optimal_threshol
     plt.show()
 
 def compute_optimal_threshold(df, vars, binx, biny, plot_thresholding=True):
-    """_summary_
+    """
+    When a system exhibits a non-uniform distribution of data points in the phase space,
+    the optimal thresholding can be used to sample the data uniformly.
+    This function computes the optimal thresholding value based on the normalized sample size,
+    normalized sampling standard deviation, and the ratio of the sample size to the sampling standard deviation.
 
     Args:
-        df (_type_): _description_
-        vars (_type_): _description_
-        binx (_type_): _description_
-        biny (_type_): _description_
-        plot_thresholding (bool, optional): _description_. Defaults to True.
+        df (pandas dataframe): dataframe containing variables
+        vars (list): list of the variables to generate the optimal threshold
+        binx (list): list of bins for the first variable
+        biny (list): list of bins for the second variable
+        plot_thresholding (bool, optional): If the thresholded phase space between the first and second
+                                            variable should be plotted. Defaults to True.
 
     Returns:
-        _type_: _description_
+        optimal_threshold (int): optimal threshold value
     """    
     h, _, _ = np.histogram2d(df[vars[0]], df[vars[1]], bins=(binx, biny))
 
@@ -117,17 +122,19 @@ def compute_optimal_threshold(df, vars, binx, biny, plot_thresholding=True):
     return int(optimal_threshold)
 
 def uniform_sampling(df, threshold, input_vars, binx, biny):
-    """_summary_
+    """
+    The function samples the data uniformly in the phase space defined by the input variables
+    based on the provided threshold value.
 
     Args:
-        df (_type_): _description_
-        threshold (_type_): _description_
-        input_vars (_type_): _description_
-        binx (_type_): _description_
-        biny (_type_): _description_
+        df (pandas dataframe): dataframe containing variables
+        threshold (int): threshold value for the uniform sampling
+        input_vars (list): list of the input variables
+        binx (list): list of bins for the first variable
+        biny (list): list of bins for the second variable
 
     Returns:
-        _type_: _description_
+        df_uniform (pandas dataframe): dataframe containing uniformly sampled data
     """    
     df_uniform = pd.DataFrame()
 
@@ -145,16 +152,11 @@ def uniform_sampling(df, threshold, input_vars, binx, biny):
     return df_uniform
 
 # data preparation
-def prepare_data(df,    # dataframe containing variables
-                 vars,  # list of the variables to normalize
-                 time,  # name of the time column
-                 tmin=None, tmax=None, #   range of time to slice the data (optional)
-                 scheme='newton_difference', # scheme for computing delayed variables
-                 norm_method='minmax',
-                 value_max=1,
-                 value_min=0, 
-                 normalize=True):
-    """the function prepares the raw time series of the system variables
+def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference', norm_method='minmax',
+                 value_min=0.0,  value_max=1.0, normalize=True):
+    
+    """
+    The function prepares the raw time series of the system variables
     for feeding into ML model. preparation includes following steps:
     (i)   data slicing in the indicated range [tmin:tmax], [:tmax], or [tmin:] (optional).
           if tmin and tmax are not provided, full data are processed;
@@ -165,17 +167,22 @@ def prepare_data(df,    # dataframe containing variables
     and the dataframe containing normalization coefficients per variable 'df_coef'
 
     Args:
-        df (_type_): _description_
-        tmax (_type_, optional): _description_. Defaults to None.
-        value_max (int, optional): _description_. Defaults to 1.
-        value_min (int, optional): _description_. Defaults to 0.
-        normalize (bool, optional): _description_. Defaults to True.
+        df (pandas dataframe): dataframe containing variables
+        vars (list): list of the variables to normalize
+        time (str): name of the time column
+        tmin (float, optional): Minimal time of the time slice of data. Defaults to None.
+        tmax (float, optional): Maximal time of the time slice of data. Defaults to None.
+        scheme (str, optional): Scheme for computing second input variable. Defaults to 'newton_difference'.
+        norm_method (str, optional): Normalization method. Defaults to 'minmax'.
+        value_min (int, optional): Minimal value for minmax normalization. Defaults to 0.0.
+        value_max (int, optional): Maximal value for minmax normalization. Defaults to 1.0.
+        normalize (bool, optional): If data should be normalized. Defaults to True.
 
     Returns:
-        _type_: _description_
+        df_prepared (pandas dataframe): dataframe containing prepared data for feeding into ML model, 
+        df_coef (pandas dataframe): dataframe containing normalization coefficients (min and max values) per variable
     """    
-    
-    
+        
     # slice the data in the range [tmin; tmax] if needed
     if not ((tmin is None) and (tmax is None)):
         if tmin is None:
@@ -223,10 +230,10 @@ def prepare_data(df,    # dataframe containing variables
         if scheme=='derivative':
             dt=df[time][1]-df[time][0]
             df_prepared['norm {:}'.format(var)] = df_norm['norm {:}'.format(var)].to_numpy()[first_point:]
-            # for var in vars:
+
             x = df_norm['norm {:}'.format(var)].to_numpy()[first_point:]
             x_dot = np.ones(x.shape[0])*np.NaN
-            x_dot_forward =[(x[i+1]-x[i])/dt for i in range(x[:-1].shape[0])] #np.diff(x)/(dt) #(x[2:] - x[:-2])/(2*dt)
+            x_dot_forward =[(x[i+1]-x[i])/dt for i in range(x[:-1].shape[0])]
             
             x_dot_backward =[(x[i]-x[i-1])/dt for i in range(x[1:].shape[0])]
 
@@ -236,40 +243,39 @@ def prepare_data(df,    # dataframe containing variables
             # insert np.nan at the first position
             x_dot = np.insert(x_dot, -1, np.nan)
             x_dot[0]=np.nan
-            # x_dot = np.insert(x_dot, 0, np.nan)
             
             df_prepared['d norm{:}'.format(var)+'/dt'] = x_dot
-            # df_prepared['d norm{:}'.format(var)+'/dt'] = np.gradient(df_norm['norm {:}'.format(var)].to_numpy()[first_point:], dt)
 
     return df_prepared.dropna(), df_coef
 
-def shuffle_and_split(df,               # dataframe containing prepared data for feeding into ML model
-                      input_vars,       # the list of input variables
-                      target_var,       # the list of target variable(s)
-                      train_frac=0.7,   # fraction of training data (in the range [0,1], default is 0.7, i.e., 70%)
-                      test_frac=0.15,   # fraction of testing data (in the range [0,1], default is 0.15, i.e., 15%)
-                                        # remaining fraction is assinged as a validation data
-                      optimal_thresholding=True,
-                      plot_thresholding=True):
-    """The function prepares training, testing, and validation sets from the prepared dataframe
+def shuffle_and_split(df, input_vars, target_var, train_frac=0.7, test_frac=0.15, optimal_thresholding=True, plot_thresholding=True):
+    """
+    The function prepares training, testing, and validation sets from the prepared dataframe
     by random uniform shuffling and splitting the data according to the provided proportions
 
     the function returns respective training, testing, and validation datasets
 
     Args:
-        df (_type_): _description_
+        df (pandas dataframe): dataframe containing prepared data for feeding into ML model
+        input_vars (list): list of the input variables
+        target_var (list): list of the target variable(s)
+        train_frac (float, optional): fraction of training data. Defaults to 0.7.
+        test_frac (float, optional): fraction of testing data. Defaults to 0.15.
+        optimal_thresholding (bool, optional): If the optimal thresholding should be used. Defaults to True.
         plot_thresholding (bool, optional): _description_. Defaults to True.
 
     Returns:
-        _type_: _description_
+        input_train (pandas dataframe): dataframe containing input variables for training
+        target_train (pandas dataframe): dataframe containing target variables for training
+        input_test (pandas dataframe): dataframe containing input variables for testing
+        target_test (pandas dataframe): dataframe containing target variables for testing
+        input_val (pandas dataframe): dataframe containing input variables for validation
+        target_val (pandas dataframe): dataframe containing target variables for validation
     """    
-
     # data shuffling
     df_shuffled = df.sample(frac = 1)
 
     # uniform data sampling in the phase space
-    # optimal_thresholding = True
-
     if optimal_thresholding:
         binx = np.linspace(df_shuffled[input_vars[0]].min(), df_shuffled[input_vars[0]].max(), 11)
         biny = np.linspace(df_shuffled[target_var[0]].min(), df_shuffled[target_var[0]].max(), 11)
