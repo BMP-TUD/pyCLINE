@@ -9,6 +9,12 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 
 class FFNN(nn.Module):   
+    """
+    Feedforward Neural Network (FFNN) class.
+
+    Args:
+        nn (torch.nn module): PyTorch neural network module
+    """
     def __init__(self, Nin, Nout, Nlayers, Nnodes, activation):
         super(FFNN, self).__init__()
         layers = [nn.Linear(Nin, Nnodes), activation()]
@@ -23,35 +29,36 @@ class FFNN(nn.Module):
         return self.model(x)
 
 def init_weights(m):
+    """
+    Initialize the weights of the neural network.
+
+    Args:
+        m (torch model): PyTorch model
+    """
     if isinstance(m, nn.Linear):
         nn.init.xavier_uniform_(m.weight)
         nn.init.zeros_(m.bias)
 
-def configure_FFNN_model(Nin,
-                         Nout, 
-                         Nlayers, 
-                         Nnodes, 
-                         activation=nn.Tanh,
-                         optimizer_name='Adam',
-                        #  optimizer=optim.Adam, 
-                         lr=1e-4,
-                         loss_fn=nn.MSELoss, 
-                         summary=False):
-    """_summary_
+def configure_FFNN_model(Nin, Nout, Nlayers, Nnodes,  activation=nn.SiLU, optimizer_name='Adam', lr=1e-4,
+                         loss_fn=nn.MSELoss, summary=False):
+    """
+    Configure the Feedforward Neural Network (FFNN) model.
 
     Args:
-        Nin (_type_): _description_
-        Nout (_type_): _description_
-        Nlayers (_type_): _description_
-        Nnodes (_type_): _description_
-        activation (_type_, optional): _description_. Defaults to nn.Tanh.
-        optimizer_name (str, optional): _description_. Defaults to 'Adam'.
-        lr (_type_, optional): _description_. Defaults to 1e-4.
-        loss_fn (_type_, optional): _description_. Defaults to nn.MSELoss.
-        summary (bool, optional): _description_. Defaults to False.
+        Nin (int): Number of input features
+        Nout (int): Number of output features
+        Nlayers (int): Number of layers
+        Nnodes (int): Number of nodes
+        activation (torch neural network activation function module, optional): Activation function of neural network training. Defaults to nn.SiLU.
+        optimizer_name (str, optional): Optimizer for model training. Defaults to 'Adam'.
+        lr (float, optional): Learning rate for training. Defaults to 1e-4.
+        loss_fn (torch loss function module, optional): Loss function for training. Defaults to nn.MSELoss.
+        summary (bool, optional): If model summary should be generated. Defaults to False.
 
     Returns:
-        _type_: _description_
+        model (torch model): setup FFNN model
+        optimizer (torch optimizer): optimizer for training
+        loss_fn (torch loss function): loss function for training
     """    
     model = FFNN(Nin, Nout, Nlayers, Nnodes, activation)
     model.apply(init_weights)
@@ -77,13 +84,14 @@ def configure_FFNN_model(Nin,
 
 # Monitor gradients
 def monitor_gradients(model):
-    """_summary_
+    """
+    Monitor the gradients of the model.
 
     Args:
-        model (_type_): _description_
+        model (torch model feature): torch model
 
     Returns:
-        _type_: _description_
+        gradients (float): gradients of the model
     """    
     for name, param in model.named_parameters():
         if param.requires_grad:
@@ -91,17 +99,17 @@ def monitor_gradients(model):
             return gradients
 
 def loss_function(input, target, nc_prediction, nullcline_guess, factor):
-    """_summary_
-
+    """
+    Loss function for the neural network model.
     Args:
-        input (_type_): _description_
-        target (_type_): _description_
-        nc_prediction (_type_): _description_
-        nullcline_guess (_type_): _description_
-        factor (_type_): _description_
+        input (torch tensor): input data
+        target (torch tensor): target data
+        nc_prediction (torch tensor): nullcline prediction data
+        nullcline_guess (torch tensor): nullcline guess data
+        factor (float): penalty factor for loss function
 
     Returns:
-        _type_: _description_
+        loss (float): loss function
     """    
     mse_loss = nn.MSELoss()
     mse_loss_nc = nn.MSELoss()
@@ -109,40 +117,40 @@ def loss_function(input, target, nc_prediction, nullcline_guess, factor):
     loss_nc = mse_loss_nc(nc_prediction, nullcline_guess)
     return loss_nc+factor*loss_train
 
-def train_FFNN_model(model,                 # configured FFNN model
-                     optimizer,             # optimizer
-                     loss_fn,               # loss function
-                     input_train,           # input training data
-                     target_train,          # target training data
-                     input_test,            # input testing data
-                     target_test,           # target testing data
-                     validation_data,       # validation data
-                     epochs=200,            # number of epochs
-                     batch_size=64,         # batch size
-                     plot_loss=True,        # plot the loss
-                     device='cpu',          # device to run the model
-                     use_progressbar=True,   # use progress bar
-                     save_evolution=True,
-                     loss_target='limit_cycle',
-                     nullcline_guess=None, 
-                     factor=1.0, 
-                     method=None,
-                     minimal_value=0,
-                     maximal_value=1
-                     ):
-    """_summary_
+def train_FFNN_model(model, optimizer, loss_fn, input_train, target_train, input_test, target_test, validation_data,
+                     epochs=200, batch_size=64, plot_loss=True, device='cpu', use_progressbar=True, save_evolution=True,
+                     loss_target='limit_cycle', nullcline_guess=None, factor=1.0, method=None, minimal_value=0.0, maximal_value=1.0):
+    """
+    Train the Feedforward Neural Network (FFNN) model.
 
     Args:
-        model (_type_): _description_
-        loss_target (str, optional): _description_. Defaults to 'limit_cycle'.
-        nullcline_guess (_type_, optional): _description_. Defaults to None.
-        factor (float, optional): _description_. Defaults to 1.0.
-        method (_type_, optional): _description_. Defaults to None.
-        minimal_value (int, optional): _description_. Defaults to 0.
-        maximal_value (int, optional): _description_. Defaults to 1.
+        model (torch model): configured FFNN model
+        optimizer (torch optimizer): optimizer
+        loss_fn (torch loss function): loss function
+        input_train (pandas dataframe): input training data
+        target_train (pandas dataframe): target training data
+        input_test (pandas dataframe): input testing data
+        target_test (pandas dataframe): target testing data
+        validation_data (pandas dataframe): validation data
+        epochs (int, optional): number of epochs. Defaults to 200.
+        batch_size (int, optional): batch size. Defaults to 64.
+        plot_loss (bool, optional): plot the loss. Defaults to True.
+        device (str, optional): device to train the model on. For 'cuda', necessary GPU and CUDA Toolkit are required. Defaults to 'cpu'.
+        use_progressbar (bool, optional): use progress bar when running the training. Defaults to True.
+        save_evolution (bool, optional): save the evolution of limit cycle and nullcline predictions. Defaults to True.
+        loss_target (str, optional): Decide if the target is not limit cycle, but the inital nullcline seed. Defaults to 'limit_cycle'.
+        nullcline_guess (torch tensor, optional): Torch tensor containing inital nullcline guess. Defaults to None.
+        factor (float, optional): The penalty factor for nullcline guess loss evaluation. Defaults to 1.0.
+        method (str, optional): Method used for prediction, can be derivative or delayed variables. Defaults to None.
+        minimal_value (float, optional): Minimal value of minmax normalization for inbetween prediction. Defaults to 0.0.
+        maximal_value (int, optional): Maximal value of minmax normalization for inbetween prediction. Defaults to 1.0.
 
     Returns:
-        _type_: _description_
+        train_losses (list): training losses
+        val_losses (list): validation losses
+        test_loss (float): testing loss
+        predictions (list): predictions of nullcline structure over all epochs
+        lc_predictions (list): limit cycle predictions over all epochs
     """
     # Move model to the specified device
     model.to(device)
@@ -169,11 +177,8 @@ def train_FFNN_model(model,                 # configured FFNN model
     predictions=[]
     lc_predictions=[]
     gradients=[]
-        # if use_progressbar:
-    #     progressbar=tqdm(enumerate(train_loader), total=len(train_loader), desc=f'Epoch {epoch+1}/{epochs}')
 
     for epoch in range(epochs):
-        # with tqdm(enumerate(train_loader), total=len(train_loader), desc=f'Epoch {epoch+1}/{epochs}') as progressbar if use_progressbar else enumerate(train_loader:
             if use_progressbar:
                 progressbar=tqdm(enumerate(train_loader), total=len(train_loader), desc=f'Epoch {epoch+1}/{epochs}')
             else:
@@ -188,7 +193,6 @@ def train_FFNN_model(model,                 # configured FFNN model
                 if loss_target=='nullcline_guess':
                     inputs, targets, nullcline_guess = data
                     inputs, targets, nullcline_guess = inputs.to(device), targets.to(device), nullcline_guess.to(device)
-                # inputs, targets = inputs.to(device), targets.to(device)
 
                 optimizer.zero_grad()
                 outputs = model(inputs)
@@ -200,21 +204,12 @@ def train_FFNN_model(model,                 # configured FFNN model
                     for i in range(model.model[0].in_features):
                         input_null[:,i] = np.linspace(0, 1,nullcline_guess.shape[1])
                     input_null = torch.tensor(input_null, dtype=torch.float32).to(device)
-
                     nc_prediction = model(input_null)
-                    
-                    # _, nc_prediction = nullcline_prediction(model, Nsteps=nullcline_guess.shape[1])
-                    # Ensure the tensors require gradients
-                    # nc_prediction = torch.tensor(np.array([nc_prediction]*nullcline_guess.shape[0]), dtype=torch.float32, requires_grad=True)
-                    
                     loss = loss_function(outputs, targets, nc_prediction[:,0], nullcline_guess[0,:], factor)
-                # loss = loss_fn(outputs, targets)
                 loss.backward()
                 optimizer.step()
                 running_loss += loss.item() * inputs.size(0)
             
-            # gradients.append(monitor_gradients(model))
-
             train_loss = running_loss / len(train_loader.dataset)
             train_losses.append(train_loss)
 
@@ -239,33 +234,23 @@ def train_FFNN_model(model,                 # configured FFNN model
                         for i in range(model.model[0].in_features):
                             input_null[:,i] = np.linspace(0, 1,nullcline_guess.shape[1])
                         input_null = torch.tensor(input_null, dtype=torch.float32).to(device)
-
                         nc_prediction = model(input_null)
-                        
-                        # _, nc_prediction = nullcline_prediction(model, Nsteps=nullcline_guess.shape[1])
-                        # Ensure the tensors require gradients
-                        # nc_prediction = torch.tensor(np.array([nc_prediction]*nullcline_guess.shape[0]), dtype=torch.float32, requires_grad=True)
-                        
                         loss = loss_function(outputs, targets, nc_prediction[:,0], nullcline_guess[0,:], factor)
                     val_loss += loss.item() * inputs.size(0)
 
             val_loss /= len(val_loader.dataset)
             val_losses.append(val_loss)
 
-            if save_evolution:# and (epoch+1)%10==0:
+            if save_evolution:
                 _ , prediction_null = nullcline_prediction(model, Nsteps=500, method=method, min_val=minimal_value, max_val=maximal_value)
                 predictions.append(prediction_null)
-                # model.eval()
                 input_prediction=torch.tensor(input_train.values, dtype=torch.float32)
                 with torch.no_grad():
                     output_prediction = model(input_prediction).cpu().numpy()
                 lc_predictions.append(output_prediction)
-            # Update the progress bar description with the current loss
             if use_progressbar:
                 progressbar.set_description(f'Epoch [{epoch+1}/{epochs}], Batch [{batch_idx}/{len(train_loader)}], Loss: {train_loss:.4f}')
                 progressbar.refresh()  
-            # if plot_loss:
-            #     print(f'Epoch {epoch+1}/{epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}')
 
     if plot_loss:
         # plt.plot(gradients, label='Gradients')
@@ -297,22 +282,29 @@ def train_FFNN_model(model,                 # configured FFNN model
                 input_null = torch.tensor(input_null, dtype=torch.float32).to(device)
 
                 nc_prediction = model(input_null)
-                
-                # _, nc_prediction = nullcline_prediction(model, Nsteps=nullcline_guess.shape[1])
-                # Ensure the tensors require gradients
-                # nc_prediction = torch.tensor(np.array([nc_prediction]*nullcline_guess.shape[0]), dtype=torch.float32, requires_grad=True)
-                # print(nullcline_guess.shape, nc_prediction.shape)
                 loss = loss_function(outputs, targets, nc_prediction[:,0], nullcline_guess[0,:], factor)
-                # loss= loss_fn(outputs, targets)+loss_fn(nc_prediction, nullcline_guess)
             test_loss += loss.item() * inputs.size(0)
 
     test_loss /= len(test_loader.dataset)
-    # print(f'Test Loss: {test_loss:.4f}')
 
     return train_losses, val_losses, test_loss, predictions, lc_predictions
 
-def nullcline_prediction(model, Nsteps, device='cpu', method=None, min_val=0, max_val=1):
+def nullcline_prediction(model, Nsteps, device='cpu', method=None,min_val=0.0, max_val=1.0):
+    """
+    Predict the nullcline of the model.
 
+    Args:
+        model (torch model): FFNN model
+        Nsteps (int): Number of steps for discretization of input variable for nullcline prediction
+        device (str, optional): device to train the model on. For 'cuda', necessary GPU and CUDA Toolkit are required. Defaults to 'cpu'.
+        method (str, optional): Method used for prediction, can be derivative or delayed variables. Defaults to None.
+        min_val (float, optional): Minimum value for minmax normalization. Defaults to 0.0.  
+        max_val (float, optional): Maximum value for minmax normalization. Defaults to 1.0.
+
+    Returns:
+        input_null (numpy array): input variable for nullcline prediction
+        prediction_null (numpy array): predicted nullcline
+    """
     input_null = np.zeros((Nsteps, model.model[0].in_features))
     if method=='derivative':
         for i in range(model.model[0].in_features-1):
@@ -320,25 +312,32 @@ def nullcline_prediction(model, Nsteps, device='cpu', method=None, min_val=0, ma
     else:
         for i in range(model.model[0].in_features):
             input_null[:,i] = np.linspace(min_val, max_val,Nsteps)
-    # input_null = np.repeat(input_null, Nin, axis=1)  # Repeat to match the number of input features
+
     input_null = torch.tensor(input_null, dtype=torch.float32).to(device)
     model.eval()
     with torch.no_grad():
         prediction_null = model(input_null).cpu().numpy()
     return input_null.cpu().numpy(), prediction_null.reshape(Nsteps,)
 
-def compute_nullcline(fnull,
-                      p,
-                      xvar,
-                      yvar, 
-                      Nsteps,
-                      df_coef, 
-                      value_max=1,
-                      value_min=0, 
-                      normalize=True):
-    
+def compute_nullcline(fnull, xvar, yvar, Nsteps, df_coef, value_min=0.0, value_max=1.0, normalize=True):
+    """
+    Compute the nullcline of the model from the ground true function.
+
+    Args:
+        fnull (function): ground true function
+        xvar (str): x variable for nullcline computation
+        yvar (str): y variable for nullcline computation
+        Nsteps (int): Number of steps for discretization of input variable for nullcline prediction
+        df_coef (pandas dataframe): dataframe containing the coefficients of the model
+        value_min (float, optional):  Minimum value for minmax normalization. Defaults to 0.0.
+        value_max (float, optional):  Maximum value for minmax normalization.. Defaults to 1.0.
+        normalize (bool, optional): If values should be minmax normalized. Defaults to True.
+
+    Returns:
+        xnull (list): x variable for nullcline prediction
+        ynull (list): predicted nullcline
+    """
     xnull = np.linspace(df_coef[xvar]['min'],df_coef[xvar]['max'], Nsteps)
-    
     ynull = fnull(xnull)
     if normalize:
         ynull = (ynull - df_coef[yvar]['min'])*(value_max-value_min)/(df_coef[yvar]['max'] - df_coef[yvar]['min'])+value_min
