@@ -1,1 +1,1 @@
-__all__ = ["recovery_methods", "model"]
+__all__ = ["recovery_methods", "model", "generate_data", "example"]

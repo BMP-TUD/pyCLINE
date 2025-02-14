@@ -1,7 +1,7 @@
 import numpy as np
 from . import model
 
-def FHN(dt=0.1, N=1000000, epsilons=[0.01, 0.1, 1]):
+def FHN(dt=0.1, N=1000000, epsilons=[0.3]):
     """
     Generate data using the FitzHugh-Nagumo model (see src/pyCLINE/model.py)
     with different time scale separation, as used in Prokop, Billen, Frolov, Gelens (2025).
@@ -9,7 +9,7 @@ def FHN(dt=0.1, N=1000000, epsilons=[0.01, 0.1, 1]):
     Args:
         dt (float): Time step. Defaults to 0.1.
         N (int): Number of time steps. Defaults to 1000000.
-        epsilons (list): List of time scale separations. Defaults to [0.01, 0.1, 1].
+        epsilons (list): List of time scale separations. Defaults to [0.3].
     
     Returns:
         None

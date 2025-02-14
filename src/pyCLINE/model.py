@@ -524,8 +524,7 @@ def calculate_period(x_train, t_train):
         peaks=find_peaks(x_train[:,1])
         peaks_t=t_train[peaks[0]]
         peaks_u=x_train[peaks[0],1]
-    # peaks_t=t_train[peaks[0]]
-    # peaks_u=x_train[peaks[0],0]
+        
     period_temp=0
     for i in range(len(peaks_t)-1):
         period_temp=period_temp+(peaks_t[i+1]-peaks_t[i])
