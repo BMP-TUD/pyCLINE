@@ -1,5 +1,4 @@
 [build-system]
-
 requires = ["setuptools>=61.0"] 
 build-backend = "setuptools.build_meta" 
 
@@ -15,12 +14,11 @@ description = "This package is the python implementation of the CLINE method int
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
-    "Development Status :: 3 - Alpha"
+    "Development Status :: 3 - Alpha",
     "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
-]
-license = "MIT"
-license-files = ["LICEN[CS]E*"]
+    "Operating System :: OS Independent"
+    ]
+license = {file = "LICEN[CS]E*"}
 keywords = [
     "model",
     "model identification", 

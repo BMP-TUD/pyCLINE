@@ -1,0 +1,24 @@
+Metadata-Version: 2.2
+Name: pyCLINE
+Version: 0.0.1
+Summary: This package is the python implementation of the CLINE method introduced by Prokop, Frolov, Gelens (2025).
+Author-email: Bartosz Prokop <bartosz.prokop@kuleuven.be>, Nikita Frolov <nikita.frolov@kuleuven.be>, Lendert Gelens <lendert.gelens@kuleuven.be>
+Project-URL: Homepage, https://gitlab.kuleuven.be/gelenslab/publications/pycline
+Project-URL: Issues, https://gitlab.kuleuven.be/gelenslab/publications/pycline/-/issues
+Keywords: model,model identification,nullcline,data-driven,machine learning,deep learning,torch,dynamics,oscillator,nonlinear dynamics,complex systems
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: matplotlib>=3.6.2
+Requires-Dist: numpy>=1.24.1
+Requires-Dist: torch==2.4.1
+Requires-Dist: pandas==1.5.2
+Requires-Dist: tqdm>=4.66.1
+Requires-Dist: jitcdde==1.8.1
+
+# PyCLINE - python package for CLINE
+
+The `pyCLINE` package is the python package based on the CLINE (**C**omputational **L**earning and **I**nference of **N**ullcline **E**quations) introduced in the manuscript XXX. 
