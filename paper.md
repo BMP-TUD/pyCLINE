@@ -26,7 +26,6 @@ affiliations:
    index: 1
 date: 14 February 2025
 bibliography: paper.bib
-
 ---
 
 # Summary
@@ -50,24 +49,36 @@ Knowledge of the nullcline structure has many advantages `[@ProkopB:2024]`:
 `pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in `@Prokop:2025`. It is based on the Python torch implementation `pyTorch` and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
 The implementation of `pyCLINE` allows to generate examplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
-`pyCLINE` was designed to allow to be used by researchers experienced with the use of machine learning or layman that are interested to apply the method to either different models or measured data. 
+`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
 This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or provide proof for existing models of dynamic (oscillatory) systems.
 
-# Method
+# Usage
 
 The `pyCLINE` package includes three main modules (see \autoref{fig:method}): 
 - `pyCLINE.generate_data()`: This module generates data whifh has been used in `@Prokop:2025` with additionally many more models that can be found under `pyCLINE.model()`.
 - `pyCLINE.recovery_methods.data_preparation()`: Splits and normalizes that data for training, with many more features for the user to change the data.
 - `pyCLINE.recovery_methods.nn_training()`: Is the `pyTorch` implementation that sets up the model and trains it.
 
+The `pyCLINE.model()` currently includes a set of different models: 
+- FitzHugh-Nagumo model
+- Bicubic model
+- Gene expression model
+- Glycolytic oscillation model
+- Goodwin model
+- Oregonator model
+- Lorenz system
+- Roessler system
+- Delay oscillator (self-inhibitory gene)
+
+Some of the models are three-dimensional and can be used to further study the limitations of the method, when applied to higher dimensional systems
+
 For a better understanding the method and a simpler implementation, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
+Here, `pyCLINE.example()` can be used to generate prediction data for four systems: The FitzHugh-Nagumo model with time scale separation variable $\varepsilon=0.3$ (`FHN`), the Bicubic model (`Bicubic`), gene expression model (`GeneExpression`) and the delay oscillator model (`DelayOscillator`).
 
 ![The method CLINE explained by using Figure 1 from `@Prokop:2025`. In red the main modules of the `pyCLINE` package are shown \label{fig:method}](figures/introduction_manuscript_1.png)
 
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
 
 # References
