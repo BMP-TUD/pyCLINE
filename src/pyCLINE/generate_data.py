@@ -1,7 +1,7 @@
 import numpy as np
 from . import model
 
-def FHN(dt=0.1, N=1000000, epsilons=[0.3]):
+def FHN(dt=0.1, N=1000000, epsilons=[0.3], n_intiaL_conditions=1):
     """
     Generate data using the FitzHugh-Nagumo model (see src/pyCLINE/model.py)
     with different time scale separation, as used in Prokop, Billen, Frolov, Gelens (2025).
@@ -19,11 +19,12 @@ def FHN(dt=0.1, N=1000000, epsilons=[0.3]):
         u[:,0] = [0.1, 0.1]
         p = [1, 1, eps, 0.5, 0.0]
         fhn=model.FHN(p)
-        u0, v0 = np.meshgrid(np.linspace(-1.25,1.75,10),np.linspace(-0.75,1.75,10))
-        fhn.generate_data(u0, v0, dt, N, save=True, plot=True)
+        u0, v0 = np.meshgrid(np.linspace(-1.25,1.75,n_intiaL_conditions),np.linspace(-0.75,1.75,n_intiaL_conditions))
+        x0 = np.array([u0,v0])
+        fhn.generate_data(x0, dt, N)
     pass
 
-def Bicubic(dt=0.1, N=1000000):
+def Bicubic(dt=0.1, N=1000000, n_intiaL_conditions=1):
     """
     Generate data using the Bicubic model (see src/pyCLINE/model.py),
     as used in Prokop, Billen, Frolov, Gelens (2025).
@@ -38,12 +39,12 @@ def Bicubic(dt=0.1, N=1000000):
     p = [-0.5, 0.5, -1/3]
 
     bicubic=model.Bicubic(p)
-    u0, v0 = np.meshgrid(np.linspace(-1.25,1.75,10),np.linspace(-0.75,1.75,10))
+    u0, v0 = np.meshgrid(np.linspace(-1.25,1.75,n_intiaL_conditions),np.linspace(-0.75,1.75,n_intiaL_conditions))
     x0 = np.array([u0,v0])
-    bicubic.generate_data(x0, dt, 10000, save=True, plot=False)
+    bicubic.generate_data(x0, dt, 10000)
     pass
 
-def GeneExpression(dt=0.1, N=1000000):
+def GeneExpression(dt=0.1, N=1000000, n_intiaL_conditions=1):
     """
     Generate data using the Gene Expression model (see src/pyCLINE/model.py),
     as used in Prokop, Billen, Frolov, Gelens (2025).
@@ -58,9 +59,9 @@ def GeneExpression(dt=0.1, N=1000000):
     p=[1, 0.05,  1, 0.05,   1, 0.05,  1,  1, 0.1,  2]
 
     gene_expression=model.GeneExpression(p)
-    u0, v0 = np.meshgrid(np.linspace(0,1.75,10),np.linspace(0,1.75,10))
+    u0, v0 = np.meshgrid(np.linspace(0,1.75,n_intiaL_conditions),np.linspace(0,1.75,n_intiaL_conditions))
     x0 = np.array([u0,v0])
-    gene_expression.generate_data(x0, dt, 10000, save=True, plot=False)
+    gene_expression.generate_data(x0, dt, 10000)
     pass
 
 def DelayOscillator(N=20000):

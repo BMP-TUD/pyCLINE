@@ -286,9 +286,9 @@ def train_FFNN_model(model, optimizer, loss_fn, input_train, target_train, input
             test_loss += loss.item() * inputs.size(0)
 
     test_loss /= len(test_loader.dataset)
-    predictions_evolution=np.array(predictions_evolution)
+    predictions_evolution=np.array(predictions)
     lc_predictions = np.array(lc_predictions)
-    return train_losses, val_losses, test_loss, predictions, lc_predictions
+    return train_losses, val_losses, test_loss, predictions_evolution, lc_predictions
 
 def nullcline_prediction(model, Nsteps, device='cpu', method=None,min_val=0.0, max_val=1.0):
     """

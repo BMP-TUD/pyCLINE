@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: pyCLINE
-Version: 0.0.1
+Version: 0.0.17
 Summary: This package is the python implementation of the CLINE method introduced by Prokop, Frolov, Gelens (2025).
 Author-email: Bartosz Prokop <bartosz.prokop@kuleuven.be>, Nikita Frolov <nikita.frolov@kuleuven.be>, Lendert Gelens <lendert.gelens@kuleuven.be>
 Project-URL: Homepage, https://gitlab.kuleuven.be/gelenslab/publications/pycline

@@ -43,7 +43,7 @@ class FHN:
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}_eps={self.p[2]}_a={self.p[4]}.csv')
         if plot:
@@ -75,7 +75,7 @@ class Bicubic:
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -107,7 +107,7 @@ class GeneExpression:
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -134,7 +134,7 @@ class GlycolyticOscillations:
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -171,7 +171,7 @@ class Goodwin:
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -232,7 +232,7 @@ class Oregonator:
         return x + 0*y
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -265,7 +265,7 @@ class Lorenz:
         return x*y
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -302,7 +302,7 @@ class Roessler:
         return b/(c-x)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=True):
-        df=generate_data(self.simulate, x0, dt, N, check_period)
+        df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
         if plot:
@@ -373,7 +373,7 @@ def rk4_solver(f, u, dt):
 
 # -------------------  Generate and save data of multiple IC to csv -------------------
 
-def generate_data (simulate, x0, dt, N=10000, check_period=True):
+def simulate_data (simulate, x0, dt, N=10000, check_period=True):
     """
     Generate synthetic data for a given model and initial conditions.
 
@@ -390,7 +390,8 @@ def generate_data (simulate, x0, dt, N=10000, check_period=True):
     df = pd.DataFrame()
     sim_count = 1
     time = np.arange(N)*dt
-    u = np.zeros([len(x0),N])
+    # print(x0,len(x0), N)
+    u = np.zeros((len(x0),N))
     if len(x0)==2:
         for i in range(x0[0,:,:].shape[0]):
             for j in range(x0[0,:,:].shape[1]):
@@ -524,7 +525,7 @@ def calculate_period(x_train, t_train):
         peaks=find_peaks(x_train[:,1])
         peaks_t=t_train[peaks[0]]
         peaks_u=x_train[peaks[0],1]
-        
+
     period_temp=0
     for i in range(len(peaks_t)-1):
         period_temp=period_temp+(peaks_t[i+1]-peaks_t[i])

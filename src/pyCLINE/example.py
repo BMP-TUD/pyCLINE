@@ -4,6 +4,7 @@ from . import generate_data
 import pandas as pd
 import matplotlib.pyplot as plt
 from . import recovery_methods
+from . import model
 import torch.nn as nn
 import numpy
 import torch
@@ -52,8 +53,8 @@ def example(example_model, plot):
 
     if plot:
         fig,ax = plt.subplots(1,1,figsize=(5,3))
-        ax.plot(df_sim['t'], df_sim['u'], label='u')
-        ax.plot(df_sim['t'], df_sim['v'], label='v')
+        ax.plot(df_sim['time'], df_sim['u'], label='u')
+        ax.plot(df_sim['time'], df_sim['v'], label='v')
         ax.set_xlabel('Time')
         ax.set_ylabel('Amount in arbs. units')
         plt.show()
@@ -91,13 +92,13 @@ def example(example_model, plot):
     # lr: learning rate
     # activation: activation function can be chosen as needed
     print('Step 3: Set up the model')
-    model,  optimizer, loss_fn = recovery_methods.nn_training.configure_FFNN_model(Nin=len(input_vars), Nout=len(target_vars),
+    nn_model,  optimizer, loss_fn = recovery_methods.nn_training.configure_FFNN_model(Nin=len(input_vars), Nout=len(target_vars),
                                                                                    Nlayers=3, Nnodes=64, summary=True, lr=1e-4,
                                                                                    activation=nn.SiLU)
     
     # train the model
     print('Step 4: Train the model')
-    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions = recovery_methods.nn_training.train_FFNN_model(model=model,
+    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions = recovery_methods.nn_training.train_FFNN_model(model=nn_model,
                                                                                                                             optimizer=optimizer, loss_fn=loss_fn,
                                                                                                                             input_train=input_train,
                                                                                                                             target_train=target_train,input_test=input_test, 
@@ -111,7 +112,7 @@ def example(example_model, plot):
     if not os.path.exists(f'results/{example_model}'):
         os.makedirs(f'results/{example_model}')
 
-    torch.save(model.state_dict(), f'results/{example_model}/model.pth')
+    torch.save(nn_model.state_dict(), f'results/{example_model}/model.pth')
     numpy.save(f'results/{example_model}/predictions.npy', predictions_evolution)
     numpy.save(f'results/{example_model}/lc_predictions.npy', lc_predictions)
     numpy.save(f'results/{example_model}/training_loss.npy', training_loss)
@@ -119,3 +120,28 @@ def example(example_model, plot):
     numpy.save(f'results/{example_model}/test_loss.npy', test_loss)
 
     print('Example completed: model and predictions saved in results/'+example_model)
+
+    # plot the predictions
+    if plot:
+        print('Step 6: Plot the predictions')
+        fig,ax = plt.subplots(1,1,figsize=(5,3))
+        ax.scatter(df_sim['norm u'], df_sim['norm v'], label='GT LC', c='silver')
+        ax.scatter(input_train['norm u'], lc_predictions[-1,:,0],
+                c='C2', label='Pred. LC', s=2 )
+        
+        # compute nullcline
+        u = numpy.linspace(df_coef['u'].min(), df_coef['u'].max(), predictions_evolution.shape[1])
+        sim_model = getattr(model, example_model)()
+        gt_nullcline=sim_model.vnull(u)
+        
+        norm_u=recovery_methods.data_preparation.normalize_adjusted(u, df_coef,'u', 
+                                                                    min=val_min, max=val_max)
+        norm_gt_nullcline=recovery_methods.data_preparation.normalize_adjusted(gt_nullcline, df_coef,'v', 
+                                                                               min=val_min, max=val_max)
+        
+        ax.plot(norm_u,norm_gt_nullcline, label='GT NC', c='k')
+        ax.plot(norm_u,predictions_evolution[-1,:], label='Pred. NC', c='C1')
+        ax.set_xlabel('u')
+        ax.set_ylabel('v')
+        ax.legend()
+        plt.show()

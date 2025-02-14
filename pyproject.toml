@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyCLINE"
-version = "0.0.1"
+version = "0.0.17"
 authors = [
     { name="Bartosz Prokop", email="bartosz.prokop@kuleuven.be" },
     { name="Nikita Frolov", email="nikita.frolov@kuleuven.be" },
