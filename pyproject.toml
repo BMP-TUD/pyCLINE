@@ -11,8 +11,7 @@ authors = [
     { name="Nikita Frolov", email="nikita.frolov@kuleuven.be" },
     { name="Lendert Gelens", email="lendert.gelens@kuleuven.be" },
 ]
-description = "This package is the python implementation of the CLINE method 
-introduced by Prokop, Frolov, Gelens (2025)."
+description = "This package is the python implementation of the CLINE method introduced by Prokop, Frolov, Gelens (2025)."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -21,6 +20,18 @@ classifiers = [
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+keywords = [
+    "model",
+    "model identification", 
+    "nullcline", 
+    "data-driven", 
+    "machine learning", 
+    "deep learning", 
+    "torch",
+    "dynamics", 
+    "oscillator",
+    "nonlinear dynamics", 
+    "complex systems"]
 
 dependencies = [
     "matplotlib>=3.6.2",
