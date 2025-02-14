@@ -1,0 +1,8 @@
+generate_version_badge:
+  script:
+    - echo "<svg>$(git describe --tags)</svg>" > badge-version.svg
+    - git add badge-version.svg
+    - git commit -m "Update version badge"
+    - git push origin main
+  only:
+    - tags
