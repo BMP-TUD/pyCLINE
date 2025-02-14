@@ -22,6 +22,15 @@ classifiers = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 
+dependencies = [
+    "matplotlib>=3.6.2",
+    "numpy>=1.24.1",
+    "torch==2.4.1",
+    "pandas==1.5.2",
+    "tqdm>=4.66.1",
+    "jitcdde==1.8.1"
+]
+
 [project.urls]
 Homepage = "https://gitlab.kuleuven.be/gelenslab/publications/pycline"
 Issues = "https://gitlab.kuleuven.be/gelenslab/publications/pycline/-/issues"
