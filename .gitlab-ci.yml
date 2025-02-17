@@ -6,7 +6,7 @@ stages:
 build_pdf:
   stage: build
   script:
-    - pandoc paper.md -o output.pdf --pdf-engine=xelatex --citeproc --bibliography=paper.bib
+    - pandoc paper.md -o output.pdf --pdf-engine=lualatex  --citeproc --bibliography=paper.bib
   artifacts:
     paths:
       - output.pdf

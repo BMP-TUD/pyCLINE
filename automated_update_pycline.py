@@ -5,26 +5,57 @@ import os
 import re
 from datetime import datetime
 
+import toml
+import shutil
+import subprocess
+import os
+from datetime import datetime
+
 # Paths
 PYPROJECT_FILE = "pyproject.toml"
 DIST_FOLDER = "dist"
 OLD_BUILDS_FOLDER = "old_builds"
 
+def get_new_version(current_version):
+    """ Asks the user how to update the version and returns the new version string. """
+    version_parts = list(map(int, current_version.split(".")))
+
+    print(f"\n🔢 Current version: {current_version}")
+    print("How do you want to update the version?")
+    print("1️⃣ Patch (e.g., 0.0.1 → 0.0.2)")
+    print("2️⃣ Minor (e.g., 0.0.1 → 0.1.0)")
+    print("3️⃣ Major (e.g., 0.1.0 → 1.0.0)")
+
+    choice = input("Enter 1, 2, or 3: ").strip()
+    
+    if choice == "1":
+        version_parts[2] += 1  # Increment PATCH version
+    elif choice == "2":
+        version_parts[1] += 1  # Increment MINOR version
+        version_parts[2] = 0   # Reset PATCH
+    elif choice == "3":
+        version_parts[0] += 1  # Increment MAJOR version
+        version_parts[1] = 0   # Reset MINOR
+        version_parts[2] = 0   # Reset PATCH
+    else:
+        print("⚠ Invalid input. Keeping current version.")
+        return current_version  # Return unchanged version
+
+    return ".".join(map(str, version_parts))
+
 def update_version():
-    """ Reads, increments, and updates the package version in pyproject.toml. """
+    """ Reads, updates, and writes the package version in pyproject.toml. """
     # Load pyproject.toml
     with open(PYPROJECT_FILE, "r") as f:
         config = toml.load(f)
-    
+
     # Get current version
     current_version = config["project"]["version"]
-    
-    # Increment patch version (e.g., 1.2.3 → 1.2.4)
-    version_parts = list(map(int, current_version.split(".")))
-    version_parts[-1] += 1  # Increment last part
-    new_version = ".".join(map(str, version_parts))
 
-    # Update version in pyproject.toml
+    # Ask user for version update type
+    new_version = get_new_version(current_version)
+
+    # Update pyproject.toml
     config["project"]["version"] = new_version
     with open(PYPROJECT_FILE, "w") as f:
         toml.dump(config, f)
