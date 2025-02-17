@@ -1,0 +1,12 @@
+image: pandoc/latex:latest  # Official Pandoc image with LaTeX support
+
+stages:
+  - build
+
+build_pdf:
+  stage: build
+  script:
+    - pandoc -s paper.md -o output.pdf
+  artifacts:
+    paths:
+      - output.pdf

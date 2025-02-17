@@ -42,7 +42,10 @@ def example(example_model, plot):
         df = pd.read_csv(path+fname)
     
     # extracting 1 time series and plotting
-    df_sim = df[(df['sim']==1)].copy()
+    if example_model!='DelayOscillator':
+        df_sim = df[(df['sim']==1)].copy()
+    else:
+        df_sim=df.copy()
     df_sim.reset_index(drop=True, inplace=True)
 
     if example_model=='DelayOscillator':
@@ -69,6 +72,8 @@ def example(example_model, plot):
         tmin, val_min, val_max=10, 0.0, 1.0 
     if example_model=='GeneExpression':
         tmin, val_min, val_max=10, 0.0, 1.0
+    if example_model=='DelayOscillator':
+        tmin, val_min, val_max=100,0.0,1.0
 
 
     # normalize data and create additional derivative or delayed variables

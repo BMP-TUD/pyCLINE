@@ -320,10 +320,10 @@ class DelayOscillator:
         self.DDE = [self.p[0]/(1+jitcdde.y(0,jitcdde.t-self.p[1])**self.p[2])-jitcdde.y(0)]
         return self.DDE
     
-    def xnull(self, y):
+    def unull(self, y):
         return self.p[0]/(1+y**self.p[2])
 
-    def ynull(self, x):
+    def vnull(self, x):
         return (self.p[0]/x-1)**(1/self.p[2])
     
     def simulate(self,  dt, t_max, y_0=0):

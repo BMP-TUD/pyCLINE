@@ -1,45 +1,30 @@
 [build-system]
-requires = ["setuptools>=61.0"] 
-build-backend = "setuptools.build_meta" 
+requires = [ "setuptools>=61.0",]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyCLINE"
-version = "0.0.17"
-authors = [
-    { name="Bartosz Prokop", email="bartosz.prokop@kuleuven.be" },
-    { name="Nikita Frolov", email="nikita.frolov@kuleuven.be" },
-    { name="Lendert Gelens", email="lendert.gelens@kuleuven.be" },
-]
+version = "0.0.26"
 description = "This package is the python implementation of the CLINE method introduced by Prokop, Frolov, Gelens (2025)."
 readme = "README.md"
 requires-python = ">=3.10"
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent"
-    ]
-license = {file = "LICEN[CS]E*"}
-keywords = [
-    "model",
-    "model identification", 
-    "nullcline", 
-    "data-driven", 
-    "machine learning", 
-    "deep learning", 
-    "torch",
-    "dynamics", 
-    "oscillator",
-    "nonlinear dynamics", 
-    "complex systems"]
+classifiers = [ "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent",]
+keywords = [ "model", "model identification", "nullcline", "data-driven", "machine learning", "deep learning", "torch", "dynamics", "oscillator", "nonlinear dynamics", "complex systems",]
+dependencies = [ "matplotlib>=3.6.2", "numpy>=1.24.1,<1.25.0", "pandas~=1.5.2", "torch>=2.4.1", "tqdm>=4.66.1", "jitcdde>=1.8.1", "scipy>=1.9.3",]
+[[project.authors]]
+name = "Bartosz Prokop"
+email = "bartosz.prokop@kuleuven.be"
 
-dependencies = [
-    "matplotlib>=3.6.2",
-    "numpy>=1.24.1",
-    "torch==2.4.1",
-    "pandas==1.5.2",
-    "tqdm>=4.66.1",
-    "jitcdde==1.8.1"
-]
+[[project.authors]]
+name = "Nikita Frolov"
+email = "nikita.frolov@kuleuven.be"
+
+[[project.authors]]
+name = "Lendert Gelens"
+email = "lendert.gelens@kuleuven.be"
+
+[project.license]
+file = "LICEN[CS]E*"
 
 [project.urls]
 Homepage = "https://gitlab.kuleuven.be/gelenslab/publications/pycline"
