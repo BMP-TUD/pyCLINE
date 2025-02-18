@@ -14,4 +14,5 @@ The submodule contains the module for data_preparation `pyCLINE.recovery_methods
 For a better understanding, `pyCLINE` also contains the module `pyCLINE.example` which provides four example also found in XXX with step by step instructions on how to setup a CLINE pipeline. 
 
 The structure of `pyCLINE` is shown here: 
-![PyCLINE structure]{pycline_structure.png}
+
+![PyCLINE structure](pycline_structure.png)
