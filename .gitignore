@@ -4,3 +4,4 @@ results/
 *.png
 !pycline_structure.png
 old_builds/
+automated_update_pycline.py
