@@ -1,4 +1,4 @@
-image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
+image: pandoc/latex:latest  # Official Pandoc image with LaTeX support
 
 stages:
   - build
@@ -6,8 +6,7 @@ stages:
 build_pdf:
   stage: build
   script:
-    # Generate PDF with proper citation processing and lists
-    - pandoc paper.md -o output.pdf --pdf-engine=xelatex --bibliography=paper.bib --citeproc --csl=chicago-author-date.csl
+    - pandoc paper.md -o output.pdf --pdf-engine=lualatex  --citeproc --bibliography=paper.bib
   artifacts:
     paths:
-      - pdf/output.pdf
+      - output.pdf
