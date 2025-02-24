@@ -8,15 +8,6 @@ build_pdf:
   script:
     # Generate PDF with proper citation processing and lists
     - pandoc paper.md -o output.pdf --pdf-engine=xelatex --bibliography=paper.bib --citeproc --csl=chicago-author-date.csl
-    # Move the PDF to a folder in the repository
-    - mkdir -p pdf
-    - mv output.pdf pdf/output.pdf
-    # Commit the PDF to the repository
-    - git config --global user.email "gitlab-ci@example.com"
-    - git config --global user.name "GitLab CI"
-    - git add pdf/output.pdf
-    - git commit -m "Auto-generated PDF with correct references and lists"
-    - git push https://oauth2:${CI_JOB_TOKEN}@gitlab.kuleuven.be/gelenslab/publications/pycline HEAD:${CI_COMMIT_REF_NAME}
   artifacts:
     paths:
       - pdf/output.pdf
