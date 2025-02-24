@@ -46,7 +46,7 @@ Knowledge of the nullcline structure has many advantages `[@ProkopB:2024]`:
 
 # Statement of need
 
-`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in `@ Prokop:2025`. It is based on the Python torch implementation `pyTorch` and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
+`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in `@Prokop:2025`. It is based on the Python torch implementation `pyTorch` and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
 The implementation of `pyCLINE` allows to generate examplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
 `pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
