@@ -8,6 +8,34 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 
+#Error handling
+class NeuralNetworkError(Exception):
+    """Error raised for neural network issues."""
+
+class NeuralNetworkSetupError(NeuralNetworkError):
+    """Error raised when parameters of the network are 0 but can not be zero."""
+    def __init__(self, parameter_name, parameter, message="parameter has to be greater then zero/be provided."):
+        self.parameter_name = parameter_name
+        self.parameter = parameter
+        self.message = message
+        super().__init__(f'Error: {self.parameter_name} '+self.message+f' Value given: {self.parameter}')
+
+class NeuralNetworkSetupTrainingError(NeuralNetworkError):
+    """Error raised when setting up training of the neural network."""
+    def __init__(self, parameter_name, parameter, message="parameter has to be greater then zero."):
+        self.parameter_name = parameter_name
+        self.parameter = parameter
+        self.message = message
+        super().__init__(f'Error: {self.parameter_name} '+self.message+f' Value given: {self.parameter}')
+
+class NeuralNetworkDataError(NeuralNetworkError):
+    """Error raised when data for the neural network is incorrect."""
+    def __init__(self, errors):
+        self.errors = errors
+        message = "; ".join(errors)
+        super().__init__(f'Error: {message}')
+        
+
 class FFNN(nn.Module):   
     """
     Feedforward Neural Network (FFNN) class.
@@ -60,6 +88,21 @@ def configure_FFNN_model(Nin, Nout, Nlayers, Nnodes,  activation=nn.SiLU, optimi
         optimizer (torch optimizer): optimizer for training
         loss_fn (torch loss function): loss function for training
     """    
+    if Nin == 0:
+        raise NeuralNetworkSetupError('Nin', Nin)
+    if Nout == 0:
+        raise NeuralNetworkSetupError('Nout', Nout)
+    if Nlayers == 0:
+        raise NeuralNetworkSetupError('Nlayers', Nlayers)
+    if Nnodes == 0:
+        raise NeuralNetworkSetupError('Nnodes', Nnodes)
+    if lr == 0:
+        raise NeuralNetworkSetupError('Learning rate', lr)
+    if optimizer_name == '':
+        raise NeuralNetworkSetupError('Optimizer', optimizer_name)
+    if loss_fn == '' or loss_fn == None:
+        raise NeuralNetworkSetupError('Loss function', loss_fn)
+
     model = FFNN(Nin, Nout, Nlayers, Nnodes, activation)
     model.apply(init_weights)
     if optimizer_name == 'SGD':
@@ -152,6 +195,33 @@ def train_FFNN_model(model, optimizer, loss_fn, input_train, target_train, input
         predictions (list): predictions of nullcline structure over all epochs
         lc_predictions (list): limit cycle predictions over all epochs
     """
+    #Error handling
+    if input_train.shape[0] == 0:
+        raise NeuralNetworkDataError(['Input training data is empty.'])
+    if target_train.shape[0] == 0:
+        raise NeuralNetworkDataError(['Target training data is empty.'])
+    if input_test.shape[0] == 0:
+        raise NeuralNetworkDataError(['Input testing data is empty.'])
+    if target_test.shape[0] == 0:
+        raise NeuralNetworkDataError(['Target testing data is empty.'])
+    
+    if input_train.shape[0]!=target_train.shape[0]:
+        raise NeuralNetworkDataError(['Input and target training data have different lengths.'])
+    if input_test.shape[0]!=target_test.shape[0]:
+        raise NeuralNetworkDataError(['Input and target testing data have different lengths.'])
+    
+    if validation_data[0].shape[0] == 0:
+        raise NeuralNetworkDataError(['Validation input data is empty.'])
+    if validation_data[1].shape[0] == 0:
+        raise NeuralNetworkDataError(['Validation target data is empty.'])
+    if validation_data[0].shape[0]!=validation_data[1].shape[0]:
+        raise NeuralNetworkDataError(['Validation input and target data have different lengths.'])
+    
+    if epochs == 0:
+        raise NeuralNetworkSetupTrainingError('epochs', epochs)
+    if batch_size == 0:
+        raise NeuralNetworkSetupTrainingError('batch_size', batch_size)     
+
     # Move model to the specified device
     model.to(device)
     if loss_target=='limit_cycle':

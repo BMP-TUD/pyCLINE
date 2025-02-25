@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.signal import find_peaks
 
-
 def normalize_variables(df, vars, time, norm_method='minmax', value_max=1.0, value_min=0.0):
     """
     The function conducts min-max normalization in the range '[0:1]
@@ -153,8 +152,7 @@ def uniform_sampling(df, threshold, input_vars, binx, biny):
 
 # data preparation
 def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference', norm_method='minmax',
-                 value_min=0.0,  value_max=1.0, normalize=True):
-    
+                 value_min=0.0,  value_max=1.0, normalize=True):    
     """
     The function prepares the raw time series of the system variables
     for feeding into ML model. preparation includes following steps:
@@ -182,9 +180,36 @@ def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference
         df_prepared (pandas dataframe): dataframe containing prepared data for feeding into ML model, 
         df_coef (pandas dataframe): dataframe containing normalization coefficients (min and max values) per variable
     """    
-        
+    
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError("Input data is not a pandas DataFrame")
+    if not isinstance(vars, list):
+        raise ValueError("Variables should be provided as a list")
+    if not isinstance(time, str):
+        raise ValueError("Time column name of pandas DataFrame should be provided as a string")
+    if not isinstance(tmin, (int, float)) and tmin is not None:
+        raise ValueError("tmin should be a float or an integer, or None")
+    if not isinstance(tmax, (int, float)) and tmax is not None:
+        raise ValueError("tmax should be a float or an integer, or None")
+    if not isinstance(scheme, str):
+        raise ValueError("Scheme should be provided as a string")
+    if not isinstance(norm_method, str):
+        raise ValueError("Normalization method should be provided as a string")
+    if not isinstance(value_min, (int, float)):
+        raise ValueError("Minimal value for minmax normalization should be a float or an integer")
+    if not isinstance(value_max, (int, float)):
+        raise ValueError("Maximal value for minmax normalization should be a float or an integer")
+    if not isinstance(normalize, bool):
+        raise ValueError("Normalize variable should be a boolean value")
+    if not all([var in df.columns for var in vars]):
+        raise ValueError("Variables should be present in the provided dataframe")
+    if not time in df.columns:
+        raise ValueError("Time column should be present in the provided dataframe")
+    if scheme not in ['newton_difference', 'two_point', 'five_point', 'derivative']:
+        raise ValueError("Unknown scheme: {:}".format(scheme))
+
     # slice the data in the range [tmin; tmax] if needed
-    if not ((tmin is None) and (tmax is None)):
+    if ((tmin is None) or (tmax is None)):
         if tmin is None:
             tmin = df[time].min()
         if tmax is None:
@@ -272,6 +297,30 @@ def shuffle_and_split(df, input_vars, target_var, train_frac=0.7, test_frac=0.15
         input_val (pandas dataframe): dataframe containing input variables for validation
         target_val (pandas dataframe): dataframe containing target variables for validation
     """    
+
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError("Input data is not a pandas DataFrame")
+    if not isinstance(input_vars, list):
+        raise ValueError("Input variables should be provided as a list")
+    if not isinstance(target_var, list):
+        raise ValueError("Target variables should be provided as a list")
+    if not isinstance(train_frac, float):
+        raise ValueError("Training fraction should be a float")
+    if not isinstance(test_frac, float):
+        raise ValueError("Testing fraction should be a float")
+    if train_frac + test_frac > 1:
+        raise ValueError("Training and testing fractions should be less or equal to 1")
+    if train_frac< test_frac:
+        raise ValueError("Training fraction should be greater than testing fraction")
+    if not isinstance(optimal_thresholding, bool):
+        raise ValueError("Optimal thresholding should be a boolean value")
+    if not isinstance(plot_thresholding, bool):
+        raise ValueError("Plot thresholding should be a boolean value")
+    if not all([var in df.columns for var in input_vars]):
+        raise ValueError("Input variables should be present in the provided dataframe")
+    if not all([var in df.columns for var in target_var]):
+        raise ValueError("Target variables should be present in the provided dataframe")
+    
     # data shuffling
     df_shuffled = df.sample(frac = 1)
 

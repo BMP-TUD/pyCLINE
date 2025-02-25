@@ -2,19 +2,29 @@ import toml
 import shutil
 import subprocess
 import os
-import re
-from datetime import datetime
-
-import toml
-import shutil
-import subprocess
-import os
 from datetime import datetime
 
 # Paths
 PYPROJECT_FILE = "pyproject.toml"
 DIST_FOLDER = "dist"
 OLD_BUILDS_FOLDER = "old_builds"
+SRC_FOLDER = "src"
+
+def set_pythonpath():
+    """ Sets the PYTHONPATH environment variable to the src folder. """
+    current_pythonpath = os.environ.get("PYTHONPATH", "")
+    new_pythonpath = os.path.abspath(SRC_FOLDER)
+    if current_pythonpath:
+        new_pythonpath = f"{new_pythonpath}{os.pathsep}{current_pythonpath}"
+    os.environ["PYTHONPATH"] = new_pythonpath
+    print(f"🔧 PYTHONPATH set to: {os.environ['PYTHONPATH']}")
+
+def run_tests():
+    """ Runs the tests using unittest and returns True if all tests pass, False otherwise. """
+    print("🧪 Running tests...")
+    result = subprocess.run(["python", "-m", "unittest", "discover"], capture_output=True, text=True)
+    print(result.stdout)
+    return result.returncode == 0
 
 def get_new_version(current_version):
     """ Asks the user how to update the version and returns the new version string. """
@@ -96,11 +106,15 @@ def check_package():
 
 def main():
     """ Main script execution """
-    new_version = update_version()
-    move_old_builds()
-    build_package()
-    check_package()
-    print(f"✅ Package {new_version} built and ready!")
+    set_pythonpath()
+    if run_tests():
+        new_version = update_version()
+        move_old_builds()
+        build_package()
+        check_package()
+        print(f"✅ Package {new_version} built and ready!")
+    else:
+        print("❌ Tests failed. Version not updated.")
 
 if __name__ == "__main__":
     main()

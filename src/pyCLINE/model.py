@@ -42,7 +42,7 @@ class FHN:
     def simulate(self, U, dt):
         return rk4_solver(self.model, U, dt)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}_eps={self.p[2]}_a={self.p[4]}.csv')
@@ -74,7 +74,7 @@ class Bicubic:
     def simulate(self, U, dt):
         return rk4_solver(self.model, U, dt)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -106,7 +106,7 @@ class GeneExpression:
     def simulate(self, U, dt):
         return rk4_solver(self.model, U, dt)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -133,7 +133,7 @@ class GlycolyticOscillations:
     def simulate(self, U, dt):
         return rk4_solver(self.model, U, dt)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -170,7 +170,7 @@ class Goodwin:
     def simulate(self, U, dt):
         return rk4_solver(self.model, U, dt)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -231,7 +231,7 @@ class Oregonator:
     def znull(self, x, y):
         return x + 0*y
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -264,7 +264,7 @@ class Lorenz:
     def znull(self, x, y):
         return x*y
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -301,7 +301,7 @@ class Roessler:
         a,b,c=self.p
         return b/(c-x)
     
-    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=True):
+    def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=False):
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -339,7 +339,7 @@ class DelayOscillator:
 
         return data
 
-    def generate_data(self, y_0, dt, t_max, save=True, plot=False, check_period=True):
+    def generate_data(self, y_0, dt, t_max, save=True, plot=False, check_period=False):
         data = self.simulate( dt, t_max,y_0)
         df = pd.DataFrame(data, columns=['u'])
         df['time'] = np.arange(data.shape[0])*dt
@@ -373,7 +373,7 @@ def rk4_solver(f, u, dt):
 
 # -------------------  Generate and save data of multiple IC to csv -------------------
 
-def simulate_data (simulate, x0, dt, N=10000, check_period=True):
+def simulate_data (simulate, x0, dt, N=10000, check_period=False):
     """
     Generate synthetic data for a given model and initial conditions.
 

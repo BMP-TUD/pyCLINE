@@ -14,6 +14,13 @@ def FHN(dt=0.1, N=1000000, epsilons=[0.3], n_intiaL_conditions=1):
     Returns:
         None
     """
+    if dt <= 0:
+        raise ValueError("Time step (dt) must be positive.")
+    if N <= 0:
+        raise ValueError("Number of time steps (N) must be positive.")
+    if n_intiaL_conditions <= 0:
+        raise ValueError("Number of initial conditions must be positive.")
+
     u = np.zeros([2,N])
     for i_eps, eps in enumerate(epsilons):
         u[:,0] = [0.1, 0.1]
@@ -33,6 +40,13 @@ def Bicubic(dt=0.1, N=1000000, n_intiaL_conditions=1):
         dt (float, optional): Time step. Defaults to 0.1.
         N (int, optional): Number of time steps. Defaults to 1000000.
     """
+    if dt <= 0:
+        raise ValueError("Time step (dt) must be positive.")
+    if N <= 0:
+        raise ValueError("Number of time steps (N) must be positive.")
+    if n_intiaL_conditions <= 0:
+        raise ValueError("Number of initial conditions must be positive.")
+
     u = np.zeros([2,N])
 
     u[:,0] = [0.1, 0.1]
@@ -53,6 +67,13 @@ def GeneExpression(dt=0.1, N=1000000, n_intiaL_conditions=1):
         dt (float, optional): Time step. Defaults to 0.1.
         N (int, optional): Number of time steps. Defaults to 1000000.
     """
+    if dt <= 0:
+        raise ValueError("Time step (dt) must be positive.")
+    if N <= 0:
+        raise ValueError("Number of time steps (N) must be positive.")
+    if n_intiaL_conditions <= 0:
+        raise ValueError("Number of initial conditions must be positive.")
+
     u = np.zeros([2,N])
 
     u[:,0] = [0.1, 0.1]
@@ -72,6 +93,9 @@ def DelayOscillator(N=20000):
     Args:
         N (int, optional): Number of time steps. Defaults to 20000.
     """
+    if N <= 0:
+        raise ValueError("Number of time steps (N) must be positive.")
+    
     time = np.linspace(0, 400, N-1)
     dt=time[1]-time[0]
     p=[4, 10, 2]

@@ -1,3 +1,13 @@
+"""
+pyCLINE: Python implementation of the CLINE method introduced by Prokop, Billen, Frolov and Gelens (2025).
+
+Modules:
+    recovery_methods: Methods for recovering nullclines.
+    model: Model definitions and utilities.
+    generate_data: Functions for generating synthetic data.
+    example: Example usage and demonstrations.
+"""
+
 from . import recovery_methods
 from . import model
 from . import generate_data
