@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyCLINE"
-version = "0.1.1"
-description = "This package is the python implementation of the CLINE method introduced by Prokop, Frolov, Gelens (2025)."
+version = "0.1.2"
+description = "This package is the python implementation of the CLINE method introduced by Prokop, Billen, Frolov, Gelens (2025)."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [ "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent",]

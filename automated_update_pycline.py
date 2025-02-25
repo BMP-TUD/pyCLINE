@@ -104,6 +104,18 @@ def check_package():
     print("🔍 Checking package with Twine...")
     subprocess.run(["twine", "check", os.path.join(DIST_FOLDER, "*")], check=True)
 
+def upload_to_pypi():
+    """ Uploads the package to PyPI using Twine. """
+    print("\nUploading package to PyPI")
+    print("Do you want to proceed?")
+    choice = input("Enter 'y' to upload, or anything else to skip: ").strip().lower()
+    if choice != "y":
+        print("⏹ Skipping upload.")
+        return
+    
+    print("📤 Uploading package to PyPI...")
+    subprocess.run(["twine", "upload", os.path.join(DIST_FOLDER, "*")], check=True)
+
 def main():
     """ Main script execution """
     set_pythonpath()
@@ -112,6 +124,7 @@ def main():
         move_old_builds()
         build_package()
         check_package()
+        upload_to_pypi()
         print(f"✅ Package {new_version} built and ready!")
     else:
         print("❌ Tests failed. Version not updated.")
