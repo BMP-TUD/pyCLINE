@@ -106,16 +106,24 @@ def check_package():
 
 def upload_to_pypi():
     """ Uploads the package to PyPI using Twine. """
-    print("\nUploading package to PyPI")
+
+    print("\nPublishing package to Test-PyPI or PyPI")
+    print("Which repository do you want to use?")
+    print("1️⃣ Test-PyPI (for testing)")
+    print("2️⃣ PyPI (for production)")
+
+    choice = input("Enter 1 or 2: ").strip()
+    repository = "testpypi" if choice == "1" else "pypi"
+
+    print(f"📤 Uploading package to {repository}...")
     print("Do you want to proceed?")
     choice = input("Enter 'y' to upload, or anything else to skip: ").strip().lower()
     if choice != "y":
         print("⏹ Skipping upload.")
         return
     
-    print("📤 Uploading package to PyPI...")
-    subprocess.run(["twine", "upload", os.path.join(DIST_FOLDER, "*")], check=True)
-
+    subprocess.run(["twine", "upload", "--repository", repository, os.path.join(DIST_FOLDER, "*")], check=True)
+    
 def main():
     """ Main script execution """
     set_pythonpath()
