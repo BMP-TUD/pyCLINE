@@ -1,6 +1,6 @@
 # PyCLINE - python package for CLINE
 
-The `pyCLINE` package is the python package based on the CLINE (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s).
+The `pyCLINE` package is the python package based on the CLINE (**C**omputational **L**earning and **I**dentification of **N**ullclin**E**s).
 It can be downloaded from PyPI with pip by using
     
     pip install pyCLINE

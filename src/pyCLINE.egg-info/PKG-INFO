@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: pyCLINE
-Version: 0.1.3
+Version: 0.1.4
 Summary: This package is the python implementation of the CLINE method introduced by Prokop, Billen, Frolov, Gelens (2025).
 Author-email: Bartosz Prokop <bartosz.prokop@kuleuven.be>, Nikita Frolov <nikita.frolov@kuleuven.be>, Lendert Gelens <lendert.gelens@kuleuven.be>
 Project-URL: Homepage, https://gitlab.kuleuven.be/gelenslab/publications/pycline
@@ -22,7 +22,7 @@ Requires-Dist: scipy>=1.9.3
 
 # PyCLINE - python package for CLINE
 
-The `pyCLINE` package is the python package based on the CLINE (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s).
+The `pyCLINE` package is the python package based on the CLINE (**C**omputational **L**earning and **I**dentification of **N**ullclin**E**s).
 It can be downloaded from PyPI with pip by using
     
     pip install pyCLINE
