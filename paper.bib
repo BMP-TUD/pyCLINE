@@ -1,5 +1,4 @@
 @article{Brunton:2016,
-    abstract = {Understanding dynamic constraints and balances in nature has facilitated rapid development of knowledge and enabled technology, including aircraft, combustion engines, satellites, and electrical power. This work develops a novel framework to discover governing equations underlying a dynamical system simply from data measurements, leveraging advances in sparsity techniques and machine learning. The resulting models are parsimonious, balancing model complexity with descriptive ability while avoiding overfitting. There are many critical data-driven problems, such as understanding cognition from neural recordings, inferring climate patterns, determining stability of financial markets, predicting and suppressing the spread of disease, and controlling turbulence for greener transportation and energy. With abundant data and elusive laws, data-driven discovery of dynamics will continue to play an important role in these efforts.},
     author = {Brunton, Steven L and Proctor, Joshua L and Kutz, J Nathan},
     doi = {10.1073/pnas.1517384113},
     issn = {0027-8424},
@@ -10,89 +9,70 @@
     number = {15},
     pages = {3932--3937},
     title = {{Discovering governing equations from data by sparse identification of nonlinear dynamical systems}},
-    url = {https://www.pnas.org/content/pnas/113/15/3932.full.pdf https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4839439 https://pnas.org/doi/full/10.1073/pnas.1517384113},
     volume = {113},
     year = {2016}
     }
 
 @article{Cranmer:2019,
-    abstract = {We introduce an approach for imposing physically motivated inductive biases on graph networks to learn interpretable representations and improved zero-shot generalization. Our experiments show that our graph network models, which implement this inductive bias, can learn message representations equivalent to the true force vector when trained on n-body gravitational and spring-like simulations. We use symbolic regression to fit explicit algebraic equations to our trained model's message function and recover the symbolic form of Newton's law of gravitation without prior knowledge. We also show that our model generalizes better at inference time to systems with more bodies than had been experienced during training. Our approach is extensible, in principle, to any unknown interaction law learned by a graph network, and offers a valuable technique for interpreting and inferring explicit causal theories about the world from implicit knowledge captured by deep learning.},
     archivePrefix = {arXiv},
     arxivId = {1909.05862},
     author = {Cranmer, Miles D. and Xu, Rui and Battaglia, Peter and Ho, Shirley},
     eprint = {1909.05862},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Cranmer et al. - 2019 - Learning Symbolic Physics with Graph Networks.pdf:pdf},
     journal = {ArXiv},
     month = {sep},
     title = {{Learning Symbolic Physics with Graph Networks}},
-    url = {http://arxiv.org/abs/1909.05862},
     year = {2019}
 }
 
 @article{Karniadakis:2021,
-    abstract = {Despite great progress in simulating multiphysics problems using the numerical discretization of partial differential equations (PDEs), one still cannot seamlessly incorporate noisy data into existing algorithms, mesh generation remains complex, and high-dimensional problems governed by parameterized PDEs cannot be tackled. Moreover, solving inverse problems with hidden physics is often prohibitively expensive and requires different formulations and elaborate computer codes. Machine learning has emerged as a promising alternative, but training deep neural networks requires big data, not always available for scientific problems. Instead, such networks can be trained from additional information obtained by enforcing the physical laws (for example, at random points in the continuous space-time domain). Such physics-informed learning integrates (noisy) data and mathematical models, and implements them through neural networks or other kernel-based regression networks. Moreover, it may be possible to design specialized network architectures that automatically satisfy some of the physical invariants for better accuracy, faster training and improved generalization. Here, we review some of the prevailing trends in embedding physics into machine learning, present some of the current capabilities and limitations and discuss diverse applications of physics-informed learning both for forward and inverse problems, including discovering hidden physics and tackling high-dimensional problems.},
     author = {Karniadakis, George Em and Kevrekidis, Ioannis G. and Lu, Lu and Perdikaris, Paris and Wang, Sifan and Yang, Liu},
     doi = {10.1038/s42254-021-00314-5},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Karniadakis et al. - 2021 - Physics-informed machine learning.pdf:pdf},
     issn = {2522-5820},
     journal = {Nature Reviews Physics},
-    mendeley-groups = {PhD/Machine Learning,PhD/FWO 2022,PhD/FWO 2023 (1)},
     month = {may},
     number = {6},
     pages = {422--440},
     publisher = {Springer Nature},
     title = {{Physics-informed machine learning}},
-    url = {https://www.nature.com/articles/s42254-021-00314-5},
     volume = {3},
     year = {2021}
 }
 
 @article{Lagergren:2020,
-    abstract = {<p> Biologically-informed neural networks (BINNs), an extension of physics-informed neural networks [1], are introduced and used to discover the underlying dynamics of biological systems from sparse experimental data. In the present work, BINNs are trained in a supervised learning framework to approximate <italic>in vitro</italic> cell biology assay experiments while respecting a generalized form of the governing reaction-diffusion partial differential equation (PDE). By allowing the diffusion and reaction terms to be multilayer perceptrons (MLPs), the nonlinear forms of these terms can be learned while simultaneously converging to the solution of the governing PDE. Further, the trained MLPs are used to guide the selection of biologically interpretable mechanistic forms of the PDE terms which provides new insights into the biological and physical mechanisms that govern the dynamics of the observed system. The method is evaluated on sparse real-world data from wound healing assays with varying initial cell densities [2]. </p>},
     author = {Lagergren, John H. and Nardini, John T. and Baker, Ruth E. and Simpson, Matthew J. and Flores, Kevin B.},
     doi = {10.1371/journal.pcbi.1008462},
     editor = {Lavrik, Inna},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Lagergren et al. - 2020 - Biologically-informed neural networks guide mechanistic modeling from sparse experimental data.pdf:pdf},
     issn = {1553-7358},
     journal = {PLOS Computational Biology},
-    keywords = {Cell migration,Dynamical systems,Mass diffusivity,Mathematical models,Neural networks,Nonlinear dynamics,Partial differential equations,Simulation and modeling},
-    mendeley-groups = {PhD/FWO 2022,Paper SINDyOscillators,PhD/FWO 2023 (1)},
     month = {dec},
     number = {12},
     pages = {e1008462},
     publisher = {Public Library of Science},
     title = {{Biologically-informed neural networks guide mechanistic modeling from sparse experimental data}},
-    url = {https://dx.plos.org/10.1371/journal.pcbi.1008462},
     volume = {16},
     year = {2020}
 }
 
 @article{Murari:2020,
-    abstract = {In recent years, the techniques of the exact sciences have been applied to the analysis of increasingly complex and non-linear systems. The related uncertainties and the large amounts of data available have progressively shown the limits of the traditional hypothesis driven methods, based on first principle theories. Therefore, a new approach of data driven theory formulation has been developed. It is based on the manipulation of symbols with genetic computing and it is meant to complement traditional procedures, by exploring large datasets to find the most suitable mathematical models to interpret them. The paper reports on the vast amounts of numerical tests that have shown the potential of the new techniques to provide very useful insights in various studies, ranging from the formulation of scaling laws to the original identification of the most appropriate dimensionless variables to investigate a given system. The application to some of the most complex experiments in physics, in particular thermonuclear plasmas, has proved the capability of the methodology to address real problems, even highly nonlinear and practically important ones such as catastrophic instabilities. The proposed tools are therefore being increasingly used in various fields of science and they constitute a very good set of techniques to bridge the gap between experiments, traditional data analysis and theory formulation.},
     author = {Murari, A. and Peluso, E. and Lungaroni, M. and Gaudio, P. and Vega, J. and Gelfusa, M.},
     doi = {10.1038/s41598-020-76826-4},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Murari et al. - 2020 - Data driven theory for knowledge discovery in the exact sciences with applications to thermonuclear fusion.pdf:pdf},
     isbn = {0123456789},
     issn = {2045-2322},
     journal = {Scientific Reports},
     keywords = {Characterization and analytical techniques,Experimental nuclear physics,Information theory and computation,Magnetically confined plasmas},
-    mendeley-groups = {PhD,Paper SINDyOscillators},
     month = {nov},
     number = {1},
     pages = {1--10},
     pmid = {33199734},
     publisher = {Nature Publishing Group},
     title = {{Data driven theory for knowledge discovery in the exact sciences with applications to thermonuclear fusion}},
-    url = {https://www.nature.com/articles/s41598-020-76826-4},
     volume = {10},
     year = {2020}
 }
 
 @article{Prokop:2024,
-    abstract = {Periodic changes in the concentration or activity of different molecules regulate vital cellular processes such as cell division and circadian rhythms. Developing mathematical models is essential to better understand the mechanisms underlying these oscillations. Recent data-driven methods like SINDy have fundamentally changed model identification, yet their application to experimental biological data remains limited. This study investigates SINDy's constraints by directly applying it to biological oscillatory data. We identify insufficient resolution, noise, dimensionality, and limited prior knowledge as primary limitations. Using various generic oscillator models of different complexity and/or dimensionality, we systematically analyze these factors. We then propose a comprehensive guide for inferring models from biological data, addressing these challenges step by step. Our approach is validated using glycolytic oscillation data from yeast.},
     author = {Prokop, Bartosz and Gelens, Lendert},
     doi = {10.1016/J.ISCI.2024.109316},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Prokop, Gelens - 2024 - From biological data to oscillator models using SINDy.pdf:pdf},
     issn = {2589-0042},
     journal = {iScience},
     keywords = {Bioinformatics,Machine learning},
@@ -107,18 +87,15 @@
 }
 
 @article{ProkopB:2024,
-    abstract = {Many dynamical systems exhibit oscillatory behavior that can be modeled with differential equations. Recently, these equations have increasingly been derived through data-driven methods, including the transparent technique known as Sparse Identification of Nonlinear Dynamics (SINDy). This paper illustrates the importance of accurately determining the system's limit cycle position in phase space for identifying sparse and effective models. We introduce a method for identifying the limit cycle position and the system's nullclines by applying SINDy to datasets adjusted with various offsets. This approach is evaluated using three criteria: model complexity, coefficient of determination, and generalization error. We applied this method to several models: the oscillatory FitzHugh–Nagumo model, a more complex model consisting of two coupled cubic differential equations with a single stable state, and a multistable model of glycolytic oscillations. Our results confirm that incorporating detailed information about the limit cycle in phase space enhances the accuracy of model identification in oscillatory systems.},
     author = {Prokop, Bartosz and Frolov, Nikita and Gelens, Lendert},
     doi = {10.1063/5.0199311},
     issn = {1054-1500},
     journal = {Chaos: An Interdisciplinary Journal of Nonlinear Science},
-    mendeley-groups = {PhD},
     month = {jun},
     number = {6},
     pages = {63135},
     publisher = {AIP Publishing},
     title = {{Enhancing model identification with SINDy via nullcline reconstruction}},
-    url = {/aip/cha/article/34/6/063135/3298686/Enhancing-model-identification-with-SINDy-via https://pubs.aip.org/cha/article/34/6/063135/3298686/Enhancing-model-identification-with-SINDy-via},
     volume = {34},
     year = {2024}
 }
@@ -126,10 +103,11 @@
 @article{Prokop:2025, 
     author = {Prokop, Bartosz and Billen, Jimmy and Frolov, Nikita and Gelens, Lendert},
     title = {Uncovering hidden nullcline structures behind time series data using neural networks},
+    journal = {ArXiv},
+    year={2025}
 }
 
 @article{Haluszczynski:2019,
-    abstract = {The prediction of complex nonlinear dynamical systems with the help of machine learning techniques has become increasingly popular. In particular, reservoir computing turned out to be a very promising approach especially for the reproduction of the long-term properties of a nonlinear system. Yet, a thorough statistical analysis of the forecast results is missing. Using the Lorenz and R{\"{o}}ssler system, we statistically analyze the quality of prediction for different parametrizations - both the exact short-term prediction as well as the reproduction of the long-term properties (the "climate") of the system as estimated by the correlation dimension and largest Lyapunov exponent. We find that both short- and long-term predictions vary significantly among the realizations. Thus, special care must be taken in selecting the good predictions as realizations, which deliver better short-term prediction also tend to better resemble the long-term climate of the system. Instead of only using purely random Erd{\"{o}}s-Renyi networks, we also investigate the benefit of alternative network topologies such as small world or scale-free networks and show which effect they have on the prediction quality. Our results suggest that the overall performance with respect to the reproduction of the climate of both the Lorenz and R{\"{o}}ssler system is worst for scale-free networks. For the Lorenz system, there seems to be a slight benefit of using small world networks, while for the R{\"{o}}ssler system, small world and Erd{\"{o}}s-Renyi networks performed equivalently well. In general, the observation is that reservoir computing works for all network topologies investigated here.},
     archivePrefix = {arXiv},
     arxivId = {1907.05639},
     author = {Haluszczynski, Alexander and R{\"{a}}th, Christoph},
@@ -137,28 +115,22 @@
     eprint = {1907.05639},
     issn = {10897682},
     journal = {Chaos},
-    mendeley-groups = {PhD},
     month = {oct},
     number = {10},
     pages = {103143},
     pmid = {31675800},
     publisher = {American Institute of Physics Inc.},
     title = {{Good and bad predictions: Assessing and improving the replication of chaotic attractors by means of reservoir computing}},
-    url = {/aip/cha/article/29/10/103143/282708/Good-and-bad-predictions-Assessing-and-improving},
     volume = {29},
     year = {2019}
 }
 
 @article{Rackauckas:2020,
-    abstract = {In the context of science, the well-known adage "a picture is worth a thousand words" might well be "a model is worth a thousand datasets." In this manuscript we introduce the SciML software ecosystem as a tool for mixing the information of physical laws and scientific models with data-driven machine learning approaches. We describe a mathematical object, which we denote universal differential equations (UDEs), as the unifying framework connecting the ecosystem. We show how a wide variety of applications, from automatically discovering biological mechanisms to solving high-dimensional Hamilton-Jacobi-Bellman equations, can be phrased and efficiently handled through the UDE formalism and its tooling. We demonstrate the generality of the software tooling to handle stochasticity, delays, and implicit constraints. This funnels the wide variety of SciML applications into a core set of training mechanisms which are highly optimized, stabilized for stiff equations, and compatible with distributed parallelism and GPU accelerators.},
     archivePrefix = {arXiv},
     arxivId = {2001.04385},
     author = {Rackauckas, Christopher and Ma, Yingbo and Martensen, Julius and Warner, Collin and Zubov, Kirill and Supekar, Rohit and Skinner, Dominic and Ramadhan, Ali and Edelman, Alan},
     eprint = {2001.04385},
-    file = {:C\:/Users/u0149745/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Rackauckas et al. - 2020 - Universal Differential Equations for Scientific Machine Learning.pdf:pdf},
-    mendeley-groups = {PhD/To read,PhD/SINDy/Normal,PhD,PhD/SINDy},
     month = {jan},
     title = {{Universal Differential Equations for Scientific Machine Learning}},
-    url = {http://arxiv.org/abs/2001.04385},
     year = {2020}
 }

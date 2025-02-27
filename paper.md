@@ -55,7 +55,7 @@ Knowledge of the nullcline structure has many advantages `[@ProkopB:2024]`:
 The main aspects of the CLINE method are explained in `[@Prokop:2025]`, nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs), we have to set the derivative to 0: 
 
-$u_t = f(u,v) \rightarrow u_t = f(u,v)=0,\\
+$u_t = f(u,v) \rightarrow u_t = f(u,v)=0, \\
 v_t = g(u,v) \rightarrow v_t = g(u,v)=0. $
 
 The functions of $f$ and $g$ are not know *a prior*.
