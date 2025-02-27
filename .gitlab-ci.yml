@@ -7,7 +7,7 @@ build_pdf:
   stage: build
   script:
     # Ensure proper list formatting and references
-    - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib --csl=chicago-author-date.csl -V fontsize=12pt -V geometry:margin=1in -f markdown+lists_without_preceding_blankline
+    - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib -V fontsize=12pt -V geometry:margin=1in -f markdown+lists_without_preceding_blankline
   artifacts:
     paths:
       - output.pdf
