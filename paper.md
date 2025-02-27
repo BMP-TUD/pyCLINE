@@ -44,7 +44,7 @@ The disadvantage of black-methods is their lack of interpratability of underlyin
 Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)[@Karniadakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or  Universal Differential Equations [@Rackauckas2020] and many more. 
 
 However, most of the existing methods focus on forecasting in order to determine a model that is able to adequately describe the temporal evolution of a system. 
-In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullcline **E**quations) [@Prokop:2025], that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
+In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop:2025], that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
 Knowledge of the nullcline structure has many advantages [@ProkopB:2024]: 
 - Nullclines fully describe the dynamical systems behavior and therefore provide more information then just the time series
 - When the structure of nullclines is known, the symbolic equation can be derived using symbolic model identification methods, but applied to a problem of signficantly lower complexity then time series data
@@ -55,14 +55,14 @@ Knowledge of the nullcline structure has many advantages [@ProkopB:2024]:
 The main aspects of the CLINE method are explained in [@Prokop:2025], nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs), we have to set the derivative to 0: 
 
-$u_t = f(u,v) \rightarrow u_t = f(u,v)=0, \\
-v_t = g(u,v) \rightarrow v_t = g(u,v)=0. $
+$u_t = f(u,v) \rightarrow u_t = f(u,v)=0 \\
+v_t = g(u,v) \rightarrow v_t = g(u,v)=0 $
 
 The functions of $f$ and $g$ are not know *a prior*.
-However, to learn the functions we can reformulate the nullcline equations to,
+However, to learn the functions we can reformulate the nullcline equations to:
 
 $u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\
-u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t).$
+u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$
 
 Now we have to learn the inverse equations $f^{-1}$ and $g^{-1}$, which can be expressed as a feed-forward neural network with inputs $u$ and $u_t$, to learn $v$. 
 Here, $u$ and $v$ are time series data and $u_t$ the derivative of the $u$ component, on which the neural network is trained.
