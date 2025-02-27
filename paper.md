@@ -38,21 +38,21 @@ However, recent technological developments in the field of machine learning have
 Black-box methods allow to recreate a dynamical system and using perturbation study it overall dynamical behavior. Such methods include recurrent neural networks, 
 To tackle this challenge, many data-driven or also called machine learning approaches have been suggested in recent years, that allow to derive symbolic or form-free models directly from measured data,  reservoir computing or neural differential equations.
 White-box methods aim to derive symbolic differential equations directly from measured data by selecting a subset of terms from set of suggested terms (mechanisms). 
-Such methods include, Sparse Identification of nonlinear dynamics (SINDy)`[@Brunton:2016]`, Nonlinear Autoregressive Moving Average Model with Exogenous Inputs (NARMAX) or Symbolic Regression (SR)`[@Cranmer:2019]`.
+Such methods include, Sparse Identification of nonlinear dynamics (SINDy)[@Brunton:2016], Nonlinear Autoregressive Moving Average Model with Exogenous Inputs (NARMAX) or Symbolic Regression (SR)[@Cranmer:2019].
 
-The disadvantage of black-methods is their lack of interpratability of underlying mechanisms and of white-box methods their high data quality requirements `[@Prokop:2024]`.
-Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)`[@Karnadiakis:2021]`, biology-informed neural networks (BINNs) `[@Lagergren:2020]` or  Universal Differential Equations `[@Rackauckas:2020]` and many more. 
+The disadvantage of black-methods is their lack of interpratability of underlying mechanisms and of white-box methods their high data quality requirements [@Prokop:2024].
+Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)[@Karnadiakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or  Universal Differential Equations [@Rackauckas:2020] and many more. 
 
 However, most of the existing methods focus on forecasting in order to determine a model that is able to adequately describe the temporal evolution of a system. 
-In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullcline **E**quations) `[@Prokop:2025]`, that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
-Knowledge of the nullcline structure has many advantages `[@ProkopB:2024]`: 
+In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullcline **E**quations) [@Prokop:2025], that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
+Knowledge of the nullcline structure has many advantages [@ProkopB:2024]: 
 - Nullclines fully describe the dynamical systems behavior and therefore provide more information then just the time series
 - When the structure of nullclines is known, the symbolic equation can be derived using symbolic model identification methods, but applied to a problem of signficantly lower complexity then time series data
 - Identifying the structure without a predefine set of candidate terms (e.g. in form of a library) but model-free allows to avoid implementation of false bias in the model formulation
 
 ## Methodology
 
-The main aspects of the CLINE method are explained in `[@Prokop:2025]`, nevertheless we provide a brief explanation of the method. 
+The main aspects of the CLINE method are explained in [@Prokop:2025], nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs), we have to set the derivative to 0: 
 
 $u_t = f(u,v) \rightarrow u_t = f(u,v)=0, \\
@@ -71,7 +71,7 @@ As a result, we learn the structure of a nullcline in the phase space $u,v$, to 
 
 # Statement of need
 
-`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in `@Prokop:2025`. It is based on the Python torch implementation `pyTorch` and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
+`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop:2025]. It is based on the Python torch implementation `pyTorch` and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
 The implementation of `pyCLINE` allows to generate examplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
 `pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
@@ -80,7 +80,7 @@ This allows for simple and fast implementation in many fields that are intereste
 # Usage
 
 The `pyCLINE` package includes three main modules (see \autoref{fig:method}): 
- - `pyCLINE.generate_data()`: This module generates data whifh has been used in `@Prokop:2025` with additionally many more models that can be found under `pyCLINE.model()`.
+ - `pyCLINE.generate_data()`: This module generates data whifh has been used in [@Prokop:2025] with additionally many more models that can be found under `pyCLINE.model()`.
  - `pyCLINE.recovery_methods.data_preparation()`: Splits and normalizes that data for training, with many more features for the user to change the data.
  - `pyCLINE.recovery_methods.nn_training()`: Is the `pyTorch` implementation that sets up the model and trains it.
 
@@ -100,7 +100,7 @@ Some of the models are three-dimensional and can be used to further study the li
 For a better understanding the method and a simpler implementation, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
 Here, `pyCLINE.example()` can be used to generate prediction data for four systems: The FitzHugh-Nagumo model with time scale separation variable $\varepsilon=0.3$ (`FHN`), the Bicubic model (`Bicubic`), gene expression model (`GeneExpression`) and the delay oscillator model (`DelayOscillator`).
 
-![The method CLINE explained by using Figure 1 from `@Prokop:2025`. In red the main modules of the `pyCLINE` package are shown \label{fig:method}](figures/introduction_manuscript_1.png)
+![The method CLINE explained by using Figure 1 from [@Prokop:2025]. In red the main modules of the `pyCLINE` package are shown \label{fig:method}](figures/introduction_manuscript_1.png)
 
 
 # References
