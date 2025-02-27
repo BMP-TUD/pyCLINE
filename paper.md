@@ -41,7 +41,7 @@ White-box methods aim to derive symbolic differential equations directly from me
 Such methods include, Sparse Identification of nonlinear dynamics (SINDy)[@Brunton:2016], Nonlinear Autoregressive Moving Average Model with Exogenous Inputs (NARMAX) or Symbolic Regression (SR)[@Cranmer:2019].
 
 The disadvantage of black-methods is their lack of interpratability of underlying mechanisms and of white-box methods their high data quality requirements [@Prokop:2024].
-Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)[@Karnadiakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or  Universal Differential Equations [@Rackauckas:2020] and many more. 
+Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)[@Karniadakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or  Universal Differential Equations [@Rackauckas2020] and many more. 
 
 However, most of the existing methods focus on forecasting in order to determine a model that is able to adequately describe the temporal evolution of a system. 
 In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullcline **E**quations) [@Prokop:2025], that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
