@@ -38,7 +38,7 @@ However, recent technological developments in the field of machine learning have
 Black-box methods allow to recreate a dynamical system and using perturbation study it overall dynamical behavior. Such methods include recurrent neural networks, 
 To tackle this challenge, many data-driven or also called machine learning approaches have been suggested in recent years, that allow to derive symbolic or form-free models directly from measured data,  reservoir computing or neural differential equations.
 White-box methods aim to derive symbolic differential equations directly from measured data by selecting a subset of terms from set of suggested terms (mechanisms). 
-Such methods include, Sparse Identification of nonlinear dynamics (SINDy)[@Brunton:2016], Nonlinear Autoregressive Moving Average Model with Exogenous Inputs (NARMAX) or Symbolic Regression (SR)[@Cranmer:2019].
+Such methods include, Sparse Identification of nonlinear dynamics (SINDy)[@Brunton:2016], Nonlinear Autoregressive Moving Average Model with Exogenous Inputs (NARMAX)[@billings2013nonlinear] or Symbolic Regression (SR)[@Cranmer:2019].
 
 The disadvantage of black-methods is their lack of interpratability of underlying mechanisms and of white-box methods their high data quality requirements [@Prokop:2024].
 Therefore, so-called grey-box methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpertable results, such as Physics-Informed neural networks (PINN)[@Karniadakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or  Universal Differential Equations [@Rackauckas2020] and many more. 
