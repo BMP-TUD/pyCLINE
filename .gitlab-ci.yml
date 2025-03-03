@@ -1,13 +1,21 @@
-image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
+# image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
 
 stages:
   - build
 
-build_pdf:
+build-paper:
+  image: debian:latest
   stage: build
+  before_script:
+    - apt-get update && apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra
   script:
-    # Convert Markdown to PDF with proper citation handling
-    - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib -V fontsize=12pt -V geometry="margin=1in" -f markdown+lists_without_preceding_blankline
+    - pandoc paper.md --pdf-engine=xelatex -o paper.pdf
   artifacts:
     paths:
-      - output.pdf
+      - paper.pdf
+    expire_in: 1 week
+  rules:
+    - changes:
+        - paper.md
+        - paper.bib  # Runs the job only if any file in the "paper/" directory changes
+        - .gitlab-ci.yml  # Also triggers if the pipeline config changes
