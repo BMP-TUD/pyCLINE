@@ -1,5 +1,5 @@
 ---
-title: 'pyCLINE: Python implementation of CLINE method for discover of hidden nullcline structures in oscillatory dynamical systems'
+title: 'pyCLINE: A Python package using the CLINE method for discovery of hidden nullcline structures in oscillatory dynamical systems'
 tags:
   - Python
   - nonlinear dynamics
@@ -34,7 +34,7 @@ However, recent technological advancements allow for the collection of large, in
 Data-driven methods, including machine learning, have changed how large data sets of dynamical systems can be studied. _Black-box_ methods can recreate a dynamical system and study its overall behavior using perturbations and neural networks.
 _White-box_ methods aim to derive symbolic differential equations directly from measured data by selecting a subset of terms from set of suggested terms (mechanisms) by employing regression-based algorithms. 
 
-he disadvantage of black-box methods is their lack of interpretability regarding underlying mechanisms, while white-box methods require high-quality data [@Prokop:2024].
+The disadvantage of black-box methods is their lack of interpretability regarding underlying mechanisms, while white-box methods require high-quality data [@Prokop:2024].
 Therefore, so-called _grey-box_ methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpretable results, such as Physics-Informed neural networks (PINN)[@Karniadakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or Universal Differential Equations [@Rackauckas2020] and many more. 
 However, most of the existing methods focus on forecasting in order to determine a model that is able to adequately describe the temporal evolution of a system. 
 
@@ -49,8 +49,8 @@ Knowledge of the nullcline structure has many advantages [@ProkopB:2024]:
 The main aspects of the CLINE method are explained in [@Prokop:2025], nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
-$u_t = f(u,v) \text{ or } u_t = f(u,v)=0  \\     
-v_t = g(u,v) \text{ or } v_t = g(u,v)=0 $
+$u_t = f(u,v) \text{ or } u_t = f(u,v)=0\\     
+v_t = g(u,v) \text{ or } v_t = g(u,v)=0$
 
 The functions of $f$ and $g$ are not know *a prior*.
 However, to learn the functions we can reformulate the nullcline equations to:
@@ -95,7 +95,7 @@ Some of the models are three-dimensional and can be used to further study the li
 For a better understanding the method and a simpler implementation, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
 Here, `pyCLINE.example()` can be used to generate prediction data for four systems: The FitzHugh-Nagumo model with time scale separation variable $\varepsilon=0.3$ (`FHN`), the Bicubic model (`Bicubic`), gene expression model (`GeneExpression`) and the delay oscillator model (`DelayOscillator`).
 
-![The method CLINE explained by using Figure 1 from [@Prokop:2025]. In red the main modules of the `pyCLINE` package are shown \label{fig:method}](figures/introduction_manuscript_1.png)
+![The method CLINE explained by using Figure 1 from [@Prokop:2025]. In red the main modules of the `pyCLINE` package are shown. \label{fig:method}](figures/introduction_manuscript_1.png)
 
 
 # References
