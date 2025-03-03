@@ -1,19 +1,16 @@
-# image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
+image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
 
 stages:
   - build
 
-build-paper:
-  image: debian:latest
+build_pdf:
   stage: build
-  before_script:
-    - apt-get update && apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra
   script:
-    - pandoc paper.md --pdf-engine=xelatex -o paper.pdf
+    # Convert Markdown to PDF with proper citation handling
+    - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib -V fontsize=12pt -V geometry="margin=1in" -f markdown+lists_without_preceding_blankline
   artifacts:
     paths:
-      - paper.pdf
-    expire_in: 1 week
+      - output.pdf
   rules:
     - changes:
         - paper.md
