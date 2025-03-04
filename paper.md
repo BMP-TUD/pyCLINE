@@ -27,36 +27,37 @@ bibliography: paper.bib
 
 # Summary
 
-Many important processes in physics, biology, chemistry and engineering are dynamical, from planetary movements, climatic changes to the periodic oscillations of the cell cycle. 
-Therefore, understanding and describing dynamical systems is imminently important.
-The study of dynamical systems focuses on deriving mathematical models in the form of differential equations from measured data using established modelling principles and scientific intuition. 
-However, recent technological advancements allow for the collection of large, intractable data sets, making classical model derivation increasingly difficult.
-Data-driven methods, including machine learning, have changed how large data sets of dynamical systems can be studied. _Black-box_ methods can recreate a dynamical system and study its overall behavior using perturbations and neural networks.
-_White-box_ methods aim to derive symbolic differential equations directly from measured data by selecting a subset of terms from set of suggested terms (mechanisms) by employing regression-based algorithms. 
+Dynamical processes in physics, biology, chemistry, and engineering—such as planetary motion, climate variability, and cell cycle oscillations—are crucial to understanding complex systems. 
+Traditionally, mathematical models describing these systems rely on differential equations derived from empirical data using established modeling principles and scientific intuition. 
+However, the increasing availability of high-dimensional, complex datasets has rendered classical model derivation increasingly challenging.
 
-The disadvantage of black-box methods is their lack of interpretability regarding underlying mechanisms, while white-box methods require high-quality data [@Prokop:2024].
-Therefore, so-called _grey-box_ methods aim to combine the strength of black-methods to handle large, structured data sets and still provide interpretable results, such as Physics-Informed neural networks (PINN)[@Karniadakis:2021], biology-informed neural networks (BINNs) [@Lagergren:2020] or Universal Differential Equations [@Rackauckas2020] and many more. 
-However, most of the existing methods focus on forecasting in order to determine a model that is able to adequately describe the temporal evolution of a system. 
+Machine learning and data-driven approaches have revolutionized the study of dynamical systems. Two primary methodologies exist:
 
-In contrast to that, we have developed a new grey-box method called CLINE (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop:2025], that instead focuses on identifying the underlying static information in the phase space such as the nullcline structure. 
-Knowledge of the nullcline structure has many advantages [@ProkopB:2024]: 
-- Nullclines fully describe the behavior of a dynamical system and thus provide more information than just the time series.
-- Once the structure of nullclines is known, symbolic equations can be derived using symbolic model identification methods, applied to a problem of significantly lower complexity than time series data.
-- Identifying the structure without a predefined set of candidate terms (e.g. in form of a library) but model-free allows to avoid implementation of false bias in the model formulation.
+- **Black-box methods** (e.g., neural networks) approximate system behavior but lack interpretability regarding underlying mechanisms.
+- **White-box methods** derive symbolic differential equations directly from data but require high-quality datasets to ensure accuracy [@Prokop:2024].
+
+To bridge this gap, **grey-box methods** integrate the strengths of both approaches, handling large, structured datasets while preserving interpretability. Examples include Physics-Informed Neural Networks (PINNs) [@Karniadakis:2021], Biology-Informed Neural Networks (BINNs) [@Lagergren:2020], and Universal Differential Equations [@Rackauckas2020]. However, most of these methods focus on forecasting rather than extracting fundamental structural properties of dynamical systems.
+
+To address this limitation, we introduce **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop:2025], a grey-box framework designed to identify static phase-space structures, specifically nullclines, from time series data.
+Understanding the nullcline structure of a system provides several key benefits [@ProkopB:2024]:
+
+- **Comprehensive System Characterization:** Nullclines fully describe the system’s steady-state behavior and provide richer insights than time series data alone.
+- **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as SINDy or symbolic regression (SR) [@Brunton2016, @Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
+- **Bias Reduction through Model-Free Inference:** Unlike traditional white-box methods, CLINE does not rely on predefined candidate terms (e.g., library-based functions), minimizing biases in model formulation and increasing adaptability to diverse systems.
 
 ## Methodology
 
 The main aspects of the CLINE method are explained in [@Prokop:2025], nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
-$u_t = f(u,v) \text{ or } u_t = f(u,v)=0\\     
-v_t = g(u,v) \text{ or } v_t = g(u,v)=0$
+$$u_t = f(u,v) \text{ or } u_t = f(u,v)=0\\     
+v_t = g(u,v) \text{ or } v_t = g(u,v)=0$$
 
 The functions of $f$ and $g$ are not know *a prior*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
-$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\
-u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$
+$$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\
+u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$$
 
 Now we have to learn the inverse functions $f^{-1}$ and $g^{-1}$ which describe the relationship between the measured variables $u$ and $v$ with additional derivative information $u_t$ or $v_t$
 As such, the target functions can be expressed as a feed-forward neural network with e.g. inputs $u$ and $u_t$, to learn $v$. 
@@ -74,12 +75,18 @@ This allows for simple and fast implementation in many fields that are intereste
 
 # Usage
 
+The `pyCLINE` package can be downloaded and installed using `pip`:
+
+    pip install pyCLINE
+
 The `pyCLINE` package includes three main modules (see \autoref{fig:method}): 
+
  - `pyCLINE.generate_data()`: This module generates data which has been used in [@Prokop:2025] along with additionally many more models that can be found under `pyCLINE.model()`.
  - `pyCLINE.recovery_methods.data_preparation()`: Splits and normalizes that data for training, with many more features for the user to change the data.
  - `pyCLINE.recovery_methods.nn_training()`: Is the `pyTorch` implementation that sets up the model and trains it.
 
 The `pyCLINE.model()` currently includes a set of different models: 
+
  - FitzHugh-Nagumo model
  - Bicubic model
  - Gene expression model
