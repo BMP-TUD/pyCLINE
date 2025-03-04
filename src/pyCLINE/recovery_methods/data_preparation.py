@@ -151,18 +151,10 @@ def uniform_sampling(df, threshold, input_vars, binx, biny):
     return df_uniform
 
 # data preparation
-def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference', norm_method='minmax',
-                 value_min=0.0,  value_max=1.0, normalize=True):    
+def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference', norm_method='minmax',value_min=0.0,  value_max=1.0, normalize=True):    
     """
-    The function prepares the raw time series of the system variables
-    for feeding into ML model. preparation includes following steps:
-    (i)   data slicing in the indicated range [tmin:tmax], [:tmax], or [tmin:] (optional).
-          if tmin and tmax are not provided, full data are processed;
-    (ii)  min-max normalization of the variables from the list 'vars';
-    (iii) coumputing a delayed [t-1] variable for each variable from the list.
-
-    the function returns a prepared dataframe 'df_prepared'
-    and the dataframe containing normalization coefficients per variable 'df_coef'
+    The function prepares the raw time series of the system variables for feeding into ML model. Preparation includes the following steps: (i) data slicing in the indicated range [tmin:tmax], [:tmax], or [tmin:] (optional). If tmin and tmax are not provided, full data are processed (ii) min-max normalization of the variables from the list 'vars'(iii) computing a delayed [t-1] variable for each variable from the list.
+    The function returns a prepared dataframe 'df_prepared' and the dataframe containing normalization coefficients per variable 'df_coef'.
 
     Args:
         df (pandas dataframe): dataframe containing variables
@@ -177,9 +169,9 @@ def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference
         normalize (bool, optional): If data should be normalized. Defaults to True.
 
     Returns:
-        df_prepared (pandas dataframe): dataframe containing prepared data for feeding into ML model, 
+        df_prepared (pandas dataframe): dataframe containing prepared data for feeding into ML model
         df_coef (pandas dataframe): dataframe containing normalization coefficients (min and max values) per variable
-    """    
+    """   
     
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Input data is not a pandas DataFrame")

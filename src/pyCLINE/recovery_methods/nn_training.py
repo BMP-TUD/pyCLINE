@@ -144,6 +144,7 @@ def monitor_gradients(model):
 def loss_function(input, target, nc_prediction, nullcline_guess, factor):
     """
     Loss function for the neural network model.
+    
     Args:
         input (torch tensor): input data
         target (torch tensor): target data

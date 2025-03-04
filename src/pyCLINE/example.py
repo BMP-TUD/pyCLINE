@@ -16,7 +16,19 @@ class ExampleCallable:
 sys.modules[__name__]= ExampleCallable()
 
 def example(example_model, plot):
-    
+    """
+    This function runs multiple examples, depending on the choice of the example model. 
+    It should be used as a guideline how to run pyCLINE for synthetic data. 
+    For using pyCLINE on real data, the user should adapt the data source accordingly.
+
+    Args:
+        example_model (str): Selection of model to run the example on. Chose from 'FHN', 'Bicubic', 'GeneExpression', 'DelayOscillator'.
+        plot (bool): If True, the function will plot the data and the predictions.
+
+    Raises:
+        ValueError: In case no example model string is provided.
+    """
+
     #provide name of model to run example
     if example_model is None:
         raise ValueError("Error: example_model is None: please provide a model name (FHN, Bicubic, GeneExpression, DelayOscillator).")

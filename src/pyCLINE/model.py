@@ -12,7 +12,20 @@ class FHN:
     def __init__(self,  p=[1, 1, 0.3, 0.5, 0.0]):
         self.p = p # parameters of the model
 
-    def model(self, U):     
+    def model(self, U): 
+        """
+        Model formulation of the FHN model.
+        With: 
+        p = [c, d, eps, b, a]
+        p = [1, 1, 0.3, 0.5, 0.0]
+        Prokop et al., iScience (2024)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """    
         u= U[0]
         v= U[1]
         # p = [c, d, eps, b, a];   Prokop et al., iScience (2024)
@@ -21,12 +34,36 @@ class FHN:
                         self.p[2]*(u - self.p[3]*v + self.p[4])])
 
     def vnull(self, u):
+        """
+        Calculate the v-nullcline of the FHN model
+
+        Args:
+            u (array): Array of values of the v-variable.
+
+        Returns:
+            v: Array of values of the v-nullcline. 
+        """
         return -u**3 + self.p[0]*u**2 + self.p[1]*u
 
     def unull(self, v):
+        """
+        Calculate the u-nullcline of the FHN model
+
+        Args:
+            v (array): Array of values of the v-variable.
+
+        Returns:
+            u: Array of values of the u-nullcline. 
+        """
         return  self.p[3]*v - self.p[4]
 
     def fixed_points(self):
+        """
+        Calculate the fixed points of the FHN model.
+
+        Returns:
+            fp (Array): Array of fixed points of the model.
+        """
         sol = np.roots([-self.p[3], self.p[3]*self.p[0], (self.p[1]*self.p[3]-1), -self.p[4]])
 
         rids = np.where(np.imag(sol)==0)
@@ -40,9 +77,31 @@ class FHN:
         return fp
 
     def simulate(self, U, dt):
+        """
+        Generates the next state of the FHN model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=False):
+        """
+        Generates synthetic data for the FHN model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 2.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}_eps={self.p[2]}_a={self.p[4]}.csv')
@@ -59,22 +118,74 @@ class Bicubic:
         self.p = p
 
     def model(self, U):
-        # p = [-0.5, 0.5, -0.3];   Prokop et al., Chaos (2024)
+        """
+        Model formulation of the bicubic model.
+        With: 
+        p = [-0.5, 0.5, -0.3];   
+        Prokop et al., Chaos (2024)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """  
+        
         u= U[0]
         v= U[1]
         return np.array([-u**3 + u**2 + u - v,
                         self.p[0]*v**3 + self.p[1]*v**2 + self.p[2]*v + u])
 
     def vnull(self, u):
+        """
+        Calculate the v-nullcline of the bicubic model
+
+        Args:
+            u (array): Array of values of the v-variable.
+
+        Returns:
+            v: Array of values of the v-nullcline. 
+        """
         return -u**3 + u**2 + u
 
     def unull(self, v):
+        """
+        Calculate the u-nullcline of the bicubic model
+
+        Args:
+            v (array): Array of values of the v-variable.
+
+        Returns:
+            u: Array of values of the u-nullcline. 
+        """
         return  -(self.p[0]*v**3 + self.p[1]*v**2 + self.p[2]*v)
     
     def simulate(self, U, dt):
+        """
+        Generates the next state of the bicubic model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=2, check_period=False):
+        """
+        Generates synthetic data for the biubic model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 2.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -90,6 +201,19 @@ class GeneExpression:
         self.p = p
 
     def model(self, U):
+        """
+        Model formulation of the gene expression model.
+        With: 
+        p = [S,   k1, Kd,  kdx, ksy,  kdy, k2, ET,  Km, KI]
+        p = [1, 0.05,  1, 0.05,   1, 0.05,  1,  1, 0.1,  2];   
+        Novak & Tyson, Nature Rev Mol Cell Biol (2008)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         u= U[0]
         v= U[1]
         # p = [S,   k1, Kd,  kdx, ksy,  kdy, k2, ET,  Km, KI]
@@ -98,15 +222,55 @@ class GeneExpression:
                         self.p[1]*self.p[0]*self.p[2]**4/(self.p[2]**4 + u**4) - self.p[3]*v])
 
     def vnull(self, v): 
+        """
+        Calculate the v-nullcline of the gene expression model
+
+        Args:
+            v (array): Array of values of the v-variable.
+
+        Returns:
+            u: Array of values of the v-nullcline. 
+        """
         return self.p[1]*self.p[0]/self.p[3]*self.p[2]**4/(self.p[2]**4 + v**4)
 
     def unull(self, v):
+        """
+        Calculate the u-nullcline of the gene expression model
+
+        Args:
+            v (array): Array of values of the v-variable.
+
+        Returns:
+            u: Array of values of the u-nullcline. 
+        """
         return self.p[5]*v/self.p[4] + self.p[6]*self.p[7]*v/(self.p[8] + v + self.p[9]*v**2)
 
     def simulate(self, U, dt):
+        """
+        Generates the next state of the gene expression model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
+        """
+        Generates synthetic data for the gene expression model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 10.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -123,17 +287,51 @@ class GlycolyticOscillations:
         self.p = p
 
     def model(self, U):
+        """
+        Model formulation of the glycolytic oscillations model.
+        With: 
+        p = [a, b, c, d, e, f, g, h]
+        p = [-0.3, -2.2, 0.25, -0.5, 0.5, 1.8, 0.7, -0.3]  
+        Prokop et al., Chaos (2024)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         u= U[0]
         v= U[1]
-        # p = [a, b, c, d, e, f, g, h]
-        # p = [-0.3, -2.2, 0.25, -0.5, 0.5, 1.8, 0.7, -0.3];   Prokop et al., Chaos (2024)
+        
         return np.array([self.p[0]*u + self.p[1]*v + self.p[2]*u**2 + self.p[3]*u**3 + self.p[4]*v**3,
                         self.p[5]*u+self.p[6]*v+self.p[7]*u**3])
 
     def simulate(self, U, dt):
+        """
+        Generates the next state of the glycolytic oscillations model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
+        """
+        Generates synthetic data for the glycolytic oscillations model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 10.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -150,6 +348,19 @@ class Goodwin:
         self.p = p
 
     def model(self, U):
+        """
+        Model formulation of the Goodwin model.
+        With: 
+        p = [a,b,c,d,e,f,n,K]
+        p = [1,1,1,0.1,0.1,0.1,10,1]
+        Prokop et al., iScience (2024)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         u= U[0]
         v= U[1]
         w= U[2]
@@ -159,18 +370,70 @@ class Goodwin:
                         self.p[1]*u - self.p[4]*v,
                         self.p[2]*v - self.p[5]*w])
     def unull(self, v, w):
+        """
+        Calculate the u-nullcline of the Goodwin model
+
+        Args:
+            v (array): Array of values of the v-variable.
+            w (array): Array of values of the w-variable.
+
+        Returns:
+            u: Array of values of the u-nullcline. 
+        """
         return self.p[0]/self.p[3]*((self.p[7]**self.p[6])/(self.p[7]**self.p[6] + w**self.p[6])) + 0 * v
     
     def vnull(self, u, w): 
+        """
+        Calculate the v-nullcline of the Goodwin model
+
+        Args:
+            u (array): Array of values of the v-variable.
+            w (array): Array of values of the w-variable.
+
+        Returns:
+            v: Array of values of the v-nullcline. 
+        """
         return self.p[1]*u/self.p[4] + 0 * w
 
     def wnull(self, u, v):
+        """
+        Calculate the w-nullcline of the Goodwin model
+
+        Args:
+            u (array): Array of values of the u-variable.
+            v (array): Array of values of the v-variable.
+
+        Returns:
+            w: Array of values of the w-nullcline. 
+        """
         return self.p[2]*v/self.p[5] + 0 * u
 
     def simulate(self, U, dt):
+        """
+        Generates the next state of the Goodwin model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         return rk4_solver(self.model, U, dt)
     
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
+        """
+        Generates synthetic data for the gene expression model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 10.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -187,6 +450,19 @@ class Oregonator:
         self.p = p
     
     def model(self, U):
+        """
+        Model formulation of the Oregonator model.
+        With: 
+        p = [q,p,f,e]
+        p = [0.005,3,0.60,1e-2]   
+        Tyson, Journal of Chemical Physics (1975)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         x, y, z = U
         #1977 Tyson
         q=self.p[0]
@@ -202,11 +478,18 @@ class Oregonator:
         dy=-g*x-d*y+f*z-x*y
         dz=(1/p)*(x-z)
         return np.array([dx, dy, dz])
-    
-    def simulate(self, U, dt):
-        return rk4_solver(self.model, U, dt)
-    
+      
     def xnull(self, x, z):
+        """
+        Calculate the x-nullcline of the Oregonator model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            z (array): Array of values of the z-variable.
+
+        Returns:
+            y: Array of values of the x-nullcline. 
+        """
         q=self.p[0]
         p=self.p[1]
         f=self.p[2] #0.1-2.0
@@ -218,6 +501,16 @@ class Oregonator:
         return (-a*x-q*x**2)/(b+x) + 0*z
     
     def ynull(self, x, y):
+        """
+        Calculate the y-nullcline of the Oregonator model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            y (array): Array of values of the y-variable.
+
+        Returns:
+            z: Array of values of the y-nullcline. 
+        """
         q=self.p[0]
         p=self.p[1]
         f=self.p[2] #0.1-2.0
@@ -229,9 +522,44 @@ class Oregonator:
         return (1/f)*(g*x+d*y+x*y)
 
     def znull(self, x, y):
+        """
+        Calculate the x-nullcline of the Oregonator model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            y (array): Array of values of the y-variable.
+
+        Returns:
+            z: Array of values of the z-nullcline. 
+        """
         return x + 0*y
     
+    def simulate(self, U, dt):
+        """
+        Generates the next state of the Oregonator model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
+        return rk4_solver(self.model, U, dt)
+
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=10, check_period=False):
+        """
+        Generates synthetic data for the Oregonator model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 10.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -246,25 +574,89 @@ class Lorenz:
         self.p = p
     
     def model(self, U):
+        """
+        Model formulation of the Lorenz model.
+        With: 
+        p = [a, rho]
+        p = [-0.5,65]
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         x,y,z = U
         a, rho = self.p
         return np.array([a*rho*(x-y)-a*y*z, rho*x - y -x*z, -z +x*y])
     
-    def simulate(self, U, dt):
-        return rk4_solver(self.model, U, dt)
-    
     def xnull(self, y, z):
+        """
+        Calculate the x-nullcline of the Lorenz model
+
+        Args:
+            y (array): Array of values of the y-variable.
+            z (array): Array of values of the z-variable.
+
+        Returns:
+            x: Array of values of the x-nullcline. 
+        """
         a, rho = self.p
         return (1/rho)*y*z +y
     
     def ynull(self, x, z):
+        """
+        Calculate the y-nullcline of the Lorenz model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            z (array): Array of values of the z-variable.
+
+        Returns:
+            y: Array of values of the y-nullcline. 
+        """
         a, rho = self.p
         return x*z - rho*x
     
     def znull(self, x, y):
+        """
+        Calculate the z-nullcline of the Lorenz model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            y (array): Array of values of the y-variable.
+
+        Returns:
+            z: Array of values of the z-nullcline. 
+        """
         return x*y
     
+    def simulate(self, U, dt):
+        """
+        Generates the next state of the Lorenz model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
+        return rk4_solver(self.model, U, dt)
+    
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=False):
+        """
+        Generates synthetic data for the Oregonator model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 25.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -279,6 +671,19 @@ class Roessler:
         self.p = p
     
     def model(self, U):
+        """
+        Model formulation of the Roessler model.
+        With: 
+        p = [abc]
+        p = [0.2,0.2,1]   
+        Roessler, Zeitschrift für Naturforschung A (1976)
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         x,y,z = U
         a,b,c=self.p
         dx=-y-z
@@ -286,22 +691,74 @@ class Roessler:
         dz = b+(x-c)*z
         return np.array([dx, dy, dz])
     
-    def simulate(self, U, dt):
-        return rk4_solver(self.model, U, dt)
-    
     def xnull(self, x, z):
+        """
+        Calculate the x-nullcline of the Roessler model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            z (array): Array of values of the z-variable.
+
+        Returns:
+            y: Array of values of the x-nullcline. 
+        """
         a,b,c=self.p
         return -z
     
     def ynull(self, x, z):
+        """
+        Calculate the y-nullcline of the Roessler model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            z (array): Array of values of the z-variable.
+
+        Returns:
+            y: Array of values of the y-nullcline. 
+        """
         a,b,c=self.p
         return -(1/a)*x
     
     def znull(self, x, y):
+        """
+        Calculate the z-nullcline of the Roessler model
+
+        Args:
+            x (array): Array of values of the x-variable.
+            y (array): Array of values of the y-variable.
+
+        Returns:
+            z: Array of values of the z-nullcline. 
+        """
         a,b,c=self.p
         return b/(c-x)
     
+    def simulate(self, U, dt):
+        """
+        Generates the next state of the Roessler model using the Runge-Kutta 4th order solver.
+
+        Args:
+            U (array): Array of initial conditions for the model.
+            dt (float): Time step.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
+        return rk4_solver(self.model, U, dt)
+    
     def generate_data(self, x0, dt, N=10000, save=True, plot=False, max_time=25, check_period=False):
+        """
+        Generates synthetic data for the Roessler model.
+
+        Args:
+            x0 (array): Array of initial conditions for the model.
+            dt (float): Time step.
+            N (int, optional): Number of time steps. Defaults to 10000.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            max_time (int, optional): Maximum time for the plot. Defaults to 25.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         df=simulate_data(self.simulate, x0, dt, N, check_period)
         if save:
             save_data(df, f'{self.__class__.__name__}.csv')
@@ -317,16 +774,57 @@ class DelayOscillator:
         self.p = p
     
     def model(self):
+        """
+        Model formulation of the delay oscillator model.
+        With: 
+        p = [beta, tau, n]
+        p = [4,10,2]
+
+        Args:
+            U (array): Array of initial conditions for the model.
+
+        Returns:
+            U (array): Array of the next state of the model.
+        """
         self.DDE = [self.p[0]/(1+jitcdde.y(0,jitcdde.t-self.p[1])**self.p[2])-jitcdde.y(0)]
         return self.DDE
     
     def unull(self, y):
+        """
+        Calculate the u-nullcline of the delay oscillator model
+
+        Args:
+            y (array): Array of values of the v-variable.
+
+        Returns:
+            x: Array of values of the u-nullcline. 
+        """
         return self.p[0]/(1+y**self.p[2])
 
     def vnull(self, x):
+        """
+        Calculate the u-nullcline of the delay oscillator model
+
+        Args:
+            x (array): Array of values of the u-variable.
+
+        Returns:
+            y: Array of values of the v-nullcline. 
+        """
         return (self.p[0]/x-1)**(1/self.p[2])
     
     def simulate(self,  dt, t_max, y_0=0):
+        """
+        Simulates the delay oscillatory model using the jitcdde solver.
+
+        Args:
+            dt (float): Time step.
+            t_max (float): Maximum time of the simulation.
+            y_0 (int, optional): Initial condition. Defaults to 0.
+
+        Returns:
+            array : Simulated data of the model.
+        """
         self.model()
         DDE = jitcdde.jitcdde(self.DDE)
         DDE.constant_past(y_0)
@@ -340,6 +838,17 @@ class DelayOscillator:
         return data
 
     def generate_data(self, y_0, dt, t_max, save=True, plot=False, check_period=False):
+        """
+        Generates synthetic data for the delay oscillator model.
+
+        Args:
+            y_0 (float): Initial condition for the model.
+            dt (float): Time step.
+            t_max (float): Maximum time of the simulation.
+            save (bool, optional): Save the generated data to a csv file. Defaults to True.
+            plot (bool, optional): Plot the generated data. Defaults to False.
+            check_period (bool, optional): Check the period of the oscillation. Defaults to False.
+        """
         data = self.simulate( dt, t_max,y_0)
         df = pd.DataFrame(data, columns=['u'])
         df['time'] = np.arange(data.shape[0])*dt
