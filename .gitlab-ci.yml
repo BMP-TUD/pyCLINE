@@ -3,6 +3,7 @@ image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
 stages:
   - build
   - test
+  - pages
 
 build_pdf:
   stage: build
