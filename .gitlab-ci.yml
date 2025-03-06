@@ -16,3 +16,10 @@ build_pdf:
         - paper.md
         - paper.bib  # Runs the job only if any file in the "paper/" directory changes
         - .gitlab-ci.yml  # Also triggers if the pipeline config changes
+
+include:
+  - component: $CI_SERVER_FQDN/to-be-continuous/sphinx/gitlab-ci-sphinx@1.3.0
+    inputs:
+      project-dir: "docs"
+      image: "ghcr.io/sphinx-doc/sphinx:6.2.1"
+  - component: $CI_SERVER_FQDN/to-be-continuous/sphinx/gitlab-ci-sphinx-pages@1.3.0
