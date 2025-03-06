@@ -4,6 +4,8 @@ stages:
   - build
   - test
   - pages
+  - production
+  
 
 build_pdf:
   stage: build
