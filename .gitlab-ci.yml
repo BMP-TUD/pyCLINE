@@ -6,6 +6,7 @@ stages:
   - pages
   - production
 
+
 build_pdf:
   stage: build
   script:
