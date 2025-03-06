@@ -1,7 +1,7 @@
 run_test:
   image: python:3.11.10
   before_script:
-    - pip install pyCLINE
+    - pip install -i https://test.pypi.org/simple/ pyCLINE
   script: 
     - python -m unittest discover
 
