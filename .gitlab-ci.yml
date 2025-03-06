@@ -1,11 +1,29 @@
-run_test:
+run_test_code: 
   image: python:3.11.10
   before_script:
     - pip install --upgrade pip
     - pip cache purge 
-    - pip install pyCLINE==0.1.7
+    - pip install requirements.txt
   script: 
-    - python -m unittest discover
+    - export PYTHONPATH=$PYTHONPATH:$(pwd)/src
+    - python -m unittest discover tests
+  rules :
+    - changes:
+        - src/*
+        - tests/*
+
+run_test_pip:
+  image: python:3.11.10
+  before_script:
+    - pip install --upgrade pip
+    - pip cache purge 
+    - pip install pyCLINE
+  script: 
+    - python -m unittest discover tests/
+  rules :
+    - changes:
+        - dist/*
+        
 
 build_pdf:
   image: pandoc/latex:latest  # Uses Pandoc with LaTeX support

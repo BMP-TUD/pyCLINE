@@ -201,12 +201,12 @@ def prepare_data(df, vars, time, tmin=None, tmax=None, scheme='newton_difference
         raise ValueError("Unknown scheme: {:}".format(scheme))
 
     # slice the data in the range [tmin; tmax] if needed
-    if ((tmin is None) or (tmax is None)):
-        if tmin is None:
-            tmin = df[time].min()
-        if tmax is None:
-            tmax = df[time].max()
-        df_slice = df[(df[time]>=tmin) & (df[time]<=tmax)].copy()
+    # if ((tmin is None) or (tmax is None)):
+    if tmin is None:
+        tmin = df[time].min()
+    if tmax is None:
+        tmax = df[time].max()
+    df_slice = df[(df[time]>=tmin) & (df[time]<=tmax)].copy()
 
     # min-max normalization of each variable in the range [value_min; value_max]
     if normalize:

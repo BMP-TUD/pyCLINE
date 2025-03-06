@@ -22,7 +22,7 @@ def set_pythonpath():
 def run_tests():
     """ Runs the tests using unittest and returns True if all tests pass, False otherwise. """
     print("🧪 Running tests...")
-    result = subprocess.run(["python", "-m", "unittest", "discover"], capture_output=True, text=True)
+    result = subprocess.run(["python", "-m", "unittest", "discover", "tests/"], capture_output=True, text=True)
     print(result.stdout)
     return result.returncode == 0
 
@@ -68,7 +68,7 @@ def update_version():
             break
     with open("source/conf.py", "w") as f:
         f.writelines(lines)
-        
+
     # Get current version
     current_version = config["project"]["version"]
 
