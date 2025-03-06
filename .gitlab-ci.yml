@@ -1,3 +1,9 @@
+run_test:
+  image: python:3.11.10
+  before_script:
+    - pip install pyCLINE
+  script: 
+    - python -m unittest discover
 
 build_pdf:
   image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
@@ -12,13 +18,6 @@ build_pdf:
         - paper.md
         - paper.bib  # Runs the job only if any file in the "paper/" directory changes
         - .gitlab-ci.yml  # Also triggers if the pipeline config changes
-
-run_test:
-  image: python:3.11.10
-  before_script:
-    - pip install pyCLINE
-  script: 
-    - python -m unittest discover
 
 include:
   - component: $CI_SERVER_FQDN/to-be-continuous/sphinx/gitlab-ci-sphinx@1.3.0
