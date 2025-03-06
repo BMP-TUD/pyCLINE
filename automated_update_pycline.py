@@ -59,6 +59,16 @@ def update_version():
     with open(PYPROJECT_FILE, "r") as f:
         config = toml.load(f)
 
+    # load source/conf.py to update the version
+    with open("source/conf.py", "r") as f:
+        lines = f.readlines()
+    for i, line in enumerate(lines):
+        if "release" in line:
+            lines[i] = f"release = '{config['project']['version']}'\n"
+            break
+    with open("source/conf.py", "w") as f:
+        f.writelines(lines)
+        
     # Get current version
     current_version = config["project"]["version"]
 

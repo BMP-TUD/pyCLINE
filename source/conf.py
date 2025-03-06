@@ -9,7 +9,7 @@
 project = 'pyCLINE'
 copyright = '2025, Bartosz Prokop, Nikita Frolov, Lendert Gelens'
 author = 'Bartosz Prokop, Nikita Frolov, Lendert Gelens'
-release = '0.1.4'
+release = '0.1.6'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

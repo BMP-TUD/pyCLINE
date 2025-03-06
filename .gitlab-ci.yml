@@ -1,7 +1,9 @@
 run_test:
   image: python:3.11.10
   before_script:
-    - pip install -i https://test.pypi.org/simple/ pyCLINE
+    - pip install --upgrade pip
+    - pip cache purge 
+    - pip install pyCLINE==0.1.7
   script: 
     - python -m unittest discover
 

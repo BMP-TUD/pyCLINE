@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyCLINE"
-version = "0.1.6"
+version = "0.1.7"
 description = "This package is the python implementation of the CLINE method introduced by Prokop, Billen, Frolov, Gelens (2025)."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [ "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent",]
 keywords = [ "model", "model identification", "nullcline", "data-driven", "machine learning", "deep learning", "torch", "dynamics", "oscillator", "nonlinear dynamics", "complex systems",]
-dependencies = [ "matplotlib", "numpy>=1.24.1,<1.25.0", "pandas~=1.5.2", "torch>=2.4.1", "tqdm>=4.66.1", "jitcdde>=1.8.1", "scipy>=1.9.3",]
+dependencies = [ "matplotlib>=3.6.2", "numpy>=1.24.1,<1.25.0", "pandas~=1.5.2", "torch>=2.4.1", "tqdm>=4.66.1", "jitcdde>=1.8.1", "scipy>=1.9.3",]
 [[project.authors]]
 name = "Bartosz Prokop"
 email = "bartosz.prokop@kuleuven.be"
@@ -27,5 +27,5 @@ email = "lendert.gelens@kuleuven.be"
 file = "LICEN[CS]E*"
 
 [project.urls]
-Homepage = "https://gitlab.kuleuven.be/gelenslab/publications/pycline"
+Homepage = "https://pycline-ec8369.pages.gitlab.kuleuven.be/"
 Issues = "https://gitlab.kuleuven.be/gelenslab/publications/pycline/-/issues"
