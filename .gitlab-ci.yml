@@ -1,13 +1,13 @@
 image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
 
-stages:
-  - build
-  - test
-  - pages
-  - production
+# stages:
+#   - build
+#   - test
+#   - pages
+#   - production
 
 build_pdf:
-  stage: build
+  # stage: build
   script:
     # Convert Markdown to PDF with proper citation handling
     - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib -V fontsize=12pt -V geometry="margin=1in" -f markdown+lists_without_preceding_blankline
