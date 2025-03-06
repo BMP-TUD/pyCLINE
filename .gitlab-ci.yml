@@ -1,13 +1,6 @@
-image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
-
-# stages:
-#   - build
-#   - test
-#   - pages
-#   - production
 
 build_pdf:
-  # stage: build
+  image: pandoc/latex:latest  # Uses Pandoc with LaTeX support
   script:
     # Convert Markdown to PDF with proper citation handling
     - pandoc paper.md -o output.pdf --pdf-engine=lualatex --citeproc --bibliography=paper.bib -V fontsize=12pt -V geometry="margin=1in" -f markdown+lists_without_preceding_blankline
@@ -24,5 +17,6 @@ include:
   - component: $CI_SERVER_FQDN/to-be-continuous/sphinx/gitlab-ci-sphinx@1.3.0
     inputs:
       project-dir: "."
+      build-args: "-b html"
       image: "ghcr.io/sphinx-doc/sphinx:6.2.1"
   - component: $CI_SERVER_FQDN/to-be-continuous/sphinx/gitlab-ci-sphinx-pages@1.3.0
