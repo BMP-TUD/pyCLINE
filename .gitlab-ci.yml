@@ -7,10 +7,10 @@ run_test_code:
   script: 
     - export PYTHONPATH=$PYTHONPATH:$(pwd)/src
     - python -m unittest discover tests
-  rules :
-    - changes:
-        - src/*
-        - tests/*
+  # rules :
+  #   - changes:
+  #       - src/*
+  #       - tests/*
 
 run_test_pip:
   image: python:3.11.10
