@@ -21,7 +21,7 @@ authors:
 affiliations:
  - name: Laboratory of Dynamics in Biological Systems, Department of Cellular and Mollecular Medicine, KU Leuven
    index: 1
-date: 03 March 2025
+date: 21 March 2025
 bibliography: paper.bib
 ---
 
@@ -34,12 +34,12 @@ However, the increasing availability of high-dimensional, complex datasets has r
 Machine learning and data-driven approaches have revolutionized the study of dynamical systems. Two primary methodologies exist:
 
 - **Black-box methods** (e.g., neural networks) approximate system behavior but lack interpretability regarding underlying mechanisms.
-- **White-box methods** derive symbolic differential equations directly from data but require high-quality datasets to ensure accuracy [@Prokop:2024].
+- **White-box methods** derive symbolic differential equations directly from data but require high-quality datasets to ensure accuracy [@Prokop2024].
 
-To bridge this gap, **grey-box methods** integrate the strengths of both approaches, handling large, structured datasets while preserving interpretability. Examples include Physics-Informed Neural Networks (PINNs) [@Karniadakis:2021], Biology-Informed Neural Networks (BINNs) [@Lagergren:2020], and Universal Differential Equations [@Rackauckas2020]. However, most of these methods focus on forecasting rather than extracting fundamental structural properties of dynamical systems.
+To bridge this gap, **grey-box methods** integrate the strengths of both approaches, handling large, structured datasets while preserving interpretability. Examples include Physics-Informed Neural Networks (PINNs) [@Karniadakis2021], Biology-Informed Neural Networks (BINNs) [@Lagergren2020], and Universal Differential Equations [@Rackauckas2020]. However, most of these methods focus on forecasting rather than extracting fundamental structural properties of dynamical systems.
 
-To address this limitation, we introduce **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop:2025], a grey-box framework designed to identify static phase-space structures, specifically nullclines, from time series data.
-Understanding the nullcline structure of a system provides several key benefits [@ProkopB:2024]:
+To address this limitation, we introduce **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop2025], a grey-box framework designed to identify static phase-space structures, specifically nullclines, from time series data.
+Understanding the nullcline structure of a system provides several key benefits [@Prokop2024b]:
 
 - **Comprehensive System Characterization:** Nullclines fully describe the system’s steady-state behavior and provide richer insights than time series data alone.
 - **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as SINDy or symbolic regression (SR) [@Brunton2016, @Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
@@ -47,17 +47,17 @@ Understanding the nullcline structure of a system provides several key benefits 
 
 ## Methodology
 
-The main aspects of the CLINE method are explained in [@Prokop:2025], nevertheless we provide a brief explanation of the method. 
+The main aspects of the CLINE method are explained in [@Prokop2025], nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
-$$u_t = f(u,v) \text{ or } u_t = f(u,v)=0\\     
-v_t = g(u,v) \text{ or } v_t = g(u,v)=0$$
+$$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$$    
+$$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$$
 
 The functions of $f$ and $g$ are not know *a prior*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
-$$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\
-u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$$
+$$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)$$
+$$u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$$
 
 Now we have to learn the inverse functions $f^{-1}$ and $g^{-1}$ which describe the relationship between the measured variables $u$ and $v$ with additional derivative information $u_t$ or $v_t$
 As such, the target functions can be expressed as a feed-forward neural network with e.g. inputs $u$ and $u_t$, to learn $v$. 
@@ -67,7 +67,7 @@ As a result, we learn the structure of a nullcline in the phase space $u,v$, to 
 
 # Statement of need
 
-`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop:2025]. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
+`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop2025]. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
 The implementation of `pyCLINE` allows to generate exemplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
 `pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
@@ -81,7 +81,7 @@ The `pyCLINE` package can be downloaded and installed using `pip`:
 
 The `pyCLINE` package includes three main modules (see \autoref{fig:method}): 
 
- - `pyCLINE.generate_data()`: This module generates data which has been used in [@Prokop:2025] along with additionally many more models that can be found under `pyCLINE.model()`.
+ - `pyCLINE.generate_data()`: This module generates data which has been used in [@Prokop2025] along with additionally many more models that can be found under `pyCLINE.model()`.
  - `pyCLINE.recovery_methods.data_preparation()`: Splits and normalizes that data for training, with many more features for the user to change the data.
  - `pyCLINE.recovery_methods.nn_training()`: Is the `pyTorch` implementation that sets up the model and trains it.
 
