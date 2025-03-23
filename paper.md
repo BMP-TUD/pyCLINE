@@ -42,7 +42,7 @@ To address this limitation, we introduce **CLINE** (**C**omputational **L**earni
 Understanding the nullcline structure of a system provides several key benefits [@Prokop2024b]:
 
 - **Comprehensive System Characterization:** Nullclines fully describe the system’s steady-state behavior and provide richer insights than time series data alone.
-- **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as SINDy or symbolic regression (SR) [@Brunton2016, @Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
+- **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as sparse identification of nonlinear dynamics (SINDy) [@Brunton2016] or symbolic regression (SR) [@Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
 - **Bias Reduction through Model-Free Inference:** Unlike traditional white-box methods, CLINE does not rely on predefined candidate terms (e.g., library-based functions), minimizing biases in model formulation and increasing adaptability to diverse systems.
 
 ## Methodology
@@ -53,7 +53,7 @@ In order to identify nullclines for a set of ordinary differential equations (OD
 $$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$$    
 $$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$$
 
-The functions of $f$ and $g$ are not know *a prior*.
+The functions of $f$ and $g$ are not know *a priori*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
 $$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)$$
@@ -102,7 +102,7 @@ Some of the models are three-dimensional and can be used to further study the li
 For a better understanding the method and a simpler implementation, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
 Here, `pyCLINE.example()` can be used to generate prediction data for four systems: The FitzHugh-Nagumo model with time scale separation variable $\varepsilon=0.3$ (`FHN`), the Bicubic model (`Bicubic`), gene expression model (`GeneExpression`) and the delay oscillator model (`DelayOscillator`).
 
-![The method CLINE explained by using Figure 1 from [@Prokop:2025]. In red the main modules of the `pyCLINE` package are shown. \label{fig:method}](figures/introduction_manuscript_1.png)
+![The method CLINE explained by using Figure 1 from [@Prokop2025]. In red the main modules of the `pyCLINE` package are shown. \label{fig:method}](figures/introduction_manuscript_1.png)
 
 
 # References
