@@ -18,7 +18,7 @@ Documentation of the package can be found hosted on [Gitlab pages](https://pycli
 The structure of `pyCLINE` is shown here: 
 <!-- ![PyCLINE structure](pycline_structure.png) -->
 <div style="text-align: center;">   
-    <img src='pycline_structure.png' style="width: 70%;  center" />
+    <img src='pycline_structure.png' style="width: 70%;" />
 </div>
 
 # Example of use
