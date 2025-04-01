@@ -4,6 +4,7 @@ results/
 *.png
 !pycline_structure.png
 !pycline_logo.png
+!pycline_logo_large.png
 old_builds/
 automated_update_pycline.py
 *.pypirc
