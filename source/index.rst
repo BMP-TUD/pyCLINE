@@ -14,7 +14,7 @@ The ``pyCLINE`` package is the Python package based on the CLINE
 (Computational Learning and Identification of Nullclines).
 It can be downloaded from PyPI with pip by using:
 
-.. code-block:: bash
+.. code-block:: python
 
     pip install pyCLINE
 
