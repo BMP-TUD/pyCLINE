@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example of use &mdash; pyCLINE 0.1.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=22607128"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API" href="modules.html" />
+    <link rel="prev" title="PyCLINE - Python Package for CLINE documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyCLINE
+              <img src="_static/small_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example of use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyCLINE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example of use</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-of-use">
+<h1>Example of use<a class="headerlink" href="#example-of-use" title="Link to this heading"></a></h1>
+<p>As mentioned before, in order to run several examples, the module <code class="docutils literal notranslate"><span class="pre">example</span></code> can be called</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyCLINE</span>
+<span class="n">pyCLINE</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="o">*</span><span class="n">example</span> <span class="n">name</span><span class="o">*</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where example names are <code class="docutils literal notranslate"><span class="pre">FHN</span></code> (FitzHugh-Nagumo model), <code class="docutils literal notranslate"><span class="pre">Bicubic</span></code> (Bicubic model), <code class="docutils literal notranslate"><span class="pre">GeneExpression</span></code> (Gene expression) or <code class="docutils literal notranslate"><span class="pre">DelayOscillator</span></code> (Delay oscillator model) which are introduced in the manuscript.</p>
+<p>Additionally, below you can find the example for a the use of the FitzHugh-Nagumo (FHN) model without the use of  <code class="docutils literal notranslate"><span class="pre">pyCLINE.example</span></code>.
+After installing the package, we import <code class="docutils literal notranslate"><span class="pre">pyCLINE</span></code> as well as <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code> to be able to configure the activation function for the neural network training.
+Additionally, we load <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to be able to load generated test data sets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyCLINE</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+</pre></div>
+</div>
+<p>Firstly, we start by generating the FHN data set, which we then can load as a Pandas Dataframe back into the file from the created data directory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pyCLINE</span><span class="o">.</span><span class="n">generate_data</span><span class="o">.</span><span class="n">FHN</span><span class="p">(</span><span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">epsilons</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">],</span> <span class="n">n_intiaL_conditions</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/synthetic/FHN_eps=0.3_a=0.0)</span>
+</pre></div>
+</div>
+<p>This prepared Dataframe consists of many simulations from randomly selected initial conditions, but we just want to use a single one and reset the index of the dataframe.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sim</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sim&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_sim</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This step can be skipped when using a single simulation with your data when you only have a single time series.
+After this we can prepare the data for training, where we declare the column names with a set of parameters used to normalize the data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_sim</span><span class="p">,</span> <span class="n">df_coef</span> <span class="o">=</span> <span class="n">pyCLINE</span><span class="o">.</span><span class="n">recovery_methods</span><span class="o">.</span><span class="n">data_preparation</span><span class="o">.</span><span class="n">prepare_data</span><span class="p">(</span><span class="n">df_sim</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">],</span> <span class="n">time</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">tmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;derivative&#39;</span><span class="p">,</span> <span class="n">value_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">value_max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We then can define the variables that will be used as input and output/target variables of the neural network, and split the datasets into training, test and validation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">input_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">,</span> <span class="n">input_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">,</span> <span class="n">input_val</span><span class="p">,</span> <span class="n">target_val</span> <span class="o">=</span> <span class="n">pyCLINE</span><span class="o">.</span><span class="n">recovery_methods</span><span class="o">.</span><span class="n">data_preparation</span><span class="o">.</span><span class="n">shuffle_and_split</span><span class="p">(</span><span class="n">df_sim</span><span class="p">,</span> <span class="n">input_vars</span> <span class="o">=</span> <span class="n">input_vars</span><span class="p">,</span> <span class="n">target_var</span> <span class="o">=</span> <span class="n">target_vars</span><span class="p">,</span> <span class="n">optimal_thresholding</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the prepared data, we can set up the model and train it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#set up</span>
+<span class="n">nn_model</span><span class="p">,</span>  <span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">recovery_methods</span><span class="o">.</span><span class="n">nn_training</span><span class="o">.</span><span class="n">configure_FFNN_model</span><span class="p">(</span><span class="n">Nin</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">input_vars</span><span class="p">),</span> <span class="n">Nout</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">target_vars</span><span class="p">),</span><span class="n">Nlayers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Nnodes</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">summary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">)</span>
+
+<span class="c1">#training</span>
+<span class="n">training_loss</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">test_loss</span><span class="p">,</span> <span class="n">predictions_evolution</span><span class="p">,</span> <span class="n">lc_predictions</span> <span class="o">=</span> <span class="n">recovery_methods</span><span class="o">.</span><span class="n">nn_training</span><span class="o">.</span><span class="n">train_FFNN_model</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">nn_model</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss_fn</span><span class="o">=</span><span class="n">loss_fn</span><span class="p">,</span> <span class="n">input_train</span><span class="o">=</span><span class="n">input_train</span><span class="p">,</span><span class="n">target_train</span><span class="o">=</span><span class="n">target_train</span><span class="p">,</span><span class="n">input_test</span><span class="o">=</span><span class="n">input_test</span><span class="p">,</span> <span class="n">target_test</span><span class="o">=</span><span class="n">target_test</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">input_val</span><span class="p">,</span> <span class="n">target_val</span><span class="p">),</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">,</span><span class="n">save_evolution</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;derivative&#39;</span><span class="p">,</span> <span class="n">minimal_value</span><span class="o">=</span><span class="n">val_min</span><span class="p">,</span><span class="n">maximal_value</span><span class="o">=</span><span class="n">val_max</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result of the training are the losses and the predictions of the limit cycle (<code class="docutils literal notranslate"><span class="pre">lc_predictions</span></code>) and nullcline predictions (<code class="docutils literal notranslate"><span class="pre">predictions_evolution</span></code>) over the set amount of epochs, which can be used to visualize the outcome of the nullcline predictions.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="PyCLINE - Python Package for CLINE documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Bartosz Prokop, Nikita Frolov, Lendert Gelens.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

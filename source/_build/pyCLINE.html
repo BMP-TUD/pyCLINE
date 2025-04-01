@@ -1,0 +1,1365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyCLINE package &mdash; pyCLINE 0.1.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=22607128"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pyCLINE.recovery_methods package" href="pyCLINE.recovery_methods.html" />
+    <link rel="prev" title="API" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyCLINE
+              <img src="_static/small_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Example of use</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pyCLINE package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyCLINE.recovery_methods.html">pyCLINE.recovery_methods package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyCLINE.example">pyCLINE.example module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyCLINE.generate_data">pyCLINE.generate_data module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.generate_data.Bicubic"><code class="docutils literal notranslate"><span class="pre">Bicubic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.generate_data.DelayOscillator"><code class="docutils literal notranslate"><span class="pre">DelayOscillator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.generate_data.FHN"><code class="docutils literal notranslate"><span class="pre">FHN()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.generate_data.GeneExpression"><code class="docutils literal notranslate"><span class="pre">GeneExpression()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyCLINE.model">pyCLINE.model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.Bicubic"><code class="docutils literal notranslate"><span class="pre">Bicubic</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.DelayOscillator"><code class="docutils literal notranslate"><span class="pre">DelayOscillator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.FHN"><code class="docutils literal notranslate"><span class="pre">FHN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.GeneExpression"><code class="docutils literal notranslate"><span class="pre">GeneExpression</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.GlycolyticOscillations"><code class="docutils literal notranslate"><span class="pre">GlycolyticOscillations</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.Goodwin"><code class="docutils literal notranslate"><span class="pre">Goodwin</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.Lorenz"><code class="docutils literal notranslate"><span class="pre">Lorenz</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.Oregonator"><code class="docutils literal notranslate"><span class="pre">Oregonator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.Roessler"><code class="docutils literal notranslate"><span class="pre">Roessler</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.calculate_period"><code class="docutils literal notranslate"><span class="pre">calculate_period()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.plot_data"><code class="docutils literal notranslate"><span class="pre">plot_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.rk4_solver"><code class="docutils literal notranslate"><span class="pre">rk4_solver()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.save_data"><code class="docutils literal notranslate"><span class="pre">save_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pyCLINE.model.simulate_data"><code class="docutils literal notranslate"><span class="pre">simulate_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyCLINE">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyCLINE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API</a></li>
+      <li class="breadcrumb-item active">pyCLINE package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyCLINE.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pycline-package">
+<h1>pyCLINE package<a class="headerlink" href="#pycline-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyCLINE.recovery_methods.html">pyCLINE.recovery_methods package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyCLINE.recovery_methods.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyCLINE.recovery_methods.html#module-pyCLINE.recovery_methods.data_preparation">pyCLINE.recovery_methods.data_preparation module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.calculate_period"><code class="docutils literal notranslate"><span class="pre">calculate_period()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.compute_optimal_threshold"><code class="docutils literal notranslate"><span class="pre">compute_optimal_threshold()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.normalize_adjusted"><code class="docutils literal notranslate"><span class="pre">normalize_adjusted()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.normalize_variables"><code class="docutils literal notranslate"><span class="pre">normalize_variables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.plot_optimal_thresholding"><code class="docutils literal notranslate"><span class="pre">plot_optimal_thresholding()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.prepare_data"><code class="docutils literal notranslate"><span class="pre">prepare_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.shuffle_and_split"><code class="docutils literal notranslate"><span class="pre">shuffle_and_split()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.data_preparation.uniform_sampling"><code class="docutils literal notranslate"><span class="pre">uniform_sampling()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyCLINE.recovery_methods.html#module-pyCLINE.recovery_methods.nn_training">pyCLINE.recovery_methods.nn_training module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.FFNN"><code class="docutils literal notranslate"><span class="pre">FFNN</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.FFNN.forward"><code class="docutils literal notranslate"><span class="pre">FFNN.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.NeuralNetworkDataError"><code class="docutils literal notranslate"><span class="pre">NeuralNetworkDataError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.NeuralNetworkError"><code class="docutils literal notranslate"><span class="pre">NeuralNetworkError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupError"><code class="docutils literal notranslate"><span class="pre">NeuralNetworkSetupError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupTrainingError"><code class="docutils literal notranslate"><span class="pre">NeuralNetworkSetupTrainingError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.compute_nullcline"><code class="docutils literal notranslate"><span class="pre">compute_nullcline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.configure_FFNN_model"><code class="docutils literal notranslate"><span class="pre">configure_FFNN_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.init_weights"><code class="docutils literal notranslate"><span class="pre">init_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.loss_function"><code class="docutils literal notranslate"><span class="pre">loss_function()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.monitor_gradients"><code class="docutils literal notranslate"><span class="pre">monitor_gradients()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.nullcline_prediction"><code class="docutils literal notranslate"><span class="pre">nullcline_prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.nn_training.train_FFNN_model"><code class="docutils literal notranslate"><span class="pre">train_FFNN_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyCLINE.recovery_methods.html#module-pyCLINE.recovery_methods">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.configure_FFNN_model"><code class="docutils literal notranslate"><span class="pre">configure_FFNN_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.prepare_data"><code class="docutils literal notranslate"><span class="pre">prepare_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.recovery_methods.html#pyCLINE.recovery_methods.train_FFNN_model"><code class="docutils literal notranslate"><span class="pre">train_FFNN_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pyCLINE.example">
+<span id="pycline-example-module"></span><h2>pyCLINE.example module<a class="headerlink" href="#module-pyCLINE.example" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pyCLINE.generate_data">
+<span id="pycline-generate-data-module"></span><h2>pyCLINE.generate_data module<a class="headerlink" href="#module-pyCLINE.generate_data" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.generate_data.Bicubic">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.generate_data.</span></span><span class="sig-name descname"><span class="pre">Bicubic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_intiaL_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.generate_data.Bicubic" title="Link to this definition"></a></dt>
+<dd><p>Generate data using the Bicubic model (see src/pyCLINE/model.py),
+as used in Prokop, Billen, Frolov, Gelens (2025).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Time step. Defaults to 0.1.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 1000000.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.generate_data.DelayOscillator">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.generate_data.</span></span><span class="sig-name descname"><span class="pre">DelayOscillator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.generate_data.DelayOscillator" title="Link to this definition"></a></dt>
+<dd><p>Generate data using the Delay Oscillator model (see src/pyCLINE/model.py),
+as used in Prokop, Billen, Frolov, Gelens (2025).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 20000.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.generate_data.FHN">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.generate_data.</span></span><span class="sig-name descname"><span class="pre">FHN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.3]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_intiaL_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.generate_data.FHN" title="Link to this definition"></a></dt>
+<dd><p>Generate data using the FitzHugh-Nagumo model (see src/pyCLINE/model.py)
+with different time scale separation, as used in Prokop, Billen, Frolov, Gelens (2025).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<em>float</em>) – Time step. Defaults to 0.1.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – Number of time steps. Defaults to 1000000.</p></li>
+<li><p><strong>epsilons</strong> (<em>list</em>) – List of time scale separations. Defaults to [0.3].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.generate_data.GeneExpression">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.generate_data.</span></span><span class="sig-name descname"><span class="pre">GeneExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_intiaL_conditions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.generate_data.GeneExpression" title="Link to this definition"></a></dt>
+<dd><p>Generate data using the Gene Expression model (see src/pyCLINE/model.py),
+as used in Prokop, Billen, Frolov, Gelens (2025).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<em>float</em><em>, </em><em>optional</em>) – Time step. Defaults to 0.1.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 1000000.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyCLINE.model">
+<span id="pycline-model-module"></span><h2>pyCLINE.model module<a class="headerlink" href="#module-pyCLINE.model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">Bicubic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-0.5,</span> <span class="pre">0.5,</span> <span class="pre">-0.3]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The bicubic model if a model with two nonlinear nullclines (one bistable and one s-shaped) taken from Prokop et al., Chaos (2024).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the biubic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 2.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the bicubic model.
+With:
+p = [-0.5, 0.5, -0.3];
+Prokop et al., Chaos (2024)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the bicubic model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic.unull">
+<span class="sig-name descname"><span class="pre">unull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic.unull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the bicubic model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the u-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Bicubic.vnull">
+<span class="sig-name descname"><span class="pre">vnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Bicubic.vnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the v-nullcline of the bicubic model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the v-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>v</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">DelayOscillator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[4,</span> <span class="pre">10,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Simple model of a Delay Oscillator with a single delay, inspired by Lewis, Current Biology (2003)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the delay oscillator model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_0</strong> (<em>float</em>) – Initial condition for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>t_max</strong> (<em>float</em>) – Maximum time of the simulation.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the delay oscillator model.
+With:
+p = [beta, tau, n]
+p = [4,10,2]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator.simulate" title="Link to this definition"></a></dt>
+<dd><p>Simulates the delay oscillatory model using the jitcdde solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>t_max</strong> (<em>float</em>) – Maximum time of the simulation.</p></li>
+<li><p><strong>y_0</strong> (<em>int</em><em>, </em><em>optional</em>) – Initial condition. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Simulated data of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator.unull">
+<span class="sig-name descname"><span class="pre">unull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator.unull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the delay oscillator model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>y</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the u-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>x</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.DelayOscillator.vnull">
+<span class="sig-name descname"><span class="pre">vnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.DelayOscillator.vnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the delay oscillator model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>array</em>) – Array of values of the u-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the v-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">FHN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">0.3,</span> <span class="pre">0.5,</span> <span class="pre">0.0]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Fitzhuge-Nagumo model is a simplified model of the electrical activity of a neuron. In this form taken from Prokop et al., iScience (2024).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.fixed_points">
+<span class="sig-name descname"><span class="pre">fixed_points</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.fixed_points" title="Link to this definition"></a></dt>
+<dd><p>Calculate the fixed points of the FHN model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array of fixed points of the model.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>fp (Array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the FHN model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 2.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the FHN model.
+With:
+p = [c, d, eps, b, a]
+p = [1, 1, 0.3, 0.5, 0.0]
+Prokop et al., iScience (2024)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the FHN model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.unull">
+<span class="sig-name descname"><span class="pre">unull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.unull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the FHN model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the u-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.FHN.vnull">
+<span class="sig-name descname"><span class="pre">vnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.FHN.vnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the v-nullcline of the FHN model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the v-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>v</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">GeneExpression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">0.05,</span> <span class="pre">1,</span> <span class="pre">0.05,</span> <span class="pre">1,</span> <span class="pre">0.05,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.1,</span> <span class="pre">2]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The gene expression model is a model of the regulation of gene expression taken from Novak &amp; Tyson, Nature Rev Mol Cell Biol (2008).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the gene expression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 10.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the gene expression model.
+With:
+p = [S,   k1, Kd,  kdx, ksy,  kdy, k2, ET,  Km, KI]
+p = [1, 0.05,  1, 0.05,   1, 0.05,  1,  1, 0.1,  2];
+Novak &amp; Tyson, Nature Rev Mol Cell Biol (2008)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the gene expression model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression.unull">
+<span class="sig-name descname"><span class="pre">unull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression.unull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the gene expression model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the u-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GeneExpression.vnull">
+<span class="sig-name descname"><span class="pre">vnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GeneExpression.vnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the v-nullcline of the gene expression model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the v-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.GlycolyticOscillations">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">GlycolyticOscillations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-0.3,</span> <span class="pre">-2.2,</span> <span class="pre">0.25,</span> <span class="pre">-0.5,</span> <span class="pre">0.5,</span> <span class="pre">1.8,</span> <span class="pre">0.7,</span> <span class="pre">-0.3]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GlycolyticOscillations" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The glycolytic oscillator is a model of glycolytic oscillations introduced in Prokop et al., iScience (2024) and in
+this form taken from Prokop et al., Chaos (2024).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GlycolyticOscillations.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GlycolyticOscillations.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the glycolytic oscillations model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 10.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GlycolyticOscillations.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GlycolyticOscillations.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the glycolytic oscillations model.
+With:
+p = [a, b, c, d, e, f, g, h]
+p = [-0.3, -2.2, 0.25, -0.5, 0.5, 1.8, 0.7, -0.3]
+Prokop et al., Chaos (2024)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.GlycolyticOscillations.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.GlycolyticOscillations.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the glycolytic oscillations model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">Goodwin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0.1,</span> <span class="pre">0.1,</span> <span class="pre">0.1,</span> <span class="pre">10,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Goodwin model is a three dimensional model for phosphorylation/dephosphorylation processes of a transcription factor,
+taken in this form from Gonze et al., Acta Biotheoretica (2021), parameters from Prokop et al. (2024).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the gene expression model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 10.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the Goodwin model.
+With:
+p = [a,b,c,d,e,f,n,K]
+p = [1,1,1,0.1,0.1,0.1,10,1]
+Prokop et al., iScience (2024)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the Goodwin model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.unull">
+<span class="sig-name descname"><span class="pre">unull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.unull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the u-nullcline of the Goodwin model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p></li>
+<li><p><strong>w</strong> (<em>array</em>) – Array of values of the w-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the u-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.vnull">
+<span class="sig-name descname"><span class="pre">vnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.vnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the v-nullcline of the Goodwin model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>array</em>) – Array of values of the v-variable.</p></li>
+<li><p><strong>w</strong> (<em>array</em>) – Array of values of the w-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the v-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>v</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Goodwin.wnull">
+<span class="sig-name descname"><span class="pre">wnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Goodwin.wnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the w-nullcline of the Goodwin model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>u</strong> (<em>array</em>) – Array of values of the u-variable.</p></li>
+<li><p><strong>v</strong> (<em>array</em>) – Array of values of the v-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the w-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>w</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">Lorenz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-0.5,</span> <span class="pre">65]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Lorenz model is a simple model of atmospheric convection, taken from Lorenz, Journal of the Atmospheric Sciences (1963).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the Oregonator model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 25.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the Lorenz model.
+With:
+p = [a, rho]
+p = [-0.5,65]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the Lorenz model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.xnull">
+<span class="sig-name descname"><span class="pre">xnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.xnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the x-nullcline of the Lorenz model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>array</em>) – Array of values of the y-variable.</p></li>
+<li><p><strong>z</strong> (<em>array</em>) – Array of values of the z-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the x-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>x</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.ynull">
+<span class="sig-name descname"><span class="pre">ynull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.ynull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the y-nullcline of the Lorenz model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>z</strong> (<em>array</em>) – Array of values of the z-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the y-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Lorenz.znull">
+<span class="sig-name descname"><span class="pre">znull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Lorenz.znull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the z-nullcline of the Lorenz model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>y</strong> (<em>array</em>) – Array of values of the y-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the z-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">Oregonator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.005,</span> <span class="pre">3,</span> <span class="pre">0.6,</span> <span class="pre">0.01]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Oregonator model is a model of the Belousov-Zhabotinsky reaction, taken from Tyson, Journal of Chemical Physics (1975).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the Oregonator model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 10.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the Oregonator model.
+With:
+p = [q,p,f,e]
+p = [0.005,3,0.60,1e-2]
+Tyson, Journal of Chemical Physics (1975)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the Oregonator model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.xnull">
+<span class="sig-name descname"><span class="pre">xnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.xnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the x-nullcline of the Oregonator model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>z</strong> (<em>array</em>) – Array of values of the z-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the x-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.ynull">
+<span class="sig-name descname"><span class="pre">ynull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.ynull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the y-nullcline of the Oregonator model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>y</strong> (<em>array</em>) – Array of values of the y-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the y-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Oregonator.znull">
+<span class="sig-name descname"><span class="pre">znull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Oregonator.znull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the x-nullcline of the Oregonator model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>y</strong> (<em>array</em>) – Array of values of the y-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the z-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">Roessler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.2,</span> <span class="pre">0.2,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The Roessler model is a simple model of a chaotic oscillator, taken from Roessler, Zeitschrift für Naturforschung A (1976).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.generate_data">
+<span class="sig-name descname"><span class="pre">generate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.generate_data" title="Link to this definition"></a></dt>
+<dd><p>Generates synthetic data for the Roessler model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x0</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of time steps. Defaults to 10000.</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save the generated data to a csv file. Defaults to True.</p></li>
+<li><p><strong>plot</strong> (<em>bool</em><em>, </em><em>optional</em>) – Plot the generated data. Defaults to False.</p></li>
+<li><p><strong>max_time</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum time for the plot. Defaults to 25.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Check the period of the oscillation. Defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.model" title="Link to this definition"></a></dt>
+<dd><p>Model formulation of the Roessler model.
+With:
+p = [abc]
+p = [0.2,0.2,1]
+Roessler, Zeitschrift für Naturforschung A (1976)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.simulate" title="Link to this definition"></a></dt>
+<dd><p>Generates the next state of the Roessler model using the Runge-Kutta 4th order solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>U</strong> (<em>array</em>) – Array of initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of the next state of the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>U (array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.xnull">
+<span class="sig-name descname"><span class="pre">xnull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.xnull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the x-nullcline of the Roessler model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>z</strong> (<em>array</em>) – Array of values of the z-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the x-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.ynull">
+<span class="sig-name descname"><span class="pre">ynull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.ynull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the y-nullcline of the Roessler model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>z</strong> (<em>array</em>) – Array of values of the z-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the y-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.model.Roessler.znull">
+<span class="sig-name descname"><span class="pre">znull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.Roessler.znull" title="Link to this definition"></a></dt>
+<dd><p>Calculate the z-nullcline of the Roessler model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array</em>) – Array of values of the x-variable.</p></li>
+<li><p><strong>y</strong> (<em>array</em>) – Array of values of the y-variable.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of values of the z-nullcline.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>z</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.model.calculate_period">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">calculate_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_train</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.calculate_period" title="Link to this definition"></a></dt>
+<dd><p>Calculate the period of an oscillation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_train</strong> (<em>np.array</em>) – Time series of data.</p></li>
+<li><p><strong>t_train</strong> (<em>np.array</em>) – Time of the time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>peaks_u</strong> (<em>np.array</em>) – Size of peaks detected in the time series.</p></li>
+<li><p><strong>peaks_t</strong> (<em>np.array</em>) – Time points where peaks occur in the data set.</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – Period of Time Series.</p></li>
+<li><p><strong>peaks[0]</strong> (<em>list</em>) – Array of all indicies of local maxima</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.model.plot_data">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">plot_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.plot_data" title="Link to this definition"></a></dt>
+<dd><p>Plot the generated data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas DataFrame</em>) – DataFrame with the synthetic data.</p></li>
+<li><p><strong>max_time</strong> (<em>float</em>) – Maximum time for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.model.rk4_solver">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">rk4_solver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.rk4_solver" title="Link to this definition"></a></dt>
+<dd><p>Rung-Kutta 4th order solver for a system of ODEs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<em>function</em>) – Function that describes the system of ODEs. For model classes it is the model method.</p></li>
+<li><p><strong>u</strong> (<em>float</em>) – Value of a state variable at time t.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value of a state variable at time t+dt.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>u[i+1] (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.model.save_data">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.save_data" title="Link to this definition"></a></dt>
+<dd><p>Save the generated data to a csv file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas DataFrame</em>) – DataFrame with the synthetic data.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the file, usually taking the name of the model.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.model.simulate_data">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.model.</span></span><span class="sig-name descname"><span class="pre">simulate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">simulate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.model.simulate_data" title="Link to this definition"></a></dt>
+<dd><p>Generate synthetic data for a given model and initial conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>simulate</strong> (<em>method</em>) – Method that simulates the model. For model classes it is the simulate method.</p></li>
+<li><p><strong>x0</strong> (<em>array</em><em> of </em><em>floats</em>) – Initial conditions for the model.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of timesteps. Defaults to 10000.</p></li>
+<li><p><strong>check_period</strong> (<em>bool</em><em>, </em><em>optional</em>) – Limits the amount of periods calculated. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with the synthetic data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df (pandas DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyCLINE">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyCLINE" title="Link to this heading"></a></h2>
+<p>pyCLINE: Python implementation of the CLINE method introduced by Prokop, Billen, Frolov and Gelens (2025).</p>
+<dl class="simple">
+<dt>Modules:</dt><dd><p>recovery_methods: Methods for recovering nullclines.
+model: Model definitions and utilities.
+generate_data: Functions for generating synthetic data.
+example: Example usage and demonstrations.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyCLINE.recovery_methods.html" class="btn btn-neutral float-right" title="pyCLINE.recovery_methods package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Bartosz Prokop, Nikita Frolov, Lendert Gelens.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

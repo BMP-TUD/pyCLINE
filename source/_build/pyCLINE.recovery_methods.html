@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyCLINE.recovery_methods package &mdash; pyCLINE 0.1.8 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=22607128"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyCLINE package" href="pyCLINE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyCLINE
+              <img src="_static/small_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Example of use</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pyCLINE.html">pyCLINE package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pyCLINE.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pyCLINE.recovery_methods package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.html#module-pyCLINE.example">pyCLINE.example module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.html#module-pyCLINE.generate_data">pyCLINE.generate_data module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.html#module-pyCLINE.model">pyCLINE.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyCLINE.html#module-pyCLINE">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyCLINE</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">API</a></li>
+          <li class="breadcrumb-item"><a href="pyCLINE.html">pyCLINE package</a></li>
+      <li class="breadcrumb-item active">pyCLINE.recovery_methods package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyCLINE.recovery_methods.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pycline-recovery-methods-package">
+<h1>pyCLINE.recovery_methods package<a class="headerlink" href="#pycline-recovery-methods-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pyCLINE.recovery_methods.data_preparation">
+<span id="pycline-recovery-methods-data-preparation-module"></span><h2>pyCLINE.recovery_methods.data_preparation module<a class="headerlink" href="#module-pyCLINE.recovery_methods.data_preparation" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.calculate_period">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">calculate_period</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_train</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.calculate_period" title="Link to this definition"></a></dt>
+<dd><p>Calculate the period of an oscillation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_train</strong> (<em>np.array</em>) – Time series of data.</p></li>
+<li><p><strong>t_train</strong> (<em>np.array</em>) – Time of the time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>peaks_u</strong> (<em>np.array</em>) – Size of peaks detected in the time series.</p></li>
+<li><p><strong>peaks_t</strong> (<em>np.array</em>) – Time points where peaks occur in the data set.</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – Period of Time Series.</p></li>
+<li><p><strong>peaks[0]</strong> (<em>list</em>) – Array of all indicies of local maxima</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.compute_optimal_threshold">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">compute_optimal_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biny</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_thresholding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.compute_optimal_threshold" title="Link to this definition"></a></dt>
+<dd><p>When a system exhibits a non-uniform distribution of data points in the phase space,
+the optimal thresholding can be used to sample the data uniformly.
+This function computes the optimal thresholding value based on the normalized sample size,
+normalized sampling standard deviation, and the ratio of the sample size to the sampling standard deviation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas dataframe</em>) – dataframe containing variables</p></li>
+<li><p><strong>vars</strong> (<em>list</em>) – list of the variables to generate the optimal threshold</p></li>
+<li><p><strong>binx</strong> (<em>list</em>) – list of bins for the first variable</p></li>
+<li><p><strong>biny</strong> (<em>list</em>) – list of bins for the second variable</p></li>
+<li><p><strong>plot_thresholding</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the thresholded phase space between the first and second
+variable should be plotted. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>optimal threshold value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>optimal_threshold (int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.normalize_adjusted">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">normalize_adjusted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_coef</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.normalize_adjusted" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.normalize_variables">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">normalize_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.normalize_variables" title="Link to this definition"></a></dt>
+<dd><p>The function conducts min-max normalization in the range ‘[0:1]
+of the varibles from the list ‘vars’ in the dataframe ‘df’</p>
+<p>return dataframe containing normalized variables ‘df_norm’
+and the dataframe containing normalization coefficients per variable ‘df_coef’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas DataFrame</em>) – dataframe containing variables</p></li>
+<li><p><strong>vars</strong> (<em>list</em>) – list of the variables to normalize</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – name of the time column</p></li>
+<li><p><strong>value_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximal value for min-max normalizaiton. Defaults to 1.0.</p></li>
+<li><p><strong>value_min</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimal value for min-max noramlization. Defaults to 0.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing normalized variables
+df_coef (pandas DataFrame): dataframe containing minimal and maximal values per variable</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df_norm (pandas DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.plot_optimal_thresholding">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">plot_optimal_thresholding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsamples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varsamples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimal_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histogram</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.plot_optimal_thresholding" title="Link to this definition"></a></dt>
+<dd><p>When a system exhibits a non-uniform distribution of data points in the phase space,
+the optimal thresholding can be used to sample the data uniformly.
+This function plots the normalized sample size, normalized sampling standard deviation,
+and the ratio of the sample size to the sampling standard deviation as a function of the threshold.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thresholds</strong> (<em>numpy array</em>) – array of threshold values</p></li>
+<li><p><strong>nsamples</strong> (<em>numpy array</em>) – array of normalized sample sizes</p></li>
+<li><p><strong>varsamples</strong> (<em>numpy array</em>) – array of normalized sampling standard deviations</p></li>
+<li><p><strong>optimal_threshold</strong> (<em>int</em>) – optimal threshold value</p></li>
+<li><p><strong>idx</strong> (<em>int</em>) – index of the optimal threshold value</p></li>
+<li><p><strong>histogram</strong> (<em>numpy histogram object</em>) – 2D histogram of the phase space</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.prepare_data">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'newton_difference'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.prepare_data" title="Link to this definition"></a></dt>
+<dd><p>The function prepares the raw time series of the system variables for feeding into ML model. Preparation includes the following steps: (i) data slicing in the indicated range [tmin:tmax], [:tmax], or [tmin:] (optional). If tmin and tmax are not provided, full data are processed (ii) min-max normalization of the variables from the list ‘vars’(iii) computing a delayed [t-1] variable for each variable from the list.
+The function returns a prepared dataframe ‘df_prepared’ and the dataframe containing normalization coefficients per variable ‘df_coef’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas dataframe</em>) – dataframe containing variables</p></li>
+<li><p><strong>vars</strong> (<em>list</em>) – list of the variables to normalize</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – name of the time column</p></li>
+<li><p><strong>tmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimal time of the time slice of data. Defaults to None.</p></li>
+<li><p><strong>tmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximal time of the time slice of data. Defaults to None.</p></li>
+<li><p><strong>scheme</strong> (<em>str</em><em>, </em><em>optional</em>) – Scheme for computing second input variable. Defaults to ‘newton_difference’.</p></li>
+<li><p><strong>norm_method</strong> (<em>str</em><em>, </em><em>optional</em>) – Normalization method. Defaults to ‘minmax’.</p></li>
+<li><p><strong>value_min</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimal value for minmax normalization. Defaults to 0.0.</p></li>
+<li><p><strong>value_max</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximal value for minmax normalization. Defaults to 1.0.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em><em>, </em><em>optional</em>) – If data should be normalized. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing prepared data for feeding into ML model
+df_coef (pandas dataframe): dataframe containing normalization coefficients (min and max values) per variable</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df_prepared (pandas dataframe)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.shuffle_and_split">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">shuffle_and_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.7</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimal_thresholding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_thresholding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.shuffle_and_split" title="Link to this definition"></a></dt>
+<dd><p>The function prepares training, testing, and validation sets from the prepared dataframe
+by random uniform shuffling and splitting the data according to the provided proportions</p>
+<p>the function returns respective training, testing, and validation datasets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas dataframe</em>) – dataframe containing prepared data for feeding into ML model</p></li>
+<li><p><strong>input_vars</strong> (<em>list</em>) – list of the input variables</p></li>
+<li><p><strong>target_var</strong> (<em>list</em>) – list of the target variable(s)</p></li>
+<li><p><strong>train_frac</strong> (<em>float</em><em>, </em><em>optional</em>) – fraction of training data. Defaults to 0.7.</p></li>
+<li><p><strong>test_frac</strong> (<em>float</em><em>, </em><em>optional</em>) – fraction of testing data. Defaults to 0.15.</p></li>
+<li><p><strong>optimal_thresholding</strong> (<em>bool</em><em>, </em><em>optional</em>) – If the optimal thresholding should be used. Defaults to True.</p></li>
+<li><p><strong>plot_thresholding</strong> (<em>bool</em><em>, </em><em>optional</em>) – _description_. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing input variables for training
+target_train (pandas dataframe): dataframe containing target variables for training
+input_test (pandas dataframe): dataframe containing input variables for testing
+target_test (pandas dataframe): dataframe containing target variables for testing
+input_val (pandas dataframe): dataframe containing input variables for validation
+target_val (pandas dataframe): dataframe containing target variables for validation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>input_train (pandas dataframe)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.data_preparation.uniform_sampling">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.data_preparation.</span></span><span class="sig-name descname"><span class="pre">uniform_sampling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">biny</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.data_preparation.uniform_sampling" title="Link to this definition"></a></dt>
+<dd><p>The function samples the data uniformly in the phase space defined by the input variables
+based on the provided threshold value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas dataframe</em>) – dataframe containing variables</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – threshold value for the uniform sampling</p></li>
+<li><p><strong>input_vars</strong> (<em>list</em>) – list of the input variables</p></li>
+<li><p><strong>binx</strong> (<em>list</em>) – list of bins for the first variable</p></li>
+<li><p><strong>biny</strong> (<em>list</em>) – list of bins for the second variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing uniformly sampled data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df_uniform (pandas dataframe)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyCLINE.recovery_methods.nn_training">
+<span id="pycline-recovery-methods-nn-training-module"></span><h2>pyCLINE.recovery_methods.nn_training module<a class="headerlink" href="#module-pyCLINE.recovery_methods.nn_training" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.FFNN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">FFNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Nin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nlayers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nnodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.FFNN" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Feedforward Neural Network (FFNN) class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nn</strong> (<em>torch.nn module</em>) – PyTorch neural network module</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.FFNN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.FFNN.forward" title="Link to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.NeuralNetworkDataError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">NeuralNetworkDataError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errors</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkDataError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkError" title="pyCLINE.recovery_methods.nn_training.NeuralNetworkError"><code class="xref py py-class docutils literal notranslate"><span class="pre">NeuralNetworkError</span></code></a></p>
+<p>Error raised when data for the neural network is incorrect.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.NeuralNetworkError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">NeuralNetworkError</span></span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Error raised for neural network issues.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">NeuralNetworkSetupError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'parameter</span> <span class="pre">has</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">greater</span> <span class="pre">then</span> <span class="pre">zero/be</span> <span class="pre">provided.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkError" title="pyCLINE.recovery_methods.nn_training.NeuralNetworkError"><code class="xref py py-class docutils literal notranslate"><span class="pre">NeuralNetworkError</span></code></a></p>
+<p>Error raised when parameters of the network are 0 but can not be zero.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupTrainingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">NeuralNetworkSetupTrainingError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'parameter</span> <span class="pre">has</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">greater</span> <span class="pre">then</span> <span class="pre">zero.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkSetupTrainingError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyCLINE.recovery_methods.nn_training.NeuralNetworkError" title="pyCLINE.recovery_methods.nn_training.NeuralNetworkError"><code class="xref py py-class docutils literal notranslate"><span class="pre">NeuralNetworkError</span></code></a></p>
+<p>Error raised when setting up training of the neural network.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.compute_nullcline">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">compute_nullcline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnull</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xvar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yvar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nsteps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df_coef</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.compute_nullcline" title="Link to this definition"></a></dt>
+<dd><p>Compute the nullcline of the model from the ground true function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnull</strong> (<em>function</em>) – ground true function</p></li>
+<li><p><strong>xvar</strong> (<em>str</em>) – x variable for nullcline computation</p></li>
+<li><p><strong>yvar</strong> (<em>str</em>) – y variable for nullcline computation</p></li>
+<li><p><strong>Nsteps</strong> (<em>int</em>) – Number of steps for discretization of input variable for nullcline prediction</p></li>
+<li><p><strong>df_coef</strong> (<em>pandas dataframe</em>) – dataframe containing the coefficients of the model</p></li>
+<li><p><strong>value_min</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value for minmax normalization. Defaults to 0.0.</p></li>
+<li><p><strong>value_max</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value for minmax normalization.. Defaults to 1.0.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em><em>, </em><em>optional</em>) – If values should be minmax normalized. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>x variable for nullcline prediction
+ynull (list): predicted nullcline</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xnull (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.configure_FFNN_model">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">configure_FFNN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Nin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nlayers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nnodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.SiLU'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_name='Adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr=0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn=&lt;class</span> <span class="pre">'torch.nn.modules.loss.MSELoss'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.configure_FFNN_model" title="Link to this definition"></a></dt>
+<dd><p>Configure the Feedforward Neural Network (FFNN) model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Nin</strong> (<em>int</em>) – Number of input features</p></li>
+<li><p><strong>Nout</strong> (<em>int</em>) – Number of output features</p></li>
+<li><p><strong>Nlayers</strong> (<em>int</em>) – Number of layers</p></li>
+<li><p><strong>Nnodes</strong> (<em>int</em>) – Number of nodes</p></li>
+<li><p><strong>activation</strong> (<em>torch neural network activation function module</em><em>, </em><em>optional</em>) – Activation function of neural network training. Defaults to nn.SiLU.</p></li>
+<li><p><strong>optimizer_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Optimizer for model training. Defaults to ‘Adam’.</p></li>
+<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – Learning rate for training. Defaults to 1e-4.</p></li>
+<li><p><strong>loss_fn</strong> (<em>torch loss function module</em><em>, </em><em>optional</em>) – Loss function for training. Defaults to nn.MSELoss.</p></li>
+<li><p><strong>summary</strong> (<em>bool</em><em>, </em><em>optional</em>) – If model summary should be generated. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>setup FFNN model
+optimizer (torch optimizer): optimizer for training
+loss_fn (torch loss function): loss function for training</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model (torch model)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.init_weights">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">init_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.init_weights" title="Link to this definition"></a></dt>
+<dd><p>Initialize the weights of the neural network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>torch model</em>) – PyTorch model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.loss_function">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">loss_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nc_prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nullcline_guess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.loss_function" title="Link to this definition"></a></dt>
+<dd><p>Loss function for the neural network model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>torch tensor</em>) – input data</p></li>
+<li><p><strong>target</strong> (<em>torch tensor</em>) – target data</p></li>
+<li><p><strong>nc_prediction</strong> (<em>torch tensor</em>) – nullcline prediction data</p></li>
+<li><p><strong>nullcline_guess</strong> (<em>torch tensor</em>) – nullcline guess data</p></li>
+<li><p><strong>factor</strong> (<em>float</em>) – penalty factor for loss function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>loss function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>loss (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.monitor_gradients">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">monitor_gradients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.monitor_gradients" title="Link to this definition"></a></dt>
+<dd><p>Monitor the gradients of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>torch model feature</em>) – torch model</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>gradients of the model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>gradients (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.nullcline_prediction">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">nullcline_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nsteps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.nullcline_prediction" title="Link to this definition"></a></dt>
+<dd><p>Predict the nullcline of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch model</em>) – FFNN model</p></li>
+<li><p><strong>Nsteps</strong> (<em>int</em>) – Number of steps for discretization of input variable for nullcline prediction</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – device to train the model on. For ‘cuda’, necessary GPU and CUDA Toolkit are required. Defaults to ‘cpu’.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method used for prediction, can be derivative or delayed variables. Defaults to None.</p></li>
+<li><p><strong>min_val</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value for minmax normalization. Defaults to 0.0.</p></li>
+<li><p><strong>max_val</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value for minmax normalization. Defaults to 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>input variable for nullcline prediction
+prediction_null (numpy array): predicted nullcline</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>input_null (numpy array)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.nn_training.train_FFNN_model">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.nn_training.</span></span><span class="sig-name descname"><span class="pre">train_FFNN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_progressbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_evolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'limit_cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nullcline_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximal_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.nn_training.train_FFNN_model" title="Link to this definition"></a></dt>
+<dd><p>Train the Feedforward Neural Network (FFNN) model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch model</em>) – configured FFNN model</p></li>
+<li><p><strong>optimizer</strong> (<em>torch optimizer</em>) – optimizer</p></li>
+<li><p><strong>loss_fn</strong> (<em>torch loss function</em>) – loss function</p></li>
+<li><p><strong>input_train</strong> (<em>pandas dataframe</em>) – input training data</p></li>
+<li><p><strong>target_train</strong> (<em>pandas dataframe</em>) – target training data</p></li>
+<li><p><strong>input_test</strong> (<em>pandas dataframe</em>) – input testing data</p></li>
+<li><p><strong>target_test</strong> (<em>pandas dataframe</em>) – target testing data</p></li>
+<li><p><strong>validation_data</strong> (<em>pandas dataframe</em>) – validation data</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – number of epochs. Defaults to 200.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – batch size. Defaults to 64.</p></li>
+<li><p><strong>plot_loss</strong> (<em>bool</em><em>, </em><em>optional</em>) – plot the loss. Defaults to True.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – device to train the model on. For ‘cuda’, necessary GPU and CUDA Toolkit are required. Defaults to ‘cpu’.</p></li>
+<li><p><strong>use_progressbar</strong> (<em>bool</em><em>, </em><em>optional</em>) – use progress bar when running the training. Defaults to True.</p></li>
+<li><p><strong>save_evolution</strong> (<em>bool</em><em>, </em><em>optional</em>) – save the evolution of limit cycle and nullcline predictions. Defaults to True.</p></li>
+<li><p><strong>loss_target</strong> (<em>str</em><em>, </em><em>optional</em>) – Decide if the target is not limit cycle, but the inital nullcline seed. Defaults to ‘limit_cycle’.</p></li>
+<li><p><strong>nullcline_guess</strong> (<em>torch tensor</em><em>, </em><em>optional</em>) – Torch tensor containing inital nullcline guess. Defaults to None.</p></li>
+<li><p><strong>factor</strong> (<em>float</em><em>, </em><em>optional</em>) – The penalty factor for nullcline guess loss evaluation. Defaults to 1.0.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method used for prediction, can be derivative or delayed variables. Defaults to None.</p></li>
+<li><p><strong>minimal_value</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimal value of minmax normalization for inbetween prediction. Defaults to 0.0.</p></li>
+<li><p><strong>maximal_value</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximal value of minmax normalization for inbetween prediction. Defaults to 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>training losses
+val_losses (list): validation losses
+test_loss (float): testing loss
+predictions (list): predictions of nullcline structure over all epochs
+lc_predictions (list): limit cycle predictions over all epochs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>train_losses (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pyCLINE.recovery_methods">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyCLINE.recovery_methods" title="Link to this heading"></a></h2>
+<p>recovery_methods: Methods for recovering nullclines.</p>
+<dl class="simple">
+<dt>Modules:</dt><dd><p>data_preparation: Functions for preparing data.
+nn_training: Functions for configuring and training neural network models.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.configure_FFNN_model">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.</span></span><span class="sig-name descname"><span class="pre">configure_FFNN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Nin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nlayers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nnodes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation=&lt;class</span> <span class="pre">'torch.nn.modules.activation.SiLU'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_name='Adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr=0.0001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn=&lt;class</span> <span class="pre">'torch.nn.modules.loss.MSELoss'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summary=False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.configure_FFNN_model" title="Link to this definition"></a></dt>
+<dd><p>Configure the Feedforward Neural Network (FFNN) model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Nin</strong> (<em>int</em>) – Number of input features</p></li>
+<li><p><strong>Nout</strong> (<em>int</em>) – Number of output features</p></li>
+<li><p><strong>Nlayers</strong> (<em>int</em>) – Number of layers</p></li>
+<li><p><strong>Nnodes</strong> (<em>int</em>) – Number of nodes</p></li>
+<li><p><strong>activation</strong> (<em>torch neural network activation function module</em><em>, </em><em>optional</em>) – Activation function of neural network training. Defaults to nn.SiLU.</p></li>
+<li><p><strong>optimizer_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Optimizer for model training. Defaults to ‘Adam’.</p></li>
+<li><p><strong>lr</strong> (<em>float</em><em>, </em><em>optional</em>) – Learning rate for training. Defaults to 1e-4.</p></li>
+<li><p><strong>loss_fn</strong> (<em>torch loss function module</em><em>, </em><em>optional</em>) – Loss function for training. Defaults to nn.MSELoss.</p></li>
+<li><p><strong>summary</strong> (<em>bool</em><em>, </em><em>optional</em>) – If model summary should be generated. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>setup FFNN model
+optimizer (torch optimizer): optimizer for training
+loss_fn (torch loss function): loss function for training</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>model (torch model)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.prepare_data">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.</span></span><span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'newton_difference'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'minmax'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.prepare_data" title="Link to this definition"></a></dt>
+<dd><p>The function prepares the raw time series of the system variables for feeding into ML model. Preparation includes the following steps: (i) data slicing in the indicated range [tmin:tmax], [:tmax], or [tmin:] (optional). If tmin and tmax are not provided, full data are processed (ii) min-max normalization of the variables from the list ‘vars’(iii) computing a delayed [t-1] variable for each variable from the list.
+The function returns a prepared dataframe ‘df_prepared’ and the dataframe containing normalization coefficients per variable ‘df_coef’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas dataframe</em>) – dataframe containing variables</p></li>
+<li><p><strong>vars</strong> (<em>list</em>) – list of the variables to normalize</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – name of the time column</p></li>
+<li><p><strong>tmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimal time of the time slice of data. Defaults to None.</p></li>
+<li><p><strong>tmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximal time of the time slice of data. Defaults to None.</p></li>
+<li><p><strong>scheme</strong> (<em>str</em><em>, </em><em>optional</em>) – Scheme for computing second input variable. Defaults to ‘newton_difference’.</p></li>
+<li><p><strong>norm_method</strong> (<em>str</em><em>, </em><em>optional</em>) – Normalization method. Defaults to ‘minmax’.</p></li>
+<li><p><strong>value_min</strong> (<em>int</em><em>, </em><em>optional</em>) – Minimal value for minmax normalization. Defaults to 0.0.</p></li>
+<li><p><strong>value_max</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximal value for minmax normalization. Defaults to 1.0.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em><em>, </em><em>optional</em>) – If data should be normalized. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing prepared data for feeding into ML model
+df_coef (pandas dataframe): dataframe containing normalization coefficients (min and max values) per variable</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>df_prepared (pandas dataframe)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyCLINE.recovery_methods.train_FFNN_model">
+<span class="sig-prename descclassname"><span class="pre">pyCLINE.recovery_methods.</span></span><span class="sig-name descname"><span class="pre">train_FFNN_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_progressbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_evolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'limit_cycle'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nullcline_guess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minimal_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maximal_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyCLINE.recovery_methods.train_FFNN_model" title="Link to this definition"></a></dt>
+<dd><p>Train the Feedforward Neural Network (FFNN) model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>torch model</em>) – configured FFNN model</p></li>
+<li><p><strong>optimizer</strong> (<em>torch optimizer</em>) – optimizer</p></li>
+<li><p><strong>loss_fn</strong> (<em>torch loss function</em>) – loss function</p></li>
+<li><p><strong>input_train</strong> (<em>pandas dataframe</em>) – input training data</p></li>
+<li><p><strong>target_train</strong> (<em>pandas dataframe</em>) – target training data</p></li>
+<li><p><strong>input_test</strong> (<em>pandas dataframe</em>) – input testing data</p></li>
+<li><p><strong>target_test</strong> (<em>pandas dataframe</em>) – target testing data</p></li>
+<li><p><strong>validation_data</strong> (<em>pandas dataframe</em>) – validation data</p></li>
+<li><p><strong>epochs</strong> (<em>int</em><em>, </em><em>optional</em>) – number of epochs. Defaults to 200.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – batch size. Defaults to 64.</p></li>
+<li><p><strong>plot_loss</strong> (<em>bool</em><em>, </em><em>optional</em>) – plot the loss. Defaults to True.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – device to train the model on. For ‘cuda’, necessary GPU and CUDA Toolkit are required. Defaults to ‘cpu’.</p></li>
+<li><p><strong>use_progressbar</strong> (<em>bool</em><em>, </em><em>optional</em>) – use progress bar when running the training. Defaults to True.</p></li>
+<li><p><strong>save_evolution</strong> (<em>bool</em><em>, </em><em>optional</em>) – save the evolution of limit cycle and nullcline predictions. Defaults to True.</p></li>
+<li><p><strong>loss_target</strong> (<em>str</em><em>, </em><em>optional</em>) – Decide if the target is not limit cycle, but the inital nullcline seed. Defaults to ‘limit_cycle’.</p></li>
+<li><p><strong>nullcline_guess</strong> (<em>torch tensor</em><em>, </em><em>optional</em>) – Torch tensor containing inital nullcline guess. Defaults to None.</p></li>
+<li><p><strong>factor</strong> (<em>float</em><em>, </em><em>optional</em>) – The penalty factor for nullcline guess loss evaluation. Defaults to 1.0.</p></li>
+<li><p><strong>method</strong> (<em>str</em><em>, </em><em>optional</em>) – Method used for prediction, can be derivative or delayed variables. Defaults to None.</p></li>
+<li><p><strong>minimal_value</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimal value of minmax normalization for inbetween prediction. Defaults to 0.0.</p></li>
+<li><p><strong>maximal_value</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximal value of minmax normalization for inbetween prediction. Defaults to 1.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>training losses
+val_losses (list): validation losses
+test_loss (float): testing loss
+predictions (list): predictions of nullcline structure over all epochs
+lc_predictions (list): limit cycle predictions over all epochs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>train_losses (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyCLINE.html" class="btn btn-neutral float-left" title="pyCLINE package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Bartosz Prokop, Nikita Frolov, Lendert Gelens.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
