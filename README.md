@@ -33,7 +33,7 @@ pyCLINE.example(*example name*)
 
 where example names are `FHN` (FitzHugh-Nagumo model), `Bicubic` (Bicubic model), `GeneExpression` (Gene expression) or `DelayOscillator` (Delay oscillator model) which are introduced in the manuscript. 
 
-Additionally, below you can find the example for a the use of the FitzHugh-Nagumo (FHN) model without the use of  `pyCLINE.example`.
+Additionally, below you can find the example for the use of the FitzHugh-Nagumo (FHN) model without the use of  `pyCLINE.example`.
 After installing the package, we import `pyCLINE` as well as `torch.nn` to be able to configure the activation function for the neural network training. 
 Additionally, we load `pandas` to be able to load generated test data sets.
 
