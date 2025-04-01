@@ -50,5 +50,4 @@ include:
 
 before_script:
   - mkdir -p source/_static
-  - cp -r doc_images/* source/_static
-  
+  - cp -r doc_images/* source/_build/_static
