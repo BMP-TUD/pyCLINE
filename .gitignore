@@ -3,6 +3,7 @@ results/
 *.svg
 *.png
 !pycline_structure.png
+!pycline_logo.png
 old_builds/
 automated_update_pycline.py
 *.pypirc

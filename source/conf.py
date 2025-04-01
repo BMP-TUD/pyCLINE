@@ -20,7 +20,7 @@ version = __version__
 extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon"]
 # html_static_path = ["_static"]
 
-html_logo = "_static/small_logo.png"
+html_logo = "_static/pycline_logo.png"
 templates_path = ['_templates']
 exclude_patterns = []
 
