@@ -16,8 +16,10 @@ For a better understanding, `pyCLINE` also contains the module `pyCLINE.example`
 Documentation of the package can be found hosted on [Gitlab pages](https://pycline-ec8369.pages.gitlab.kuleuven.be).
 
 The structure of `pyCLINE` is shown here: 
-
-![PyCLINE structure](pycline_structure.png)
+<!-- ![PyCLINE structure](pycline_structure.png) -->
+<div style="text-align: center;">   
+    <img src='pycline_structure.png' style="width: 70%;  center" />
+</div>
 
 # Example of use
 
