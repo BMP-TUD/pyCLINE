@@ -78,34 +78,34 @@ class TestGenerateData(unittest.TestCase):
         data = pd.read_csv(path+fname) 
         self.assertEqual(data.shape, (int(400/0.4),2))
 
-    # def test_invalid_parameters(self):
-    #     # Test invalid parameters for FHN
-    #     with self.assertRaises(ValueError):
-    #         FHN(dt=-0.1, N=1000, epsilons=[0.3], n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         FHN(dt=0.1, N=-1000, epsilons=[0.3], n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         FHN(dt=0.1, N=1000, epsilons=[0.3], n_intiaL_conditions=0)
+    def test_invalid_parameters(self):
+        # Test invalid parameters for FHN
+        with self.assertRaises(ValueError):
+            FHN(dt=-0.1, N=1000, epsilons=[0.3], n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            FHN(dt=0.1, N=-1000, epsilons=[0.3], n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            FHN(dt=0.1, N=1000, epsilons=[0.3], n_intiaL_conditions=0)
 
-    #     # Test invalid parameters for Bicubic
-    #     with self.assertRaises(ValueError):
-    #         Bicubic(dt=-0.1, N=1000, n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         Bicubic(dt=0.1, N=-1000, n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         Bicubic(dt=0.1, N=1000, n_intiaL_conditions=0)
+        # Test invalid parameters for Bicubic
+        with self.assertRaises(ValueError):
+            Bicubic(dt=-0.1, N=1000, n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            Bicubic(dt=0.1, N=-1000, n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            Bicubic(dt=0.1, N=1000, n_intiaL_conditions=0)
 
-    #     # Test invalid parameters for GeneExpression
-    #     with self.assertRaises(ValueError):
-    #         GeneExpression(dt=-0.1, N=1000, n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         GeneExpression(dt=0.1, N=-1000, n_intiaL_conditions=1)
-    #     with self.assertRaises(ValueError):
-    #         GeneExpression(dt=0.1, N=1000, n_intiaL_conditions=0)
+        # Test invalid parameters for GeneExpression
+        with self.assertRaises(ValueError):
+            GeneExpression(dt=-0.1, N=1000, n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            GeneExpression(dt=0.1, N=-1000, n_intiaL_conditions=1)
+        with self.assertRaises(ValueError):
+            GeneExpression(dt=0.1, N=1000, n_intiaL_conditions=0)
 
-        # # Test invalid parameters for DelayOscillator
-        # with self.assertRaises(ValueError):
-        #     DelayOscillator(N=-1000)
+        # Test invalid parameters for DelayOscillator
+        with self.assertRaises(ValueError):
+            DelayOscillator(N=-1000)
 
 if __name__ == '__main__':
     unittest.main()

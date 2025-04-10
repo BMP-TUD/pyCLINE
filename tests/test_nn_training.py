@@ -26,6 +26,9 @@ class TestNNTraining(unittest.TestCase):
         self.input_test = pd.DataFrame(torch.randn(20, self.Nin).numpy())
         self.target_test = pd.DataFrame(torch.randn(20, self.Nout).numpy())
         self.validation_data = (pd.DataFrame(torch.randn(20, self.Nin).numpy()), pd.DataFrame(torch.randn(20, self.Nout).numpy()))
+        model, _, _ = configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, lr=self.lr, optimizer_name=self.optimizer_name, loss_fn=self.loss_fn)
+        self.state_dict = model.state_dict()
+
 
     def test_configure_FFNN_model_errors(self):
         with self.assertRaises(NeuralNetworkSetupError):
@@ -42,6 +45,12 @@ class TestNNTraining(unittest.TestCase):
             configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, optimizer_name='')
         with self.assertRaises(NeuralNetworkSetupError):
             configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, loss_fn=None)
+        with self.assertRaises(NeuralNetworkSetupError):
+            configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, optimizer_name='Adam', loss_fn=self.loss_fn, load_state_dict=404)
+        with self.assertRaises(NeuralNetworkSetupError):
+            configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, optimizer_name='Adam', loss_fn=self.loss_fn, load_state_dict=[])
+        with self.assertRaises(NeuralNetworkSetupError):
+            configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes, optimizer_name='Adam', loss_fn=self.loss_fn, load_state_dict={})
 
     def test_train_FFNN_model_data_errors(self):
         model, optimizer, loss_fn = configure_FFNN_model(self.Nin, self.Nout, self.Nlayers, self.Nnodes)

@@ -30,7 +30,7 @@ def example(example_model, plot):
     """
 
     #provide name of model to run example
-    if example_model is None:
+    if example_model is None or example_model not in ['FHN', 'Bicubic', 'GeneExpression', 'DelayOscillator']:
         raise ValueError("Error: example_model is None: please provide a model name (FHN, Bicubic, GeneExpression, DelayOscillator).")
     
     # check if data already exists

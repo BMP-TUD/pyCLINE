@@ -68,7 +68,7 @@ def init_weights(m):
         nn.init.zeros_(m.bias)
 
 def configure_FFNN_model(Nin, Nout, Nlayers, Nnodes,  activation=nn.SiLU, optimizer_name='Adam', lr=1e-4,
-                         loss_fn=nn.MSELoss, summary=False):
+                         loss_fn=nn.MSELoss, summary=False, load_state_dict=None):
     """
     Configure the Feedforward Neural Network (FFNN) model.
 
@@ -82,6 +82,7 @@ def configure_FFNN_model(Nin, Nout, Nlayers, Nnodes,  activation=nn.SiLU, optimi
         lr (float, optional): Learning rate for training. Defaults to 1e-4.
         loss_fn (torch loss function module, optional): Loss function for training. Defaults to nn.MSELoss.
         summary (bool, optional): If model summary should be generated. Defaults to False.
+        load_state_dict (dict, optional): Load state dict for the model. Defaults to None. Can be string to a torch.state_dict path or a state_dict dictionary.
 
     Returns:
         model (torch model): setup FFNN model
@@ -118,6 +119,14 @@ def configure_FFNN_model(Nin, Nout, Nlayers, Nnodes,  activation=nn.SiLU, optimi
     elif optimizer_name == 'Adadelta':
         optimizer = optim.Adadelta(model.parameters(), lr=lr)
     
+    if load_state_dict is not None:
+        if load_state_dict is str:
+            model.load_state_dict(torch.load(load_state_dict))
+        elif hasattr(load_state_dict, 'keys') and len(load_state_dict.keys())>0: # torch.nn.module.state_dict() has no dtype
+            model.load_state_dict(load_state_dict)
+        else:
+            raise NeuralNetworkSetupError('load_state_dict', load_state_dict, 'load_state_dict has to be str or dict.')
+
     loss_fn = loss_fn()
 
     if summary:
@@ -195,6 +204,7 @@ def train_FFNN_model(model, optimizer, loss_fn, input_train, target_train, input
         test_loss (float): testing loss
         predictions (list): predictions of nullcline structure over all epochs
         lc_predictions (list): limit cycle predictions over all epochs
+        model (torch model): trained FFNN model
     """
     #Error handling
     if input_train.shape[0] == 0:
@@ -359,7 +369,7 @@ def train_FFNN_model(model, optimizer, loss_fn, input_train, target_train, input
     test_loss /= len(test_loader.dataset)
     predictions_evolution=np.array(predictions)
     lc_predictions = np.array(lc_predictions)
-    return train_losses, val_losses, test_loss, predictions_evolution, lc_predictions
+    return train_losses, val_losses, test_loss, predictions_evolution, lc_predictions, model
 
 def nullcline_prediction(model, Nsteps, device='cpu', method=None,min_val=0.0, max_val=1.0):
     """

@@ -14,5 +14,6 @@ src/pyCLINE/recovery_methods/__init__.py
 src/pyCLINE/recovery_methods/data_preparation.py
 src/pyCLINE/recovery_methods/nn_training.py
 tests/test_data_preparation.py
+tests/test_example.py
 tests/test_generate_data.py
 tests/test_nn_training.py

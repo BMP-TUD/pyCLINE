@@ -24,7 +24,8 @@ class TestDataPreparation(unittest.TestCase):
         self.assertTrue('var2' in df_coef.columns)
 
     def test_prepare_data_invalid_input(self):
-        # Test prepare_data function with invalid inputs
+        with self.assertRaises(ValueError):
+            prepare_data([], self.vars, self.time)
         with self.assertRaises(ValueError):
             prepare_data(self.df, 'var1', self.time)
         with self.assertRaises(ValueError):
@@ -43,6 +44,12 @@ class TestDataPreparation(unittest.TestCase):
             prepare_data(self.df, self.vars, self.time, value_max='invalid')
         with self.assertRaises(ValueError):
             prepare_data(self.df, self.vars, self.time, normalize='invalid')
+        with self.assertRaises(ValueError):
+            prepare_data(self.df, ['var1', 'varINVALID'], self.time)
+        with self.assertRaises(ValueError):
+            prepare_data(self.df, self.vars, 'invalid_time')
+        with self.assertRaises(ValueError):
+            prepare_data(self.df, self.vars, self.time, scheme='invalid')
 
     def test_shuffle_and_split(self):
         # Test shuffle_and_split function
@@ -59,6 +66,8 @@ class TestDataPreparation(unittest.TestCase):
     def test_shuffle_and_split_invalid_input(self):
         # Test shuffle_and_split function with invalid inputs
         with self.assertRaises(ValueError):
+            shuffle_and_split([], self.vars, ['var1'])
+        with self.assertRaises(ValueError):
             shuffle_and_split(self.df, 'var1', ['var1'])
         with self.assertRaises(ValueError):
             shuffle_and_split(self.df, self.vars, 'var1')
@@ -74,6 +83,10 @@ class TestDataPreparation(unittest.TestCase):
             shuffle_and_split(self.df, self.vars, ['var1'], optimal_thresholding='invalid')
         with self.assertRaises(ValueError):
             shuffle_and_split(self.df, self.vars, ['var1'], plot_thresholding='invalid')
+        with self.assertRaises(ValueError):
+            shuffle_and_split(self.df, self.vars, ['varINVALID'])
+        with self.assertRaises(ValueError):
+            shuffle_and_split(self.df, ['varINVALID'] , ['var1'])
 
 if __name__ == '__main__':
     unittest.main()

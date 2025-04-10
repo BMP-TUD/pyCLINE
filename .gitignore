@@ -9,3 +9,4 @@ old_builds/
 automated_update_pycline.py
 *.pypirc
 *.pdf
+.coverage
