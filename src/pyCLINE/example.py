@@ -115,7 +115,7 @@ def example(example_model, plot):
     
     # train the model
     print('Step 4: Train the model')
-    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions = recovery_methods.nn_training.train_FFNN_model(model=nn_model,
+    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions, _ = recovery_methods.nn_training.train_FFNN_model(model=nn_model,
                                                                                                                             optimizer=optimizer, loss_fn=loss_fn,
                                                                                                                             input_train=input_train,
                                                                                                                             target_train=target_train,input_test=input_test, 

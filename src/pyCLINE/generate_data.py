@@ -11,8 +11,6 @@ def FHN(dt=0.1, N=1000000, epsilons=[0.3], n_intiaL_conditions=1):
         N (int): Number of time steps. Defaults to 1000000.
         epsilons (list): List of time scale separations. Defaults to [0.3].
     
-    Returns:
-        None
     """
     if dt <= 0:
         raise ValueError("Time step (dt) must be positive.")

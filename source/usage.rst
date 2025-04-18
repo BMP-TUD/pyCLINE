@@ -56,6 +56,6 @@ With the prepared data, we can set up the model and train it:
     nn_model,  optimizer, loss_fn = recovery_methods.nn_training.configure_FFNN_model(Nin=len(input_vars), Nout=len(target_vars),Nlayers=3, Nnodes=64, summary=True, lr=1e-4, activation=nn.SiLU)
 
     #training
-    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions = recovery_methods.nn_training.train_FFNN_model(model=nn_model, optimizer=optimizer, loss_fn=loss_fn, input_train=input_train,target_train=target_train,input_test=input_test, target_test=target_test, validation_data=(input_val, target_val), epochs=3000, batch_size=64, device='cpu',save_evolution=True,method='derivative', minimal_value=val_min,maximal_value=val_max)
+    training_loss, val_loss, test_loss, predictions_evolution, lc_predictions, _ = recovery_methods.nn_training.train_FFNN_model(model=nn_model, optimizer=optimizer, loss_fn=loss_fn, input_train=input_train,target_train=target_train,input_test=input_test, target_test=target_test, validation_data=(input_val, target_val), epochs=3000, batch_size=64, device='cpu',save_evolution=True,method='derivative', minimal_value=val_min,maximal_value=val_max)
 
 The result of the training are the losses and the predictions of the limit cycle (``lc_predictions``) and nullcline predictions (``predictions_evolution``) over the set amount of epochs, which can be used to visualize the outcome of the nullcline predictions. 
