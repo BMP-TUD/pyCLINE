@@ -31,6 +31,12 @@ Dynamical processes in physics, biology, chemistry, and engineering—such as pl
 Traditionally, mathematical models describing these systems rely on differential equations derived from empirical data using established modeling principles and scientific intuition. 
 However, the increasing availability of high-dimensional, complex datasets has rendered classical model derivation increasingly challenging.
 
+As a result, data-driven or machine learning methods emerged that are able to handle high-dimensional data sets. 
+However existing methods either are limited by data quality or the interpretability of their results. 
+Thus we developed the **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop2025] and introduce its Python implementation `pyCLINE` that allows to extract static to identify static phase-space structures without prior knowledge directly from time series data.  
+
+# Statement of need
+
 Machine learning and data-driven approaches have revolutionized the study of dynamical systems. Two primary methodologies exist:
 
 - **Black-box methods** (e.g., neural networks) approximate system behavior but lack interpretability regarding underlying mechanisms.
@@ -38,12 +44,18 @@ Machine learning and data-driven approaches have revolutionized the study of dyn
 
 To bridge this gap, **grey-box methods** integrate the strengths of both approaches, handling large, structured datasets while preserving interpretability. Examples include Physics-Informed Neural Networks (PINNs) [@Karniadakis2021], Biology-Informed Neural Networks (BINNs) [@Lagergren2020], and Universal Differential Equations [@Rackauckas2020]. However, most of these methods focus on forecasting rather than extracting fundamental structural properties of dynamical systems.
 
-To address this limitation, we introduce **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop2025], a grey-box framework designed to identify static phase-space structures, specifically nullclines, from time series data.
-Understanding the nullcline structure of a system provides several key benefits [@Prokop2024b]:
+To address this limitation, our method **CLINE** is able to extract static phase-space features, specifically the structure of nullclines, from time series data without forecasting.  
+Understanding nullcline structure of a dynamical system provides several key benefits [@Prokop2024b]:
 
 - **Comprehensive System Characterization:** Nullclines fully describe the system’s steady-state behavior and provide richer insights than time series data alone.
 - **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as sparse identification of nonlinear dynamics (SINDy) [@Brunton2016] or symbolic regression (SR) [@Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
 - **Bias Reduction through Model-Free Inference:** Unlike traditional white-box methods, CLINE does not rely on predefined candidate terms (e.g., library-based functions), minimizing biases in model formulation and increasing adaptability to diverse systems.
+
+`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop2025]. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
+The implementation of `pyCLINE` allows to generate exemplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
+
+`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
+This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or provide proof for existing models of dynamic (oscillatory) systems.
 
 ## Methodology
 
@@ -64,14 +76,6 @@ As such, the target functions can be expressed as a feed-forward neural network 
 
 After training, we can provide a set of $u$ together with $u_t=0$ (requirement for a nullcline) as inputs and learn the corresponding values of $v$ that describe $u_t = f(u,v)=0$.
 As a result, we learn the structure of a nullcline in the phase space $u,v$, to which other white-box methods can be applied to learn the symbolic equations, yet on a decisively simpler optimization problem then time series data.
-
-# Statement of need
-
-`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop2025]. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
-The implementation of `pyCLINE` allows to generate exemplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
-
-`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
-This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or provide proof for existing models of dynamic (oscillatory) systems.
 
 # Usage
 
