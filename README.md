@@ -32,6 +32,12 @@ pyCLINE.example(*example name*)
 ```
 
 where example names are `FHN` (FitzHugh-Nagumo model), `Bicubic` (Bicubic model), `GeneExpression` (Gene expression) or `DelayOscillator` (Delay oscillator model) which are introduced in the manuscript. 
+To reduce calculation times for the examples or test out alternative configurations, the examples can be run with a reduced number of epochs, increased batch size, reduced learning rate, or smaller network size by using the `epochs`,  `batch_size`, `lr`, `Nlayers`, `Nnodes` arguments respectively.
+For example, to run the FitzHugh-Nagumo model with 100 epochs, a batch size of 128, a learning rate of 1e-3, 2 layers and 32 nodes per layer, the command would be:
+
+```python
+pyCLINE.example('FHN', epochs=100, batch_size=128,lr=1e-3, Nlayers=2, Nnodes=32)
+```
 
 Additionally, below you can find the example for the use of the FitzHugh-Nagumo (FHN) model without the use of  `pyCLINE.example`.
 After installing the package, we import `pyCLINE` as well as `torch.nn` to be able to configure the activation function for the neural network training. 
@@ -84,6 +90,6 @@ The result of the training are the losses and the predictions of the limit cycle
 
 # Contributing to pyCLINE
 
-If you want to contribute to the `pyCLINE` package, you can do it so here on Gitlab by creating a feature either for bug reports or suggestions. 
+If you want to contribute to the `pyCLINE` package, you can do it so here on Gitlab when having a Gitlab account or on [Github](https://github.com/BMP-TUD/pyCLINE) with the repository feature by creating a issue either for bug reports or suggestions. 
 
 If you have already written code to fix bugs or add extensions then feel free to creat a pull request, however before putting substantial effort into major code changes please open an issue to discuss it. 
