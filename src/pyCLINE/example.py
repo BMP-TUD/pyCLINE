@@ -15,7 +15,7 @@ class ExampleCallable:
 
 sys.modules[__name__]= ExampleCallable()
 
-def example(example_model, plot):
+def example(example_model, plot, epochs=3000, batch_size=64, lr=1e-4, Nlayers=3, Nnodes=64):
     """
     This function runs multiple examples, depending on the choice of the example model. 
     It should be used as a guideline how to run pyCLINE for synthetic data. 
@@ -24,6 +24,11 @@ def example(example_model, plot):
     Args:
         example_model (str): Selection of model to run the example on. Chose from 'FHN', 'Bicubic', 'GeneExpression', 'DelayOscillator'.
         plot (bool): If True, the function will plot the data and the predictions.
+        epochs (int, optional): Number of epochs for training the model. Defaults to 3000.
+        batch_size (int, optional): Batch size for training the model. Defaults to 64.
+        lr (float, optional): Learning rate for training the model. Defaults to 1e-4.
+        Nlayers (int, optional): Number of layers in the neural network. Defaults to 3.
+        Nnodes (int, optional): Number of nodes in each layer of the neural network. Defaults to 64.
 
     Raises:
         ValueError: In case no example model string is provided.

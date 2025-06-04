@@ -7,7 +7,7 @@ name = "pyCLINE"
 version = "0.1.11"
 description = "This package is the Python implementation of the CLINE method"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10, <3.12"
 classifiers = [ "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Operating System :: OS Independent",]
 keywords = [ "model", "model identification", "nullcline", "data-driven", "machine learning", "deep learning", "torch", "dynamics", "oscillator", "nonlinear dynamics", "complex systems",]
 dependencies = [ "matplotlib>=3.6.2", "numpy>=1.24.1,<1.25.0", "pandas~=1.5.2", "torch>=2.4.1", "tqdm>=4.66.1", "jitcdde>=1.8.1", "scipy>=1.9.3",]
