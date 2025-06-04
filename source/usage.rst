@@ -9,6 +9,12 @@ As mentioned before, in order to run several examples, the module ``example`` ca
     pyCLINE.example(*example name*)
 
 where example names are ``FHN`` (FitzHugh-Nagumo model), ``Bicubic`` (Bicubic model), ``GeneExpression`` (Gene expression) or ``DelayOscillator`` (Delay oscillator model) which are introduced in the manuscript. 
+To reduce calculation times for the examples or test out alternative configurations, the examples can be run with a reduced number of epochs, increased batch size, reduced learning rate, or smaller network size by using the ``epochs``,  ``batch_size``, ``lr``, ``Nlayers``, ``Nnodes`` arguments respectively.
+For example, to run the FitzHugh-Nagumo model with 100 epochs, a batch size of 128, a learning rate of 1e-3, 2 layers and 32 nodes per layer, the command would be:
+
+.. code-block:: python
+
+    pyCLINE.example('FHN', epochs=100, batch_size=128,lr=1e-3, Nlayers=2, Nnodes=32)
 
 Additionally, below you can find the example for a the use of the FitzHugh-Nagumo (FHN) model without the use of  ``pyCLINE.example``.
 After installing the package, we import ``pyCLINE`` as well as ``torch.nn`` to be able to configure the activation function for the neural network training. 

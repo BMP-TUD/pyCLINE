@@ -11,7 +11,7 @@ from pyCLINE import __version__
 project = 'pyCLINE'
 copyright = '2025, Bartosz Prokop, Nikita Frolov, Lendert Gelens'
 author = 'Bartosz Prokop, Nikita Frolov, Lendert Gelens'
-release = '0.1.10'
+release = '0.1.11'
 version = __version__
 
 # -- General configuration ---------------------------------------------------

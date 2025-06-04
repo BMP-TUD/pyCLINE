@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: pyCLINE
-Version: 0.1.11
+Version: 0.1.12
 Summary: This package is the Python implementation of the CLINE method
 Author-email: Bartosz Prokop <bartosz.prokop@kuleuven.be>, Nikita Frolov <nikita.frolov@kuleuven.be>, Lendert Gelens <lendert.gelens@kuleuven.be>
 Project-URL: Homepage, https://pycline-ec8369.pages.gitlab.kuleuven.be/
@@ -9,7 +9,7 @@ Keywords: model,model identification,nullcline,data-driven,machine learning,deep
 Classifier: Development Status :: 3 - Alpha
 Classifier: Programming Language :: Python :: 3
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.10
+Requires-Python: <3.12,>=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: matplotlib>=3.6.2
