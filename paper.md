@@ -51,21 +51,21 @@ Understanding nullcline structure of a dynamical system provides several key ben
 - **Reduced Complexity for Symbolic Model Identification:** Once nullcline structures are identified, symbolic equations can be inferred using sparse regression techniques, such as sparse identification of nonlinear dynamics (SINDy) [@Brunton2016] or symbolic regression (SR) [@Schmidt2009], with significantly lower computational complexity compared to direct time-series-based approaches.
 - **Bias Reduction through Model-Free Inference:** Unlike traditional white-box methods, CLINE does not rely on predefined candidate terms (e.g., library-based functions), minimizing biases in model formulation and increasing adaptability to diverse systems.
 
-`pyCLINE` is a Python package that allows to easily set up and use the CLINE method as explained and shown in [@Prokop2025]. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and allows to quickly implement the identification of nullcline structures from simulated or measured time series data. 
-The implementation of `pyCLINE` allows to generate exemplary data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
+`pyCLINE` is a Python package that allows one to easily set up and use the CLINE method as explained and shown in @Prokop2025. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and enables rapid identification of nullcline structures from simulated or measured time series data. 
+The implementation of `pyCLINE` can generate exemple data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
-`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested to apply the method to either different models or measured data. 
-This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or provide proof for existing models of dynamic (oscillatory) systems.
+`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested in applying the method to either different models or measured data. 
+This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or confirm existing models of dynamical (oscillatory) systems.
 
 ## Methodology
 
-The main aspects of the CLINE method are explained in [@Prokop2025], nevertheless we provide a brief explanation of the method. 
+The main aspects of the CLINE method are explained in @Prokop2025, nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
 $$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$$    
 $$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$$
 
-The functions of $f$ and $g$ are not know *a priori*.
+The functions of $f$ and $g$ are not known *a priori*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
 $$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)$$
@@ -75,7 +75,7 @@ Now we have to learn the inverse functions $f^{-1}$ and $g^{-1}$ which describe 
 As such, the target functions can be expressed as a feed-forward neural network with e.g. inputs $u$ and $u_t$, to learn $v$. 
 
 After training, we can provide a set of $u$ together with $u_t=0$ (requirement for a nullcline) as inputs and learn the corresponding values of $v$ that describe $u_t = f(u,v)=0$.
-As a result, we learn the structure of a nullcline in the phase space $u,v$, to which other white-box methods can be applied to learn the symbolic equations, yet on a decisively simpler optimization problem then time series data.
+As a result, we learn the structure of a nullcline in the phase space $u,v$, to which other white-box methods can be applied to learn the symbolic equations, yet on a decisively simpler optimization problem then that on time series data.
 
 # Usage
 
@@ -85,9 +85,9 @@ The `pyCLINE` package can be downloaded and installed using `pip`:
 
 The `pyCLINE` package includes three main modules (see \autoref{fig:method}): 
 
- - `pyCLINE.generate_data()`: This module generates data which has been used in [@Prokop2025] along with additionally many more models that can be found under `pyCLINE.model()`.
+ - `pyCLINE.generate_data()`: This module generates data which has been used in @Prokop2025 along with many additional models that can be found under `pyCLINE.model()`.
  - `pyCLINE.recovery_methods.data_preparation()`: Splits and normalizes that data for training, with many more features for the user to change the data.
- - `pyCLINE.recovery_methods.nn_training()`: Is the `pyTorch` implementation that sets up the model and trains it.
+ - `pyCLINE.recovery_methods.nn_training()`: The `pyTorch` implementation that sets up the model and trains it.
 
 The `pyCLINE.model()` currently includes a set of different models: 
 
@@ -101,12 +101,12 @@ The `pyCLINE.model()` currently includes a set of different models:
  - Roessler system
  - Delay oscillator (self-inhibitory gene)
 
-Some of the models are three-dimensional and can be used to further study the limitations of the method, when applied to higher dimensional systems
+Some of the models are three-dimensional and can be used to further study the limitations of the method, when applied to higher dimensional systems.
 
-For a better understanding the method and a simpler implementation, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
+To demonstrate the method, we also provide `pyCLINE.example()` which contains full examples of how `pyCLINE` can be used.
 Here, `pyCLINE.example()` can be used to generate prediction data for four systems: The FitzHugh-Nagumo model with time scale separation variable $\varepsilon=0.3$ (`FHN`), the Bicubic model (`Bicubic`), gene expression model (`GeneExpression`) and the delay oscillator model (`DelayOscillator`).
 
-![The method CLINE explained by using Figure 1 from [@Prokop2025]. In red the main modules of the `pyCLINE` package are shown. \label{fig:method}](figures/introduction_manuscript_1.png)
+![The method CLINE explained by using Figure 1 from @Prokop2025. In red the main modules of the `pyCLINE` package are shown. \label{fig:method}](figures/introduction_manuscript_1.png)
 
 
 # References

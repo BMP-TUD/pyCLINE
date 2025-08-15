@@ -92,4 +92,4 @@ The result of the training are the losses and the predictions of the limit cycle
 
 If you want to contribute to the `pyCLINE` package, you can do it so here on Gitlab when having a Gitlab account or on [Github](https://github.com/BMP-TUD/pyCLINE) with the repository feature by creating a issue either for bug reports or suggestions. 
 
-If you have already written code to fix bugs or add extensions then feel free to creat a pull request, however before putting substantial effort into major code changes please open an issue to discuss it. 
+If you have already written code to fix bugs or add extensions then feel free to create a pull request, however before putting substantial effort into major code changes please open an issue to discuss it. 
