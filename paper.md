@@ -1,5 +1,5 @@
 ---
-title: 'pyCLINE: A Python package using the CLINE method for discovery of hidden nullcline structures in oscillatory dynamical systems'
+title: 'pyCLINE: A Python package using the CLINE method for discovery of nullcline structures in oscillatory dynamics'
 tags:
   - Python
   - nonlinear dynamics
