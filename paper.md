@@ -33,7 +33,7 @@ However, the increasing availability of high-dimensional, complex datasets has r
 
 As a result, data-driven or machine learning methods emerged that are able to handle high-dimensional data sets. 
 However existing methods either are limited by data quality or the interpretability of their results. 
-Thus we developed the **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop2025] and introduce its Python implementation `pyCLINE` that allows to extract static to identify static phase-space structures without prior knowledge directly from time series data.  
+Thus we developed the **CLINE** (**C**omputational **L**earning and **I**nference of **N**ullclin**E**s) [@Prokop2025] and introduce its Python implementation `pyCLINE` that allows users to extract and identify static phase-space structures without prior knowledge directly from time series data.  
 
 # Statement of need
 
@@ -54,7 +54,7 @@ Understanding nullcline structure of a dynamical system provides several key ben
 `pyCLINE` is a Python package that allows one to easily set up and use the CLINE method as explained and shown in @Prokop2025. It is based on the Python Torch implementation `pyTorch` [@Paszke2019] and enables rapid identification of nullcline structures from simulated or measured time series data. 
 The implementation of `pyCLINE` can generate exemple data sets from scratch, correctly prepare data for training and set up the feed forward neural network for training. 
 
-`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or laymen that are interested in applying the method to either different models or measured data. 
+`pyCLINE` was designed to be used by researchers experienced with the use of machine learning or nonspecialists that are interested in applying the method to either different models or measured data. 
 This allows for simple and fast implementation in many fields that are interested in discovering nullcline structures from measured data, that can help develop novel or confirm existing models of dynamical (oscillatory) systems.
 
 ## Methodology
@@ -62,14 +62,14 @@ This allows for simple and fast implementation in many fields that are intereste
 The main aspects of the CLINE method are explained in @Prokop2025, nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
-$$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$$    
-$$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$$
+$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$    
+$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$
 
 The functions of $f$ and $g$ are not known *a priori*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
-$$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)$$
-$$u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$$
+$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\$
+$u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$
 
 Now we have to learn the inverse functions $f^{-1}$ and $g^{-1}$ which describe the relationship between the measured variables $u$ and $v$ with additional derivative information $u_t$ or $v_t$
 As such, the target functions can be expressed as a feed-forward neural network with e.g. inputs $u$ and $u_t$, to learn $v$. 
