@@ -19,7 +19,7 @@ authors:
     affiliation: 1
     orcid: 0000-0001-7290-9561
 affiliations:
- - name: Laboratory of Dynamics in Biological Systems, Department of Cellular and Mollecular Medicine, KU Leuven
+ - name: Laboratory of Dynamics in Biological Systems, Department of Cellular and Molecular Medicine, KU Leuven
    index: 1
 date: 21 March 2025
 bibliography: paper.bib
@@ -62,14 +62,22 @@ This allows for simple and fast implementation in many fields that are intereste
 The main aspects of the CLINE method are explained in @Prokop2025, nevertheless we provide a brief explanation of the method. 
 In order to identify nullclines for a set of ordinary differential equations (ODEs) with system variables $u$ and $v$, we have to set the derivative to 0: 
 
-$u_t = f(u,v) \rightarrow u_t = f(u,v)=0$    
-$v_t = g(u,v) \rightarrow v_t = g(u,v)=0$
+$$
+u_t = f(u,v) \rightarrow u_t = f(u,v)=0
+$$
+$$    
+v_t = g(u,v) \rightarrow v_t = g(u,v)=0
+$$
 
 The functions of $f$ and $g$ are not known *a priori*.
 However, to learn the functions we can reformulate the nullcline equations to:
 
-$u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)\\$
-$u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)$
+$$
+u = f^{-1}(v,u_t)\text{ or } v = f^{-1}(u,u_t)
+$$
+$$
+u = g^{-1}(v,v_t)\text{ or } v = g^{-1}(u,v_t)
+$$
 
 Now we have to learn the inverse functions $f^{-1}$ and $g^{-1}$ which describe the relationship between the measured variables $u$ and $v$ with additional derivative information $u_t$ or $v_t$
 As such, the target functions can be expressed as a feed-forward neural network with e.g. inputs $u$ and $u_t$, to learn $v$. 
