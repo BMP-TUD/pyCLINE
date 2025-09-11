@@ -1,7 +1,7 @@
 # PyCLINE - python package for CLINE
 
 [![Latest Release](https://gitlab.kuleuven.be/gelenslab/publications/pycline/-/badges/release.svg)](https://gitlab.kuleuven.be/gelenslab/publications/pycline/-/releases)
-[![JOSS](https://joss.theoj.org/papers/8e059d9f0ec762a3ff03d88699c911a0/status.svg)](https://joss.theoj.org/papers/8e059d9f0ec762a3ff03d88699c911a0)
+[![JOSS][![DOI](https://joss.theoj.org/papers/10.21105/joss.08112/status.svg)](https://doi.org/10.21105/joss.08112)
 [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.17036387.svg)](https://doi.org/10.5281/zenodo.17036387)
 [![Pipline](https://gitlab.kuleuven.be/gelenslab/publications/pycline/badges/main/pipeline.svg)](https://gitlab.kuleuven.be/gelenslab/publications/pycline/badges/main/pipeline)
 
